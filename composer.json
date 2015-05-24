@@ -1,0 +1,14 @@
+{
+    "name": "ecommerce-technician/example-php-challenge",
+    "description": "a simple github connector",
+    "license": "MIT",
+    "authors": [{
+      "name": "alex",
+      "email": "alex@millennialagency.com",
+      "homepage": "http://www.millennialagency.com"
+    }],
+    "require": {
+        "php": ">=5.5",
+        "knplabs/github-api": "~1.4"
+    }
+}
