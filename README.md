@@ -1,29 +1,39 @@
-## PHP Programming Task
+# Githubifier
 
-In order to be considered for the PHP position, you must complete the following steps. 
+Githubifier is a quick and basic Laravel 5 Application that connects to github and returns the joyent/node recent commits
 
-*Note: This task should take no longer than 1-2 hours at the most.*
+ - Connects to the Github API
+ - Finds the joyent/node repository
+ - Finds the 25 most recent commits
+ - Creates a model and stores the 25 most recent commits in the database. Make sure to avoid any duplicates.
+ - Creates a basic template and utilize a CSS framework (Bootstrap, Pure, etc.)
+ - Creates a route and view which displays the recent commits by author from the database.
+ - If the commit hash ends in a number, colors that row light blue (#E6F1F6).
+ - Uses Laravel Elixer to mix and serve assets
+ - Uses Bootstrap to pretty up
+
+### Version
+0.0.2
+
+###Installation
+```sh
+$ git clone https://github.com/ecommerce-technician/example-php-challenge/tree/picmonic source
+$ cd source
+$ composer install
+$ npm install
+$ bower install
+$ gulp
+$ php artisan serve
+```
+
+### Plugins
+
+Githubifier is currently extended with the following plugins
+
+* KnpLabs Github
 
 
-### Prerequisites
 
-- Please note that this will require some basic [PHP](http://www.php.net).
 
-- You will need to have [PHP](http://www.php.net/) installed to complete this task. You can use any PHP framework that you would like (Laravel, CodeIgniter, Cake, Fuel, etc).
-
-## Task
-
-1. Fork this repository (if you don't know how to do that, Google is your friend)
-2. Create a *source* folder to contain your code. 
-3. In the *source* directory, please create a PHP web app that accomplishes the following:
-  - Connect to the [Github API](http://developer.github.com/)
-  - Find the [joyent/node](https://github.com/joyent/node) repository
-  - Find the most recent commits (choose at least 25 or more of the commits)
-  - Create a route/page that displays the recent commits by author. 
-  - If the commit hash ends in a number, color that row to light blue (#E6F1F6).
-
-## Once Complete
-1. Commit and Push your code to your new repository
-2. Send us a pull request, we will review your code and get back to you
 
 
