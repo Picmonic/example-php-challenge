@@ -32,6 +32,12 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
+                        MYSQL DUMP GOES HERE
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
                         <div class="githubResults">{!! $content !!}</div>
                     </div>
                 </div>

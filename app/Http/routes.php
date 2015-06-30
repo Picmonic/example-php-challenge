@@ -16,32 +16,11 @@
 //    return view('welcome');
 //});
 
-Route::get('/', function () {
-$client = new \Github\Client;
+//Route::group(['middleware' => 'github'], function () {
+//    Route::get('/', function () {
+//        Route::get('/', 'GithubController@joyent');
+//    });
+//});
 
-//Find store and count joyent Commits, doesnt paginate
-$commits = $client->api('repo')->commits()->all('joyent', 'node', array('sha' => 'master'));
-$commitsLength = count ($commits);
+Route::get('/', 'GithubController@joyent');
 
-$thisContent = '<table class="table table-striped table-hover table-condensed"><thead><tr><th>Name</th><th>Commit ID</th></tr>';
-
-//loops over commits array and prints table row
-for($i=0; $i<$commitsLength; $i++){
-    //sets bg color of row if SHA ends in numeric char
-    $colorChar = is_numeric(substr($commits[$i]["sha"], -1));
-    $color = "";
-
-    if($colorChar == 1){
-        $color="blue";
-    }//ends if
-    //prints table row
-    $thisContent .= '<tr class="clickable-row '. $color . '">';
-    $thisContent .= '<td>' . $commits[$i]["commit"]['committer']['name'] . '</td>';
-    $thisContent .= '<td>' . $commits[$i]["sha"] . '</td>';
-    $thisContent .= '</tr>';
-}//ends for loop
-$thisContent .=  '</thead></table>';
-
-return view('welcome', ['content' => $thisContent]);
-
-});
