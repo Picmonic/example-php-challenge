@@ -20,34 +20,24 @@ class GithubController extends Controller{
         $gh_commits = $client->api('repo')->commits()->all('joyent', 'node', array('sha' => 'master'));
         $commitsLength = count($gh_commits);
 
-        $thisContent = '<table class="table table-striped table-hover table-condensed"><thead><tr><th>Name</th><th>Commit ID</th></tr>';
-
         //loops over commits array and prints table row
         for ($i = 0; $i < $commitsLength; $i++) {
-            //sets bg color of row if SHA ends in numeric char
-        $colorChar = is_numeric(substr($gh_commits[$i]["sha"], -1));
-        $color = "";
 
-        if ($colorChar == 1) {
-        $color = "blue";
-        }//ends if
-        //prints table row
-        $thisContent .= '<tr class="clickable-row ' . $color . '">';
-        $thisContent .= '<td>' . $gh_commits[$i]["commit"]['committer']['name'] . '</td>';
-        $thisContent .= '<td>' . $gh_commits[$i]["sha"] . '</td>';
-        $thisContent .= '</tr>';
+            //insert committer name
+            $gh_committer_name = $gh_commits[$i]["commit"]['committer']['name'];
+
+            //insert commit id
+            $gh_commit_id = $gh_commits[$i]["sha"];
+
+            DB::insert('insert into commits (committer_name, commit_id) values(?, ?)', [$gh_committer_name, $gh_commit_id]);
+
         }//ends for loop
 
-<<<<<<< HEAD
-        //$dbDump = DB::select('select * from commits where id = 1');
-        //'dump' => $dbDump
-        return view('welcome', ['content' => $thisContent]);
-=======
-        $dbDump = DB::select('select * from commits');
 
+        $dbDump = DB::select('select * from commits');
         $dbPrint =  json_encode($dbDump);
 
-        return view('welcome', ['content' => $thisContent, 'dump' => $dbPrint]);
->>>>>>> picmonic
+        return view('welcome', ['content' => "github", 'dump' => $dbPrint]);
+
     }
 }
