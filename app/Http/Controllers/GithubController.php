@@ -69,8 +69,8 @@ class GithubController extends Controller{
             $table_maker .= '<td>' . $line->commit_id . '</td>';
         }
 
-        $table_maker .= '</table>';
 
+        $table_maker .= '</table>';
 
         return view('pages.home', ['dump' => $table_maker]);
 
