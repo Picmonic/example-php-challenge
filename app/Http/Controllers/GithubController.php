@@ -72,7 +72,7 @@ class GithubController extends Controller{
         $table_maker .= '</table>';
 
 
-        return view('welcome', ['content' => "github", 'dump' => $table_maker]);
+        return view('pages.home', ['dump' => $table_maker]);
 
     }
 }
