@@ -18,6 +18,8 @@ class GithubController extends Controller{
 
         //Find store and count joyent Commits, doesnt paginate
         $gh_commits = $client->api('repo')->commits()->all('joyent', 'node', array('sha' => 'master'));
+
+        //how many commits total
         $commitsLength = count($gh_commits);
 
         //loops over commits array and inserts into database
@@ -37,6 +39,8 @@ class GithubController extends Controller{
 
                 //if no errors commit
                 DB::commit();
+
+
             } catch (\Exception $e) {
 
                 //if theres an exception just undo it and carry on
@@ -46,10 +50,29 @@ class GithubController extends Controller{
 
         }//ends for loop
 
-        $dbDump = DB::select('select * from commits');
-        $dbPrint =  json_encode($dbDump);
 
-        return view('welcome', ['content' => "github", 'dump' => $dbPrint]);
+        //$dbDump = DB::select('select * from commits');
+        $dbDump = DB::table('commits')->get();
+
+        $table_maker = '<table class="table table-striped table-hover table-condensed"><thead><tr><th>Name</th><th>Commit ID</th></tr>';
+        foreach ($dbDump as $line) {
+            $colorChar = is_numeric(substr($line->commit_id, -1));
+
+            $color = "";
+
+            if($colorChar == 1){
+                $color="blue";
+            }
+
+            $table_maker .= '<tr class="'. $color . '">';
+            $table_maker .= '<td>' . $line->committer_name . '</td>';
+            $table_maker .= '<td>' . $line->commit_id . '</td>';
+        }
+
+        $table_maker .= '</table>';
+
+
+        return view('welcome', ['content' => "github", 'dump' => $table_maker]);
 
     }
 }
