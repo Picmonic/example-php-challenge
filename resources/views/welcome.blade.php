@@ -32,7 +32,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        MYSQL DUMP GOES HERE
+                        MYSQL DUMP GOES HERE {!! $dump !!}
                     </div>
                 </div>
 

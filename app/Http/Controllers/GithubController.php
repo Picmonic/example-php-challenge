@@ -38,8 +38,10 @@ class GithubController extends Controller{
         $thisContent .= '</tr>';
         }//ends for loop
 
-        //$dbDump = DB::select('select * from commits where id = 1');
-        //'dump' => $dbDump
-        return view('welcome', ['content' => $thisContent]);
+        $dbDump = DB::select('select * from commits');
+
+        $dbPrint =  json_encode($dbDump);
+
+        return view('welcome', ['content' => $thisContent, 'dump' => $dbPrint]);
     }
 }
