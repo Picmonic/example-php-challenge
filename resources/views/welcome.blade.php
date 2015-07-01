@@ -32,11 +32,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-<<<<<<< HEAD
-                        MYSQL DUMP GOES HERE \{\!\! \$dump \!\!\}
-=======
-                        MYSQL DUMP GOES HERE {!! $dump !!}
->>>>>>> picmonic
+                        {!! $dump !!}
                     </div>
                 </div>
 
