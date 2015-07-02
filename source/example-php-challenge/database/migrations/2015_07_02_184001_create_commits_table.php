@@ -39,7 +39,7 @@ class CreateCommitsTable extends Migration
             $table->timestamps();         
         });
 
-        Schema::create('github_commits', function (Blueprint $table) {
+        Schema::create('commits', function (Blueprint $table) {
             $table->increments('id');
 
             //Special cols
