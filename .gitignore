@@ -6,3 +6,4 @@ composer.lock  # Remove this one after you create a project
 .env.php
 .DS_Store
 Thumbs.db
+source/.vagrant
