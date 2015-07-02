@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCommitsTable extends Migration
+class CreateSettingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,11 @@ class CreateCommitsTable extends Migration
      */
     public function up()
     {
-        Schema::create('commits', function (Blueprint $table) {
+        Schema::create('settings', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('sha')->unique();
-            $table->string('user_name');
-            $table->string('date');
+
+            $table->dateTime('last_updated');
+
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateCommitsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('commits');
+        Schema::drop('settings');
     }
 }
