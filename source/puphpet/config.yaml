@@ -3,15 +3,15 @@ vagrantfile:
     vm:
         box: puphpet/ubuntu1404-x64
         box_url: puphpet/ubuntu1404-x64
-        hostname: local.picmonic
+        hostname: local.puphpet
         memory: '1024'
         cpus: '1'
         chosen_provider: virtualbox
         network:
             private_network: 192.168.56.101
             forwarded_port:
-                vflnp_zi3cay7uldls:
-                    host: '9985'
+                vflnp_s0lv5j1sap8z:
+                    host: '9908'
                     guest: '22'
         post_up_message: ''
         provider:
@@ -33,7 +33,7 @@ vagrantfile:
                     - '--hiera_config /vagrant/puphpet/puppet/hiera.yaml'
                     - '--parser future'
         synced_folder:
-            vflsf_sm602ycl04h5:
+            vflsf_b5vl5vy5razx:
                 source: ./example-php-challenge
                 target: /var/www
                 sync_type: default
@@ -77,7 +77,7 @@ users_groups:
 firewall:
     install: '1'
     rules:
-        fr_tuygmlyx7o0j:
+        fr_qvtke0enc8x2:
             port:
                 - '80'
             priority: '100'
@@ -94,7 +94,7 @@ nginx:
         proxy_buffers: '4 256k'
     upstreams: {  }
     vhosts:
-        nxv_kecj2chj1ldi:
+        nxv_oensn5uri2u2:
             server_name: awesome.dev
             server_aliases:
                 - www.awesome.dev
@@ -114,7 +114,7 @@ nginx:
             rewrite_to_https: '1'
             spdy: '1'
             locations:
-                nxvl_917u0uh1pvpy:
+                nxvl_9g4d0dmb6w8p:
                     location: /
                     autoindex: off
                     try_files:
@@ -124,7 +124,7 @@ nginx:
                     fastcgi: ''
                     fastcgi_index: ''
                     fastcgi_split_path: ''
-                nxvl_mlk7l4m05uge:
+                nxvl_eni0k7xhve2t:
                     location: '~ \.php$'
                     autoindex: off
                     try_files:
@@ -151,10 +151,8 @@ apache:
         - proxy_fcgi
         - rewrite
     vhosts:
-        av_34ty2ikkhhrb:
+        av_1u09jwlwn21t:
             servername: picmonic.local
-            serveraliases:
-                - www.picmonic.local
             docroot: /var/www/public
             port: '80'
             setenv:
@@ -168,7 +166,7 @@ apache:
             ssl_protocol: ''
             ssl_cipher: ''
             directories:
-                avd_awkaawap4ata:
+                avd_76a17grjd5c6:
                     path: /var/www/public
                     options:
                         - Indexes
@@ -180,7 +178,7 @@ apache:
                         - 'all granted'
                     custom_fragment: ''
                     files_match:
-                        avdfm_kxik97qisfsd:
+                        avdfm_0lo5ar8i3ung:
                             path: \.php$
                             sethandler: 'proxy:fcgi://127.0.0.1:9000'
                             custom_fragment: ''
@@ -195,6 +193,7 @@ php:
             - cli
             - intl
             - mcrypt
+            - curl
         pear: {  }
         pecl:
             - pecl_http
@@ -206,7 +205,7 @@ php:
     fpm_ini:
         error_log: /var/log/php-fpm.log
     fpm_pools:
-        phpfp_7r5dtrkh4sbx:
+        phpfp_55te1ezxtjm0:
             ini:
                 prefix: www
                 listen: '127.0.0.1:9000'
@@ -275,19 +274,19 @@ mysql:
     install: '1'
     settings:
         version: '5.6'
-        root_password: 5dWHFxpeuuAHQFZb
+        root_password: hMH8hJbyXYPJLFvu
         override_options: {  }
     adminer: 0
     users:
-        mysqlnu_tp5ar5ow92ag:
+        mysqlnu_f4c7qovmfdhr:
             name: picmonic_user
             password: 8mD3eLAUtDSKXYjW
     databases:
-        mysqlnd_mts9ap5savde:
+        mysqlnd_ncv2yeij3lqu:
             name: picmonic_db
             sql: ''
     grants:
-        mysqlng_exusum850x6m:
+        mysqlng_937cqjwwm8d1:
             user: picmonic_user
             table: '*.*'
             privileges:
