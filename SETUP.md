@@ -4,13 +4,10 @@ This is my attempt at creating a very basic one page site that pulls commit data
 
 ### Prerequisites
 
-In order for this application to run you need:
+In order for this application to run you will need:
 
-1. Vagrant 1.7.2 or greater and VirtualBox V 4.3.28 or greater.
-
-or
-
-2. A LAMP Stack with PHP v5.5 or greater.
+1. Vagrant 1.7.2 or greater
+2. VirtualBox V 4.3.28 or greater.
 
 ## Vagrant Setup
 
@@ -23,12 +20,3 @@ or
 7. Open your local /etc/hosts file and add `192.168.56.101	picmonic.local` to the end of the file.
 
 Your server should now be live and accessable through your browser at `http://picmonic.local`
-
-## LAMP Setup
-
-1. Clone the repository
-2. Create a vhost pointed at ./source/example-php-challenge
-3. Navigate to ./source/example-php-challenge
-4. Run the command `php artisan migrate`
-
-You should be able to view the page at whatever host you set up in your vhost.
