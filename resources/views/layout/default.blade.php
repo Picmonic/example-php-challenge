@@ -9,11 +9,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body ng-controller="StoreController as store">
-<script type="text/javascript" src="{{ URL::asset('js/all.js') }}"></script>
-<div class="container-fluid">
-    <header> @include('layout.header') </header>
-    <div class="contents"> @yield('content') </div>
-    <footer> @include('layout.footer') </footer>
+    <script type="text/javascript" src="{{ URL::asset('js/all.js') }}"></script>
+    <header>
+        @include('layout.header')
+    </header>
+    <main>
+    <div class="container">
+    <div class="contents">
+        @yield('content')
+    </div>
+    </main>
+    <footer>
+        @include('layout.footer')
+    </footer>
 </div>
 </body>
 </html>

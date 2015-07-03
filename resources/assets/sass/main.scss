@@ -7,7 +7,18 @@ $font-stack: "Inconsolata";
 
 body {
   font: 100% $font-stack;
+  background: url("http://i.ytimg.com/vi/deeadHoXKek/maxresdefault.jpg") no-repeat center bottom;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
 }
 
 $x: rgb(230,241,246);
 .x{ background: $x; }
+
+
+

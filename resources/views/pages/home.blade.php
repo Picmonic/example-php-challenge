@@ -1,8 +1,6 @@
 @extends('layout.default')
 @section('content')
-<main>
-    <div class="valign center">
-        Welcome to githubifier
+    <div class="valign-wrapper">
+        <h5 class="valign">Welcome to Githubbifier</h5>
     </div>
-</main>
 @stop

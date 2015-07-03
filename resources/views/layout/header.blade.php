@@ -1,4 +1,3 @@
-<header>
 <div class="navbar-fixed">
     <nav>
         <div class="nav-wrapper z-depth-2">
@@ -11,4 +10,3 @@
         </div>
     </nav>
 </div>
-</header>

@@ -5993,7 +5993,20 @@ button.close {
     display: none !important; } }
 
 body {
-  font: 100% "Inconsolata"; }
+  font: 100% "Inconsolata";
+  background: url("http://i.ytimg.com/vi/deeadHoXKek/maxresdefault.jpg") no-repeat center bottom;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 100vh;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column; }
+
+main {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto; }
 
 .x {
   background: #e6f1f6; }

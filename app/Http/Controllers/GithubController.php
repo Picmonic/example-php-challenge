@@ -54,7 +54,7 @@ class GithubController extends Controller{
         //$dbDump = DB::select('select * from commits');
         $dbDump = DB::table('commits')->get();
 
-        $table_maker = '<table><thead><tr><th data-field=\"name\">Name</th><th data-field=\"commit\">Commit ID</th></tr></thead><tbody>';
+        $table_maker = '<table class="white"><thead><tr><th data-field="name">Name</th><th data-field="commit">Commit ID</th></tr></thead><tbody>';
 
         $jsonBuilder = "";
 
