@@ -54,25 +54,30 @@ class GithubController extends Controller{
         //$dbDump = DB::select('select * from commits');
         $dbDump = DB::table('commits')->get();
 
-        $table_maker = '<table class="table table-striped table-hover table-condensed"><thead><tr><th>Name</th><th>Commit ID</th></tr>';
-        foreach ($dbDump as $line) {
+        $table_maker = '<table class="white"><thead><tr><th data-field="name">Name</th><th data-field="commit">Commit ID</th></tr></thead><tbody>';
+
+        $jsonBuilder = "";
+
+
+        foreach ($dbDump as $line){
+
             $colorChar = is_numeric(substr($line->commit_id, -1));
 
-            $color = "";
+            $marker = "";
 
             if($colorChar == 1){
-                $color="blue";
+                $marker="x";
             }
 
-            $table_maker .= '<tr class="'. $color . '">';
+            $table_maker .= '<tr class="'. $marker . '">';
             $table_maker .= '<td>' . $line->committer_name . '</td>';
             $table_maker .= '<td>' . $line->commit_id . '</td>';
         }
 
 
-        $table_maker .= '</table>';
+        $table_maker .= '</tbody></table>';
 
-        return view('pages.home', ['dump' => $table_maker]);
+        return view('pages.run', ['dump' => $table_maker, 'jsonDump' => $jsonBuilder]);
 
     }
 }

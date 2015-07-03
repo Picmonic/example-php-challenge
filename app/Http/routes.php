@@ -23,9 +23,19 @@
 //});
 
 
-Route::get('/', 'GithubController@joyent');
+Route::get('/run', 'GithubController@joyent');
 
-Route::get('about', function()
+Route::get('/about', function()
 {
     return view('pages.about');
+});
+
+Route::get('/install', function()
+{
+    return view('pages.install');
+});
+
+Route::get('/', function()
+{
+    return view('pages.home');
 });

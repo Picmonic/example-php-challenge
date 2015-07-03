@@ -1,4 +1,36 @@
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+//@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
-$blue: rgb(230,241,246);
-.blue{ background: $blue; }
+//General Text
+@import url(http://fonts.googleapis.com/css?family=Inconsolata);
+$font-stack: "Inconsolata";
+
+//iconse
+$icon-font-path:  "vendor/materialize/font/material-design-icons/Material-Design-Icons";
+@font-face {
+  font-family: "foundation-icons";
+  src: url("#{$icon-font-path}.eot");
+  src: url("#{$icon-font-path}.eot?#iefix") format("embedded-opentype"),
+  url("#{$icon-font-path}.woff") format("woff"),
+  url("#{$icon-font-path}.ttf") format("truetype"),
+  url("#{$icon-font-path}.svg#fontcustom") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font: 100% $font-stack;
+  background: url("http://i.ytimg.com/vi/deeadHoXKek/maxresdefault.jpg") no-repeat center top;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+$x: rgb(230,241,246);
+.x{ background: $x; }
+
+
+
