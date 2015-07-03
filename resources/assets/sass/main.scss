@@ -1,4 +1,5 @@
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@include transition(.3s);
 
 $blue: rgb(230,241,246);
 .blue{ background: $blue; }
