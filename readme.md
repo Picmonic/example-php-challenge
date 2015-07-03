@@ -34,7 +34,7 @@ Githubifier is currently extended with the following plugins
 
 ###NOTES
 
-If hitting '[PDOException] SQLSTATE[HY000] [2002] No such file or directory error when migrating' error
+####If hitting '[PDOException] SQLSTATE[HY000] [2002] No such file or directory error when migrating' error
 * locate your 'unix_socket' setting in config/database.php
 * run:
 ```sh
@@ -44,3 +44,5 @@ mysql> show variables like '%sock%’;
 ```
 
 And then change 'unix socket' in config/database.php to the result found above
+
+####Dont forget to set your .env variables, check out .env.example, simply deleteteh .example
