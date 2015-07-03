@@ -22,7 +22,6 @@ elixir(function(mix) {
         '../../../vendor/angular/angular.js',
         '../../../resources/assets/scripts/app.js',
         '../../../vendor/materialize/js/bin/materialize.min.js'
-
     ]);
 
 });

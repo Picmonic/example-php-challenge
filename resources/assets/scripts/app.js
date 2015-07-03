@@ -1,14 +1,6 @@
 $(document).ready(function(){
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-    $('.modal-trigger').leanModal({
-            dismissible: true, // Modal can be dismissed by clicking outside of the modal
-            opacity: .5, // Opacity of modal background
-            in_duration: 300, // Transition in duration
-            out_duration: 200, // Transition out duration
-            ready: function() {  }, // Callback for Modal open
-            complete: function() {  } // Callback for Modal close
-        }
-    );
+    $('.modal-trigger').leanModal();
 });
 
 (function() {
@@ -21,7 +13,7 @@ $(document).ready(function(){
     var gems = [
         {
             name: 'Shows you what matters.',
-            description: 'We can turn things blue, together. If your commit ends in an integer, do we have a tool for you. Simply be Joyent, and then check here daily to see if your Node repo commit turned blue. We bet it did :)',
+            description: 'We can turn things blue, together. If your commit ends in an integer, Oh boy, do we have a tool for you. Simply commit to the Joyent/Node repo on github. If the commit ID ended in an integer, you can bet your britches we turned it blue.',
             canHire: true,
             price: 110
         },
@@ -36,9 +28,6 @@ $(document).ready(function(){
 
     ];
 })();
-
-
-////
 
 
 
