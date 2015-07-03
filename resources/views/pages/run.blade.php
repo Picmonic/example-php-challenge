@@ -1,5 +1,5 @@
 @extends('layout.default')
-@section('run')
+@section('content')
 <div>
     {!! $dump or 'NOT FOUND' !!}
 </div>

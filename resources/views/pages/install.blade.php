@@ -1,3 +1,3 @@
-@section('installation')
-    1. Wuzzz guddd
+@extends('layout.default')
+@section('content')
 @stop

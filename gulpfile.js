@@ -23,4 +23,5 @@ elixir(function(mix) {
         '../../../resources/assets/scripts/app.js',
         '../../../vendor/materialize/js/bin/materialize.min.js'
     ]);
+
 });

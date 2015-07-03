@@ -4,6 +4,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+@import url(http://fonts.googleapis.com/css?family=Inconsolata);
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -5991,10 +5992,10 @@ button.close {
   .hidden-print {
     display: none !important; } }
 
--webkit-transition: 0.3s;
--o-transition: 0.3s;
-transition: 0.3s;
-.blue {
+body {
+  font: 100% "Inconsolata"; }
+
+.x {
   background: #e6f1f6; }
 
 .materialize-red.lighten-5 {

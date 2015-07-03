@@ -1,5 +1,11 @@
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
-@include transition(.3s);
+@import url(http://fonts.googleapis.com/css?family=Inconsolata);
 
-$blue: rgb(230,241,246);
-.blue{ background: $blue; }
+$font-stack: "Inconsolata";
+
+body {
+  font: 100% $font-stack;
+}
+
+$x: rgb(230,241,246);
+.x{ background: $x; }
