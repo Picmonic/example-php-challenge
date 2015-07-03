@@ -20,3 +20,9 @@ In order for this application to run you will need:
 7. Open your local /etc/hosts file and add `192.168.56.101	picmonic.local` to the end of the file.
 
 Your server should now be live and accessable through your browser at `http://picmonic.local`
+
+## Author
+
+James "T.J." Moats
+toadking2@gmail.com
+https://github.com/khadaj
