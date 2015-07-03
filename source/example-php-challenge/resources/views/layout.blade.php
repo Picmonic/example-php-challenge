@@ -2,9 +2,7 @@
 <html lang="en">
   <head>
     <title>Commits</title>
-
     <link href="assets/css/app.css" rel="stylesheet">
-
   </head>
 
   <body>
@@ -18,11 +16,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand" href="#">Example Php Challenge</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
+            <li class="active"><a href="#">Commits</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -40,5 +38,7 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/bootstrap-table.min.js"></script>
+    <script src="/assets/js/app.js"></script>
   </body>
 </html>
