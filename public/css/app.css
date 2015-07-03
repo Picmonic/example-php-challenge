@@ -8058,7 +8058,7 @@ ul {
 blockquote {
   margin: 20px 0;
   padding-left: 1.5rem;
-  border-left: 5px solid #ee6e73; }
+  border-left: 5px solid #ba68c8; }
 
 i {
   line-height: inherit; }
@@ -8094,7 +8094,7 @@ video.responsive-video {
   .pagination li.active a {
     color: #fff; }
   .pagination li.active {
-    background-color: #ee6e73; }
+    background-color: #ba68c8; }
   .pagination li.disabled a {
     cursor: default;
     color: #999; }
@@ -8207,7 +8207,7 @@ ul.staggered-list li {
 footer.page-footer {
   margin-top: 20px;
   padding-top: 20px;
-  background-color: #ee6e73; }
+  background-color: #ba68c8; }
   footer.page-footer .footer-copyright {
     overflow: hidden;
     height: 50px;
@@ -11225,7 +11225,7 @@ span.badge {
 
 nav {
   color: #fff;
-  background-color: #ee6e73;
+  background-color: #ba68c8;
   width: 100%;
   height: 56px;
   line-height: 56px; }
@@ -11659,21 +11659,21 @@ small {
     letter-spacing: .8px;
     width: 15%; }
     .tabs .tab a {
-      color: #ee6e73;
+      color: #ba68c8;
       display: block;
       width: 100%;
       height: 100%;
       transition: color 0.28s ease; }
       .tabs .tab a:hover {
-        color: #f9c9cb; }
+        color: #dcb3e3; }
     .tabs .tab.disabled a {
-      color: #f9c9cb;
+      color: #dcb3e3;
       cursor: default; }
   .tabs .indicator {
     position: absolute;
     bottom: 0;
     height: 2px;
-    background-color: #f6b2b5;
+    background-color: #d4a0dc;
     will-change: left, right; }
 
 .tabs .tab {
@@ -13070,7 +13070,7 @@ select {
 
 .side-nav .collapsible-body li.active,
 .side-nav.fixed .collapsible-body li.active {
-  background-color: #ee6e73; }
+  background-color: #ba68c8; }
   .side-nav .collapsible-body li.active a,
   .side-nav.fixed .collapsible-body li.active a {
     color: #fff; }
