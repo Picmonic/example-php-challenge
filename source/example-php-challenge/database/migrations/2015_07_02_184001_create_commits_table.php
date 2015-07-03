@@ -15,7 +15,8 @@ class CreateCommitsTable extends Migration
         Schema::create('commits', function (Blueprint $table) {
             $table->increments('id');
             $table->string('sha')->unique();
-            $table->string('user_name');
+            $table->string('committer');
+            $table->string('message', 5000);
             $table->string('date');
             $table->timestamps();
         });
