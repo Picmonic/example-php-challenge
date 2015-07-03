@@ -10,7 +10,7 @@ In order for this application to run you need:
 
 or
 
-2. A LAMP Stack with PHP V5.5 or greater.
+2. A LAMP Stack with PHP v5.5 or greater.
 
 ## Vagrant Setup
 
@@ -28,4 +28,7 @@ Your server should now be live and accessable through your browser at `http://pi
 
 1. Clone the repository
 2. Create a vhost pointed at ./source/example-php-challenge
-3. 
+3. Navigate to ./source/example-php-challenge
+4. Run the command `php artisan migrate`
+
+You should be able to view the page at whatever host you set up in your vhost.
