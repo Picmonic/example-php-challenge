@@ -55,7 +55,7 @@ class GithubController extends Controller{
 
     public function stats(){
         $dbDump = DB::table('commits')->get();
-        return view('pages.stats', ['dbDump' => $dbDump]);
+        return view('pages.about', ['dbDump' => $dbDump]);
     }
 
 }

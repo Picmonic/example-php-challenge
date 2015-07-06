@@ -1,13 +1,15 @@
 <!-- Modal Trigger -->
-<a class="waves-effect waves-light btn modal-trigger" href="#modal1">Saving Hamsters</a>
+<div ng-repeat="feature in githubbifier.features">
+    <a class="waves-effect waves-light btn modal-trigger @{{ feature.color }}" href="#modal1">@{{feature.name }} @{{feature.price | currency }}</a>
 
-<!-- Modal Structure -->
-<div id="modal1" class="modal bottom-sheet">
-    <div class="modal-content">
-        <h4>Saving Hamsters since 2015</h4>
-        <p>Send us $1,250 and we'll feed a hamster for a year. We'll even send you a pic!</p>
-    </div>
-    <div class="modal-footer">
-        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal bottom-sheet">
+        <div class="modal-content #e3f2fd blue lighten-5">
+            <h1> @{{ feature.name }} </h1>
+            <p> @{{ feature.description }}</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
     </div>
 </div>

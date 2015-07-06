@@ -25,7 +25,7 @@
 
 Route::get('/run', 'GithubController@insertCommits');
 
-Route::get('/stats', 'GithubController@stats');
+Route::get('/about', 'GithubController@stats');
 
 Route::get('/install', function()
 {

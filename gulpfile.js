@@ -15,13 +15,15 @@ elixir(function(mix) {
     mix.sass([
         'main.scss',
         '../../../vendor/materialize/sass/materialize.scss',
+        '../../../vendor/angular-chart/dist/angular-chart.css'
     ]);
     mix.scripts([
         '../../../vendor/jquery/dist/jquery.js',
         '../../../vendor/bootstrap/dist/js/bootstrap.js',
         '../../../vendor/angular/angular.js',
         '../../../resources/assets/scripts/app.js',
-        '../../../vendor/materialize/js/bin/materialize.min.js'
+        '../../../vendor/materialize/js/bin/materialize.min.js',
+        '../../../vendor/angular-chart/dist/angular-chart.js'
     ]);
 
 });
