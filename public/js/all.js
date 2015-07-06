@@ -39947,10 +39947,10 @@ $(document).ready(function(){
 });
 
 (function() {
-    var app = angular.module('store', [ ]);
+    var app = angular.module('githubbifier', [ ]);
 
-    app.controller('StoreController', function(){
-        this.products = gems;
+    app.controller('GithubbifierController', function(){
+        this.features = gems;
     });
 
     var gems = [

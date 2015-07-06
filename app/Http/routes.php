@@ -23,12 +23,9 @@
 //});
 
 
-Route::get('/run', 'GithubController@joyent');
+Route::get('/run', 'GithubController@insertCommits');
 
-Route::get('/about', function()
-{
-    return view('pages.about');
-});
+Route::get('/stats', 'GithubController@stats');
 
 Route::get('/install', function()
 {

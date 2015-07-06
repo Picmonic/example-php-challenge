@@ -4,7 +4,7 @@
 @import url(http://fonts.googleapis.com/css?family=Inconsolata);
 $font-stack: "Inconsolata";
 
-//iconse
+//icons
 $icon-font-path:  "vendor/materialize/font/material-design-icons/Material-Design-Icons";
 @font-face {
   font-family: "foundation-icons";
@@ -23,6 +23,7 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  background-color: #000000;
 }
 
 main {
@@ -31,6 +32,3 @@ main {
 
 $x: rgb(230,241,246);
 .x{ background: $x; }
-
-
-

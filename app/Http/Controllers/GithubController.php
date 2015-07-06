@@ -12,8 +12,7 @@ use DB;
 
 class GithubController extends Controller{
 
-    public function joyent()
-    {
+    public function insertCommits(){
         $client = new \Github\Client;
 
         //Find store and count joyent Commits, doesnt paginate
@@ -50,34 +49,13 @@ class GithubController extends Controller{
 
         }//ends for loop
 
-
-        //$dbDump = DB::select('select * from commits');
         $dbDump = DB::table('commits')->get();
-
-        $table_maker = '<table class="white"><thead><tr><th data-field="name">Name</th><th data-field="commit">Commit ID</th></tr></thead><tbody>';
-
-        $jsonBuilder = "";
-
-
-        foreach ($dbDump as $line){
-
-            $colorChar = is_numeric(substr($line->commit_id, -1));
-
-            $marker = "";
-
-            if($colorChar == 1){
-                $marker="x";
-            }
-
-            $table_maker .= '<tr class="'. $marker . '">';
-            $table_maker .= '<td>' . $line->committer_name . '</td>';
-            $table_maker .= '<td>' . $line->commit_id . '</td>';
-        }
-
-
-        $table_maker .= '</tbody></table>';
-
-        return view('pages.run', ['dump' => $table_maker, 'jsonDump' => $jsonBuilder]);
-
+        return view('pages.run', ['dbDump' => $dbDump]);
     }
+
+    public function stats(){
+        $dbDump = DB::table('commits')->get();
+        return view('pages.stats', ['dbDump' => $dbDump]);
+    }
+
 }
