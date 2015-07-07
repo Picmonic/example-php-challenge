@@ -14,13 +14,13 @@ class CommitsController extends Controller
     public function index()
     {
         $commits = Commit::all();
-        return \View::make('commits.index')->with('commits', $commits);
+        return $commits;
     }
     
     public function commitsByAuthor($author)
     {
-        $commits = Commit::all()->where('login', $author);
-        return \View::make('commits.author')->with('author', $author)->with('commits', $commits);
+        $commits = Commit::all()->where('login', $author);        
+        return ['author' => $author, 'commits' => $commits];
     }
 
 }
