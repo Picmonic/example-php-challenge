@@ -11,11 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/github', 'GithubController@github');
+Route::get('/', 'GithubController@github');
 
 Route::get('/commits', 'CommitsController@index');
 Route::get('/commits/{author}', 'CommitsController@commitsByAuthor');
