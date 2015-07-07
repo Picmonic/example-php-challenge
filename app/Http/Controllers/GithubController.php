@@ -37,7 +37,7 @@ class GithubController extends Controller
             }
         }
 
-        return \View::make('commits.index');
+        return \View::make('layouts.master');
     }    
 
 }
