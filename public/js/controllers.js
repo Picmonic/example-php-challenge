@@ -12,6 +12,10 @@ angular.module('GithubApp.controllers', [])
         $scope.commits = [];
         $scope.author = $routeParams.author;
 
+        $scope.hilite = function(str) {
+            return isNaN(str.slice(-1)) ? '' : 'blue';
+        }
+
         apiService.getAuthorCommits($scope.author).success(function(response) {
             console.log(response);            
             $scope.commits = response.commits;
