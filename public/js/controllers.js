@@ -16,8 +16,7 @@ angular.module('GithubApp.controllers', [])
             return isNaN(str.slice(-1)) ? '' : 'blue';
         }
 
-        apiService.getAuthorCommits($scope.author).success(function(response) {
-            console.log(response);            
+        apiService.getAuthorCommits($scope.author).success(function(response) {          
             $scope.commits = response.commits;
             $scope.author = response.author;
         });
