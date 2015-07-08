@@ -1,6 +1,6 @@
 <h3>Commits by {{author}}</h3>  
 <div ng-repeat="commit in commits">
-    <div>
+    <div class="{{hilite(commit.sha)}}">
         <p>{{commit.message}}</p>
         <p>{{commit.sha}}</p>
     </div>
