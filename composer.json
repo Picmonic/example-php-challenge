@@ -1,0 +1,13 @@
+{
+    "name": "picmonic/picmonic",
+    "description": "Example project for interview.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "cparrish",
+            "email": "cparrish@carlparrish.com"
+        }
+    ],
+    "minimum-stability": "beta",
+    "require": {}
+}
