@@ -38,7 +38,14 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Laravel 5</div>
+                <div class="title">GitHub Listing</div>
+
+                <ul>
+                  @foreach($issues as $issue)
+                    <li>{{ $issue["number"]}} , {{$issue["title"]}}, {{$issue["body"]}}, {{$issue["created_at"] }}
+                    </li>
+                  @endforeach
+
             </div>
         </div>
     </body>
