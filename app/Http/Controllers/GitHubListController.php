@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use GrahamCampbell\GitHub\GitHubManager;
 use Illuminate\Support\Facades\App;
+use App\Commit;
 
 class GitHubListController extends Controller
 {
@@ -20,8 +21,20 @@ class GitHubListController extends Controller
 
     public function getCommits()
     {
-       $commits = $this->github->pullRequests()->all('joyent', 'node',array('sha'=> 'master'));
-       return $commits;
+       $commitsCollection = $this->github->pullRequests()->all('joyent', 'node',array('sha'=> 'master'));
+       foreach ($commitsCollection as $commitEntry) {
+         $commit = Commit::firstOrCreate([
+           'number'     => $commitEntry["number"],
+           'userName'   => $commitEntry["user"]["login"],
+           'title'      => $commitEntry['title'],
+           'body'       => $commitEntry['body'],
+           'sha'        => $commitEntry['merge_commit_sha'],
+           'created_at' => $commitEntry['created_at'],
+           'updated_at' => $commitEntry['updated_at'],
+           ]);
+       }
+       unset($commitEntry);
+       return $commitsCollection;
     }
     /**
      * Display a listing of the resource.
