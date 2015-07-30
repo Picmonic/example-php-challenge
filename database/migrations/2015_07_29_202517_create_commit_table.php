@@ -19,8 +19,7 @@ class CreateCommitTable extends Migration
             $table->string('title');
             $table->text('body');
             $table->string('sha')->unique();
-            $table->timestamp('created_at');
-            $table->timestamp('updated_at');
+            $table->timestamps('');
         });
     }
 

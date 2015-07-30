@@ -22,16 +22,17 @@ class GitHubListController extends Controller
     public function getCommits()
     {
        $commitsCollection = $this->github->pullRequests()->all('joyent', 'node',array('sha'=> 'master'));
+
        foreach ($commitsCollection as $commitEntry) {
-         $commit = Commit::firstOrCreate([
-           'number'     => $commitEntry["number"],
-           'userName'   => $commitEntry["user"]["login"],
-           'title'      => $commitEntry['title'],
-           'body'       => $commitEntry['body'],
-           'sha'        => $commitEntry['merge_commit_sha'],
-           'created_at' => $commitEntry['created_at'],
-           'updated_at' => $commitEntry['updated_at'],
-           ]);
+         $commit = new Commit;
+         $commit->number = $commitEntry["number"];
+         $commit->userName = $commitEntry["user"]["login"];
+         $commit->title = $commitEntry['title'];
+         $commit->body = $commitEntry['body'];
+         $commit->sha = $commitEntry['merge_commit_sha'];
+         $commit->setCreatedAtAttribute($commitEntry['created_at']);
+         $commit->setUpdatedAtAttribute($commitEntry['updated_at']);
+         $commit->save();
        }
        unset($commitEntry);
        return $commitsCollection;
