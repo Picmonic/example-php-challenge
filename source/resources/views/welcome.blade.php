@@ -58,7 +58,11 @@
         </tr>
 
         @foreach($issues as $issue)
-        <tr class="row">
+        @if (is_numeric(substr($issue["sha"],-1)))
+          <tr class="row" style="background-color: #E6F1F6;">
+        @else
+          <tr class="row">
+        @endif
           <td class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
             <a href="{{$issue['html_url']}}">{{ $issue["number"]}}</a>
           </td>
@@ -68,7 +72,8 @@
           <td class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
             {{$issue["userName"]}}
           </td>
-          <td >
+
+            <td>
             {{$issue["sha"]}}
           </td>
           <td class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
