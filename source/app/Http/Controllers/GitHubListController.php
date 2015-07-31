@@ -17,25 +17,17 @@ class GitHubListController extends Controller
     public function __construct(GitHubManager $github)
     {
         $this->github = $github;
+
     }
 
     public function getCommits()
     {
-       $commitsCollection = $this->github->pullRequests()->all('joyent', 'node',array('sha'=> 'master'));
-
-       foreach ($commitsCollection as $commitEntry) {
-         $commit = new Commit;
-         $commit->number = $commitEntry["number"];
-         $commit->userName = $commitEntry["user"]["login"];
-         $commit->title = $commitEntry['title'];
-         $commit->body = $commitEntry['body'];
-         $commit->sha = $commitEntry['merge_commit_sha'];
-         $commit->setCreatedAtAttribute($commitEntry['created_at']);
-         $commit->setUpdatedAtAttribute($commitEntry['updated_at']);
-         $commit->save();
+       $commits = Commit::recent()->orderBy('userName')->take(35)->get();
+       if($commits->isEmpty()){
+         $this->populateDB();
+         $commits = Commit::recent()->orderBy('userName')->take(35)->get();
        }
-       unset($commitEntry);
-       return $commitsCollection;
+       return $commits;
     }
     /**
      * Display a listing of the resource.
@@ -51,40 +43,23 @@ class GitHubListController extends Controller
 
 
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  Request  $request
-     * @return Response
-     */
-    public function store(Request $request)
+    private function populateDB()
     {
-        //
-    }
+      $commitsCollection = $this->github->pullRequests()->all('joyent', 'node',array('sha'=> 'master'));
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        //
-    }
+      foreach ($commitsCollection as $commitEntry) {
+        $commit = new Commit;
+        $commit->number = $commitEntry["number"];
+        $commit->userName = $commitEntry["user"]["login"];
+        $commit->title = $commitEntry['title'];
+        $commit->body = $commitEntry['body'];
+        $commit->sha = $commitEntry['merge_commit_sha'];
+        $commit->setCreatedAtAttribute($commitEntry['created_at']);
+        $commit->setUpdatedAtAttribute($commitEntry['updated_at']);
+        $commit->save();
+      }
+      unset($commitEntry);
 
-
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  Request  $request
-     * @param  int  $id
-     * @return Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
     }
 
 }

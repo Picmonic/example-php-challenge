@@ -51,8 +51,9 @@
 
             <td class="col-xs-12 col-sm-6 col-md-4 col-lg-3">Number</td>
             <td class="col-xs-12 col-sm-6 col-md-4 col-lg-3">Title</td>
-            <td class="col-xs-12 col-sm-6 col-md-4 col-lg-3">Body</td>
-            <td class="col-xs-12 col-sm-6 col-md-4 col-lg-3">Created_at</td>
+            <td class="col-xs-12 col-sm-6 col-md-4 col-lg-3">User</td>
+            <td >SHA</td>
+            <td class="col-xs-12 col-sm-6 col-md-4 col-lg-3">Updated At</td>
 
         </tr>
 
@@ -65,10 +66,13 @@
             {{$issue["title"]}}
           </td>
           <td class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-            {{$issue["body"]}}
+            {{$issue["userName"]}}
+          </td>
+          <td >
+            {{$issue["sha"]}}
           </td>
           <td class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-            {{$issue["created_at"] }}
+            {{$issue["updated_at"] }}
           </td>
         </tr>
         @endforeach

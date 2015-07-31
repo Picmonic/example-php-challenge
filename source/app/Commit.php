@@ -16,11 +16,15 @@ class Commit extends Model
     'updated_at',
   ];
 
-public function setCreatedAtAttribute($date) {
-      $this->attributes['created_at'] = new Carbon($date);
+  public function setCreatedAtAttribute($date) {
+    $this->attributes['created_at'] = new Carbon($date);
   }
 
-public  function setUpdatedAtAttribute($date) {
-      $this->attributes['updated_at'] = new Carbon($date);
+  public  function setUpdatedAtAttribute($date) {
+    $this->attributes['updated_at'] = new Carbon($date);
+  }
+
+  public function scopeRecent($query){
+      return $query->orderBy('updated_at','DESC');
   }
 }
