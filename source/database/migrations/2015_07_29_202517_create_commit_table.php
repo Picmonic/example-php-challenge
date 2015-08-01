@@ -18,6 +18,7 @@ class CreateCommitTable extends Migration
             $table->string('userName');
             $table->string('title');
             $table->text('body');
+            $table->string('url');
             $table->string('sha')->unique();
             $table->timestamps('');
         });
