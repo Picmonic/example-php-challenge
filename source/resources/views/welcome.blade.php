@@ -57,27 +57,27 @@
 
         </tr>
 
-        @foreach($issues as $issue)
-        @if (is_numeric(substr($issue["sha"],-1)))
+        @foreach($commits as $commit)
+        @if (is_numeric(substr($commit["sha"],-1)))
           <tr class="row" style="background-color: #E6F1F6;">
         @else
           <tr class="row">
         @endif
           <td class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-            <a href="{{$issue['html_url']}}">{{ $issue["number"]}}</a>
+            <a href="{{$commit['html_url']}}">{{ $commit["number"]}}</a>
           </td>
           <td class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-            {{$issue["title"]}}
+            {{$commit["title"]}}
           </td>
           <td class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-            {{$issue["userName"]}}
+            {{$commit["userName"]}}
           </td>
 
             <td>
-            {{$issue["sha"]}}
+            {{$commit["sha"]}}
           </td>
           <td class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-            {{$issue["updated_at"] }}
+            {{$commit["updated_at"] }}
           </td>
         </tr>
         @endforeach

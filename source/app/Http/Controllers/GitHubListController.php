@@ -36,8 +36,8 @@ class GitHubListController extends Controller
      */
     public function index()
     {
-        $issues = $this->getCommits();
-        return view('welcome')->with('issues', $issues);
+        $commits = $this->getCommits();
+        return view('welcome')->with('commits', $commits);
 
     }
 
