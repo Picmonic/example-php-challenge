@@ -49,16 +49,15 @@ class GitHubListController extends Controller
 
 
       foreach ($commitsCollection as $commitEntry) {
-          //dd($commitsCollection);
         $commit           = new Commit;
         $commit->userName = $commitEntry["author"]["login"];
-        //$commit->title    = $commitEntry['title'];
         $commit->body     = $commitEntry["commit"]['message'];
         $commit->url      = $commitEntry['url'];
         $commit->sha      = $commitEntry['sha'];
         $commit->setCreatedAtAttribute($commitEntry["commit"]["author"]['date']);
 
         $commit->save();
+
       }
       unset($commitEntry);
 
