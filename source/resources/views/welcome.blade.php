@@ -49,11 +49,10 @@
       <table class="table">
         <tr class="row bg-primary">
 
-            <td class="col-xs-12 col-sm-6 col-md-4 col-lg-3">Number</td>
-            <td class="col-xs-12 col-sm-6 col-md-4 col-lg-3">Title</td>
+
             <td class="col-xs-12 col-sm-6 col-md-4 col-lg-3">User</td>
             <td >SHA</td>
-            <td class="col-xs-12 col-sm-6 col-md-4 col-lg-3">Updated At</td>
+            <td class="col-xs-12 col-sm-6 col-md-4 col-lg-3">Created At</td>
 
         </tr>
 
@@ -63,12 +62,7 @@
         @else
           <tr class="row">
         @endif
-          <td class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-            <a href="{{$commit['url']}}">{{ $commit["number"]}}</a>
-          </td>
-          <td class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-            {{$commit["title"]}}
-          </td>
+
           <td class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
             {{$commit["userName"]}}
           </td>

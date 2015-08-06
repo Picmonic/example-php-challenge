@@ -29,3 +29,5 @@ git clone https://github.com/carl-parrish/example-php-challenge.git picmonic
 
 + copy `.env.example` to `.env` add your GitHub API credentials Here
 + run `composer install`
++ run `php artisan 
+192.168.10.10 picmonic.app

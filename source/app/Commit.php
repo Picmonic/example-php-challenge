@@ -8,7 +8,6 @@ use Carbon\Carbon;
 class Commit extends Model
 {
   protected $fillable = [
-    'number',
     'userName',
     'title',
     'body',

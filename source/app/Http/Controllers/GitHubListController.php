@@ -45,18 +45,19 @@ class GitHubListController extends Controller
 
     private function populateDB()
     {
-      $commitsCollection = $this->github->pullRequests()->all('joyent', 'node',array('sha'=> 'master'));
+      $commitsCollection = $this->github->repo()->commits()->all('joyent', 'node',array('sha'=> 'master'));
+
 
       foreach ($commitsCollection as $commitEntry) {
+          //dd($commitsCollection);
         $commit           = new Commit;
-        $commit->number   = $commitEntry["number"];
-        $commit->userName = $commitEntry["user"]["login"];
-        $commit->title    = $commitEntry['title'];
-        $commit->body     = $commitEntry['body'];
-        $commit->url      = $commitEntry['html_url'];
-        $commit->sha      = $commitEntry['merge_commit_sha'];
-        $commit->setCreatedAtAttribute($commitEntry['created_at']);
-        $commit->setUpdatedAtAttribute($commitEntry['updated_at']);
+        $commit->userName = $commitEntry["author"]["login"];
+        //$commit->title    = $commitEntry['title'];
+        $commit->body     = $commitEntry["commit"]['message'];
+        $commit->url      = $commitEntry['url'];
+        $commit->sha      = $commitEntry['sha'];
+        $commit->setCreatedAtAttribute($commitEntry["commit"]["author"]['date']);
+
         $commit->save();
       }
       unset($commitEntry);
