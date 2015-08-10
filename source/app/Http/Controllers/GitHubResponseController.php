@@ -10,7 +10,7 @@ use GrahamCampbell\GitHub\GitHubManager;
 use Illuminate\Support\Facades\App;
 use App\Commit;
 
-class GitHubListController extends Controller
+class GitHubResponseController extends Controller
 {
     protected $github;
 
