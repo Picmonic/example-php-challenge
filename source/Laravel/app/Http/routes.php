@@ -18,3 +18,5 @@ Route::get('/', function () {
 Route::get('contact', 'PagesController@contact');
 Route::get('github', 'GithubController@index');
 Route::get('commits', 'GithubController@commits');
+//Route::get('author', 'GithubController@author');
+Route::get('author/{author}', ['uses' =>'GithubController@author']);

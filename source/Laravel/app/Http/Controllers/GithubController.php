@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Database\Query\Builder;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -11,6 +12,7 @@ use App\Commit;
 
 class GithubController extends Controller
 {
+    public $author = 'chad3814';
     private $client;
 
     /*
@@ -45,6 +47,15 @@ class GithubController extends Controller
         $commits = Commit::orderBy('created_at', 'id')->limit(25)->get();
         //$commits = Commit::table('commits')->skip(10)->take(5)->get();
         return view('github.commits')->with([
+            'commits'=>$commits
+        ]);
+    }
+
+    public function author($author) {
+        //$commits = Commit::table('commits')->where('author', '=', 'orangemocha')->get();
+        $commits = Commit::where('author', $author)->get();
+        //$commits = Commit::table('commits')->skip(10)->take(5)->get();
+        return view('github.authors')->with([
             'commits'=>$commits
         ]);
     }
