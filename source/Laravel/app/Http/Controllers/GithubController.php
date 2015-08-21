@@ -13,6 +13,11 @@ class GithubController extends Controller
 {
     private $client;
 
+    /*
+     * Github username
+     *
+     * @var string
+     * */
     private $username;
 
     public function __construct(\Github\Client $client) {
@@ -20,8 +25,10 @@ class GithubController extends Controller
         $this->username = env('GITHUB_USERNAME');
     }
 
+    //
+
     public function commits() {
-     
+        //$repos = $this->client->api('repo')->find('joyent/node');
         $commits = $this->client->api('repo')->commits()->all('joyent', 'node', array('sha' => 'master'));
         foreach ($commits as $commit) {            
             $commit = Commit::createOrUpdate(array(
@@ -36,7 +43,7 @@ class GithubController extends Controller
         }
 
         $commits = Commit::orderBy('created_at', 'id')->limit(25)->get();
-     
+        //$commits = Commit::table('commits')->skip(10)->take(5)->get();
         return view('github.commits')->with([
             'commits'=>$commits
         ]);
