@@ -23,10 +23,6 @@ class GitHubResponseController extends Controller
     public function getCommits()
     {
        $commits = Commit::recent()->orderBy('userName')->take(35)->get();
-       if($commits->isEmpty()){
-         $this->populateDB();
-         $commits = Commit::recent()->orderBy('userName')->take(35)->get();
-       }
        return $commits;
     }
     /**
@@ -43,24 +39,5 @@ class GitHubResponseController extends Controller
 
 
 
-    private function populateDB()
-    {
-      $commitsCollection = $this->github->repo()->commits()->all('joyent', 'node',array('sha'=> 'master'));
-
-
-      foreach ($commitsCollection as $commitEntry) {
-        $commit           = new Commit;
-        $commit->userName = $commitEntry["author"]["login"];
-        $commit->body     = $commitEntry["commit"]['message'];
-        $commit->url      = $commitEntry['url'];
-        $commit->sha      = $commitEntry['sha'];
-        $commit->setCreatedAtAttribute($commitEntry["commit"]["author"]['date']);
-
-        $commit->save();
-
-      }
-      unset($commitEntry);
-
-    }
 
 }

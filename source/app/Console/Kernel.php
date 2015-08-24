@@ -25,7 +25,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('migrate:rollback')->hourly()->then(function(){
-            $schedule->command('migrate');
+            $this->schedule->command('migrate');
         });
     }
 }

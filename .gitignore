@@ -1,4 +1,4 @@
-/source/vendor/
-/source/storage/github/*
-/source/.env
+source/vendor/*
+source/storage/github/*
+source/.env
 .idea
