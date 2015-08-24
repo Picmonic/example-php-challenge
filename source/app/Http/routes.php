@@ -11,4 +11,4 @@
 |
 */
 
-Route::get('/', 'GitHubListController@index');
+Route::get('/', 'GitHubResponseController@index');
