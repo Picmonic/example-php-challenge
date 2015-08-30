@@ -47,6 +47,9 @@ class RecentController extends Controller {
 					'url' => $recent_commit->commit->url,
 				];
 
+				// add in a row highlight for numeric-ending commit hashes
+				$commit['highlight_row'] = preg_match("/[0-9]/", substr($commit['sha_10'], -1, 1));
+
             // add in each commit
 			   $recent_commits[] = $commit;
 		  }
