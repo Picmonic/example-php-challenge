@@ -16,9 +16,3 @@ Route::get('/', function () {
 });
 
 Route::get('/recent', 'RecentController@index');
-
-/*Route::get('/recent', function () {
-    return view('recent');
-});
-*/
-//Route::get('user/{id}', 'UserController@showProfile');
