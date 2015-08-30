@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/recent', 'RecentController@index');
+
+/*Route::get('/recent', function () {
+    return view('recent');
+});
+*/
+//Route::get('user/{id}', 'UserController@showProfile');
