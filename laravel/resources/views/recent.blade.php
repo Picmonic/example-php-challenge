@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Recent Changes</title>
+        <title>Recent Commits to /joyent/node</title>
         <style>
             html, body {
                 height: 100%;
@@ -19,7 +19,6 @@
             .container {
                 text-align: center;
                 display: table-cell;
-                vertical-align: middle;
             }
 
             .content {
@@ -28,14 +27,23 @@
             }
 
             .title {
-                font-size: 96px;
+                font-size: 48px;
             }
         </style>
     </head>
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Laravel 5</div>
+                <div class="title">Recent Commits to <a href="https://github.com/joyent/node/commits/master" target="_blank">/joyent/node</a></div>
+
+                @if (count($recent_commits))
+                    @foreach($recent_commits as $recent_commit)
+                        @include('commit', $recent_commit)
+                    @endforeach
+                @else
+                    <p>No recent commits found, these guys need to get busy!</p>
+                @endif
+
             </div>
         </div>
     </body>

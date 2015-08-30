@@ -4,8 +4,8 @@ use App\Http\Controllers\Controller;
 
 class RecentController extends Controller {
 
-    // eg. https://api.github.com/repos/twbs/bootstrap
 	 const GITHUB_REPO_URL = 'https://api.github.com/repos/joyent/node';
+	 const GITHUB_COMMITS_URL = self::GITHUB_REPO_URL . '/commits';
 
     /**
      *
@@ -15,9 +15,13 @@ class RecentController extends Controller {
      */
     public function index()
     {
-        $this->_get_recent();
+        $recent_commits = $this->_get_recent();
 
-        //return view('recent');
+        $data = array(
+            'recent_commits' => $recent_commits,
+        );
+
+		  return view('recent')->with($data);
     }
 
     /**
@@ -26,33 +30,60 @@ class RecentController extends Controller {
      */
     private function _get_recent()
     {
-        print "getting recent from... ";
-		  print self::GITHUB_REPO_URL;
+        $github_data = $this->_get_github_data(self::GITHUB_COMMITS_URL);
 
-        $ch = curl_init();
+        // pull out the pieces we want
+		  $recent_commits = [];
+        foreach($github_data as $recent_commit)
+        {
+			   // TO DO: add in any additional fields?
+            $commit = [
+					'sha' => $recent_commit->sha,
+					'author_name' => $recent_commit->commit->author->name,
+					'author_email' => $recent_commit->commit->author->email,
+					'author_date' => $recent_commit->commit->author->date,
+					'message' => $recent_commit->commit->message,
+					'url' => $recent_commit->commit->url,
+				];
 
-        curl_setopt($ch, CURLOPT_URL, self::GITHUB_REPO_URL);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            // add in each commit
+			   $recent_commits[] = $commit;
+		  }
+
+		  return $recent_commits;
+    }
+
+    /**
+     * Get data from the github repo for a given url using curl
+	  * @see
+     */
+    private function _get_github_data($url = '')
+    {
+        $CH = curl_init();
+
+        curl_setopt($CH, CURLOPT_URL, $url);
+        curl_setopt($CH, CURLOPT_HTTPHEADER, array(
             'User-Agent: challenge-app',
         ));
 
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($CH, CURLOPT_RETURNTRANSFER, true);
 
-        $server_output = curl_exec ($ch);
+        $curl_output = curl_exec($CH);
+        $github_data = json_decode($curl_output);
 
-        echo $server_output;
-
-        if ($errno = curl_errno($ch)) {
+        // TO DO: add better error handling
+        if ($errno = curl_errno($CH)) {
             echo $errno;
         }
 
-        curl_close ($ch);
+        curl_close ($CH);
+		  return $github_data;
     }
 
     /**
      * Cheesy little debug function
      */
-    private function d($what, $die = false)
+    public function d($what, $die = false)
     {
 		  print <<<HD
 			  <pre>
