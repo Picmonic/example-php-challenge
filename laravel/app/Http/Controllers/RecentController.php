@@ -39,6 +39,7 @@ class RecentController extends Controller {
 			   // TO DO: add in any additional fields?
             $commit = [
 					'sha' => $recent_commit->sha,
+					'sha_10' => substr($recent_commit->sha, -7, 7),
 					'author_name' => $recent_commit->commit->author->name,
 					'author_email' => $recent_commit->commit->author->email,
 					'author_date' => $recent_commit->commit->author->date,
