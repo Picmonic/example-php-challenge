@@ -4,7 +4,8 @@ use App\Http\Controllers\Controller;
 
 class RecentController extends Controller {
 
-	 const GITHUB_REPO_URL = 'https://api.github.com/repos/joyent/node';
+	 //const GITHUB_REPO_URL = 'https://api.github.com/repos/joyent/node';
+	 const GITHUB_REPO_URL = 'https://api.github.com/repositories/211666'; // just changed?
 	 const GITHUB_COMMITS_URL = self::GITHUB_REPO_URL . '/commits';
 
     /**
