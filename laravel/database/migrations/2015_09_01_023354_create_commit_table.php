@@ -13,7 +13,7 @@ class CreateCommitTable extends Migration
     public function up()
     {
         Schema::create('commit', function (Blueprint $table) {
-				$table->increments('id');
+            $table->increments('id');
             $table->string('sha', 40);
             $table->string('author_name', 50);
             $table->string('author_email', 50);

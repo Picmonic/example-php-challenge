@@ -17,14 +17,14 @@ class Commit extends Model
      * Model rules
      *
      * @var array
-     * @todo	Not sure how to enforce uniqueness
+     * @todo	Not sure how to enforce uniqueness automatically
      */
-	 private $rules = [
-		 //['sha' => 'unique:column'],
-		 //'sha' => 'unique:column',
-		 //'sha' => 'unique',
-		 'sha' => 'unique:sha',
-	 ];
+    private $rules = [
+        //['sha' => 'unique:column'],
+        //'sha' => 'unique:column',
+        //'sha' => 'unique',
+        'sha' => 'unique:sha',
+    ];
 
     /**
      * Allow mass assignment
@@ -38,5 +38,5 @@ class Commit extends Model
      *
      * @var boolean
      */
-	 public $timestamps = false;
+    public $timestamps = false;
 }
