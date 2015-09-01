@@ -21,8 +21,11 @@ Forked from [Picmonic/example-php-challenge](https://github.com/Picmonic/example
   APP_KEY=99AD9gq0NQ1zEWXSGTpH64ncdIPgA2Ln (your unique key)
   
   DB_HOST=localhost
+  
   DB_DATABASE=laravel
+  
   DB_USERNAME=username
+  
   DB_PASSWORD=password
 
 - Run "php artisan migrate" to set up database model
