@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Controller;
 use DB;
+use App\Commit;
 
 class RecentController extends Controller {
 
@@ -10,19 +11,15 @@ class RecentController extends Controller {
 	 const GITHUB_COMMITS_URL = self::GITHUB_REPO_URL . '/commits';
 
     /**
+     * Index function for Recent controller
      *
-     *
-     * @param
-     * @return
+     * @param none
+     * @return array
      */
     public function index()
     {
-        // get recent commits from github
-		  $recent_from_github = $this->_get_recent();
-
-        // store in local database
-		  // TO DO: avoid duplicates, store only 25?
-		  DB::table('commit')->insert($recent_from_github);
+        // store recent commits from github
+		  $this->_save_recent();
 
 		  // retrieve 25 most recent
 		  $recent_from_db = DB::table('commit')
@@ -60,15 +57,14 @@ class RecentController extends Controller {
     }
 
     /**
-     * Get the recent changes to the github repo
+     * Get the recent changes to the github repo and save in local database
 	  * @see	https://developer.github.com/v3/repos/#get
      */
-    private function _get_recent()
+    private function _save_recent()
     {
         $github_data = $this->_get_github_data(self::GITHUB_COMMITS_URL);
 
         // pull out the pieces we want
-		  $recent_commits = [];
         foreach($github_data as $recent_commit)
         {
 				// convert date
@@ -92,16 +88,18 @@ class RecentController extends Controller {
 					'url' => $recent_commit->commit->url,
 				];
 
-            // add in each commit
-			   $recent_commits[] = $commit;
+			  // save commit
+			  // TO DO: not sure how to enforce unique
+			  // $this_commit = Commit::create($commit);
+			  Commit::updateOrCreate(
+               ['sha' => 1],
+               $commit
+            );
 		  }
-
-		  return $recent_commits;
     }
 
     /**
      * Get data from the github repo for a given url using curl
-	  * @see
      */
     private function _get_github_data($url = '')
     {
