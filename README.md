@@ -1,44 +1,36 @@
-## PHP Programming Task
+# PicMonic Commits App by Scott Geithman
 
-In order to be considered for the PHP position, you must complete the following task. 
+This app requires you to be logged in to add the commits to the database and to view the commits. If you click the "Get Commits" button without being signed in, you will be redirected to the login page.
+```bash
+username: picmonic
+password: picmonic
+```
 
-*Note: This task should take no longer than 1-3 hours at the most.*
+## Setup
 
-### Prerequisites
+1. Clone the repository into your document root (the Yii framework is already included)
+2. Create a new MySQL database and database user
+3. Import **protected/data/install.sql** into your new blank database
+4. Edit **protected/config/core.php** (add your newly created database settings to the code block shown below)
 
-- Experience with [PHP](http://www.php.net) frameworks (Laravel, Symfony, Fuel, Zend, Yii, etc.)
-- Understanding of CSS frameworks and grid systems (Bootstrap, Pure, etc.)
-- Database knowledge (MySQL, MongoDB, Postgres, etc.)
+## Change Database Config Settings
+```php
+'db'=>array(
+    'connectionString' => 'mysql:host=localhost;'.($_SERVER['SERVER_NAME'] == 'localhost' ? 'dbname=picmonic' : 'dbname={your_database_name}'),
+    'emulatePrepare' => true,
+    'username' => ($_SERVER['SERVER_NAME'] == 'localhost' ? 'root' : '{your_database_user}'),
+    'password' => ($_SERVER['SERVER_NAME'] == 'localhost' ? '' : '{your_database_password}'),
+    'charset' => 'utf8',
+    'tablePrefix' => '',
+),
+```
 
-## Task
+### Directory Structure
+```
+  assets/             contains runtime generated assets (empty to begin with)
+  protected/          contains components, config, controllers, data, models, and runtime
+  themes/             contains all css, fonts, js, and views (all html code)
+  yii-1.1.16/         contains the Yii framework
+```
 
-1. Fork this repository
-2. Create a *source* folder to contain your code. 
-3. In the *source* directory, please create a PHP web application using a framework (Laravel, Symfony, Fuel, Zend, Yii, etc.)
-4. Your application should accomplish the following:
-  - Connect to the [Github API](http://developer.github.com/)
-  - Find the [joyent/node](https://github.com/joyent/node) repository
-  - Find the 25 most recent commits
-  - Create a model and store the 25 most recent commits in the database. Make sure to avoid any duplicates.
-  - Create a basic template and utilize a CSS framework (Bootstrap, Pure, etc.)
-  - Create a route and view which displays the recent commits by author from the database. 
-  - If the commit hash ends in a number, color that row light blue (#E6F1F6).
-  
-### Once Complete
-1. Create a SETUP.md in the base directory with setup instructions.
-2. Send us a pull request, we will review your code and get back to you
-
-## Key Points We Are Looking For
-  - Demonstration of core MVC patterns
-  - Quality commit history
-  - Ability to use libraries
-  - Ability to create basic model and retrieve information from the databse
-  
-## Bonus Points
-While not required any of the following will add some major bonus points to your submission:
-- Setup an asset pipeline with Gulp, Grunt, etc.
-- Use Angular
-- Use Bower
-- Use Composer
-- Utilize a vagrant box
-- Create a set of provsioning scripts with Puppet, Chef, Ansible, etc.
+## Run It From The Root
