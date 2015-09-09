@@ -1,6 +1,6 @@
 
-<div ng-app="app" ng-controller="Main as main">
 
+<div ng-app="app" ng-controller="Main as main">
 
 <table>
   <thead>
