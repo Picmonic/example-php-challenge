@@ -16,6 +16,8 @@ password: picmonic
 4. Edit **protected/config/core.php** (add your newly created database settings to the code block shown below)
 
 ## Change Database Config Settings
+
+If your server is localhost edit the first set otherwise change the curly bracket information
 ```php
 'db'=>array(
     'connectionString' => 'mysql:host=localhost;'.($_SERVER['SERVER_NAME'] == 'localhost' ? 'dbname=picmonic' : 'dbname={your_database_name}'),
