@@ -1,7 +1,5 @@
 # PicMonic Commits App by Scott Geithman
 
-Took me a minute because I use bitbucket and have never used the api or the interface from github ...
-
 This app requires you to be logged in to add the commits to the database and to view the commits. If you click the "Get Commits" button without being signed in, you will be redirected to the login page.
 ```bash
 username: picmonic
@@ -16,8 +14,6 @@ password: picmonic
 4. Edit **protected/config/core.php** (add your newly created database settings to the code block shown below)
 
 ## Change Database Config Settings
-
-If your server is localhost edit the first set otherwise change the curly bracket information
 ```php
 'db'=>array(
     'connectionString' => 'mysql:host=localhost;'.($_SERVER['SERVER_NAME'] == 'localhost' ? 'dbname=picmonic' : 'dbname={your_database_name}'),
@@ -27,6 +23,14 @@ If your server is localhost edit the first set otherwise change the curly bracke
     'charset' => 'utf8',
     'tablePrefix' => '',
 ),
+```
+
+### Directory Structure
+```
+  assets/             contains runtime generated assets (empty to begin with)
+  protected/          contains components, config, controllers, data, models, and runtime
+  themes/             contains all css, fonts, js, and views (all html code)
+  yii-1.1.16/         contains the Yii framework
 ```
 
 ## Run It From The Root
