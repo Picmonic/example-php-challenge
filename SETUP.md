@@ -1,10 +1,11 @@
 Setup.Md
 ===============================
 
+Demo: http://laravel.dev.dommert.com/
+
 Requirements
 * Laravel
 * Composer
-
 * Foundation CSS
 * Jquery
 * AngularJS
