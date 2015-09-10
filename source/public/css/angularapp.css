@@ -1,0 +1,17 @@
+/* Styles go here */
+
+
+table, td, tr{
+
+  border: 1px solid black;
+  padding: 5px;
+
+}
+
+.success{
+  background: #E6F1F6;
+}
+
+.error{
+  background: gray;
+}
