@@ -1,0 +1,32 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+    <HEAD>
+        <title>PicMonic.com</title>
+    {% block head %}
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/foundation.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/angular.css') }}" />
+
+    <script src="{{ url_for('static', filename='js/vendor/modernizr.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/vendor/jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/foundation.min.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="{{ url_for('static', filename='js/angular_app.js') }}"></script>
+    {% endblock %}
+    </HEAD>
+
+    <BODY>
+     {% block body %}
+    <!-- Flask-Rum -->
+    <header> {% block header %} {% endblock %} </header>
+    <section id="middle"> {% block middle %} {% endblock %} </section>
+    <footer> {% block footer %} {% endblock %} </footer>
+        <script> $(document).foundation(); </script>
+    {% endblock %}
+
+    </BODY>
+
+</html>
