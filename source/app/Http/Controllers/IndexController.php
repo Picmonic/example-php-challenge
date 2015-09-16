@@ -21,7 +21,7 @@ class IndexController extends BaseController
     public function listCommitsByAuthor() {
 
         // Fetch authors
-        $authors = DB::table('commits')->lists('author_name');
+        $authors = DB::table('commits')->orderBy('author_name', 'asc')->lists('author_name');
 
         // print_r($authors); die(); // Debugging
 
