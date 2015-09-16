@@ -1,21 +1,53 @@
-<table>
+<!DOCTYPE html>
+<html lang="en">
 
-    <thead>
-        <tr>Date</tr>
-        <tr>Hash</tr>
-        <tr>Author</tr>
-    </thead>
+<head>
 
-    <tbody>
+    <title>example-php-challenge &bull; By, Chris Kankiewicz</title>
+    <link href="/img/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
 
-        <?php foreach ($commits as $commit): ?>
-            <tr>
-                <td><?= $commit['commit']['author']['date']; ?></td>
-                <td><?= substr($commit['sha'], 0, 7); ?></td>
-                <td><?= $commit['commit']['author']['name']; ?></td>
-            </tr>
-        <?php endforeach; ?>
+    <!-- META -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    </tbody>
+    <!-- STYLES / FONTS -->
+    <link href="/css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="/css/font-awesome.min.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="/css/style.css" media="screen" rel="stylesheet" type="text/css">
 
-</table>
+    <!-- SCRIPTS -->
+    <script type="text/javascript" scr="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" scr="/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <table class="table">
+
+            <thead>
+                <th>Commit ID</th>
+                <th>Date</th>
+                <th>Author</th>
+            </thead>
+
+            <tbody>
+
+                <?php foreach ($commits as $commit): ?>
+                    <tr>
+                        <td><?= substr($commit['sha'], 0, 7); ?></td>
+                        <td><?= $commit['commit']['author']['date']; ?></td>
+                        <td><?= $commit['commit']['author']['name']; ?></td>
+                    </tr>
+                <?php endforeach; ?>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</body>
+
