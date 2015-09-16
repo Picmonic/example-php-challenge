@@ -13,17 +13,37 @@ class IndexController extends BaseController
         // Fetch latest commits
         $commits = DB::table('commits')->take(25)->get();
 
-        return view('index', ['commits' => $commits]);
+        return view('commits', ['commits' => $commits]);
 
     }
 
 
-    public function listCommitsByAuthor($name) {
+    public function listCommitsByAuthor() {
 
-        // Fetch latest commits
-        $commits = DB::table('commits')->take(25)->get();
+        // Fetch authors
+        $authors = DB::table('commits')->lists('author_name');
 
-        return view('index', ['commits' => $commits]);
+        // print_r($authors); die(); // Debugging
+
+        // Create empty array
+        $commitsByAuthor = array();
+
+        foreach ($authors as $author) {
+
+            // Fetch commits by author
+            $commits = DB::table('commits')->where('author_name', '=', $author)->get();
+
+            foreach ($commits as $commit) {
+
+                // Add commits to commitsByAuthor array
+                $commitsByAuthor[$author][] = $commit;
+            }
+
+        }
+
+        // print_r($commitsByAuthor); die(); // Debugging
+
+        return view('commitsByAuthor', ['commitsByAuthor' => $commitsByAuthor]);
 
     }
 
