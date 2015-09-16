@@ -11,4 +11,13 @@
 |
 */
 
-$app->get('/', 'IndexController@fetchCommits');
+
+// $app->group(['middleware' => 'commitFetch'], function ($app) {
+
+    // Index (all commits)
+    $app->get('/', 'IndexController@listCommits');
+
+    // Commits by author
+    $app->get('/by-author', 'IndexController@listCommitsByAuthor');
+
+// });

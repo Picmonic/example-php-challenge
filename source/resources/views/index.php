@@ -36,10 +36,10 @@
             <tbody>
 
                 <?php foreach ($commits as $commit): ?>
-                    <tr>
-                        <td><?= substr($commit['sha'], 0, 7); ?></td>
-                        <td><?= $commit['commit']['author']['date']; ?></td>
-                        <td><?= $commit['commit']['author']['name']; ?></td>
+                    <tr <?php if (is_numeric(substr($commit->sha, -1))): ?>class="info"<?php endif; ?>>
+                        <td><?= $commit->sha; ?></td>
+                        <td><?= $commit->author_date; ?></td>
+                        <td><?= $commit->author_name; ?></td>
                     </tr>
                 <?php endforeach; ?>
 

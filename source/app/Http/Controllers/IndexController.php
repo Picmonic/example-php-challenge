@@ -3,19 +3,25 @@
 namespace App\Http\Controllers;
 
 use Laravel\Lumen\Routing\Controller as BaseController;
+use DB;
 
 class IndexController extends BaseController
 {
 
-    public function fetchCommits() {
+    public function listCommits() {
 
-        // Initialize client object
-        $client = new \Github\Client();
+        // Fetch latest commits
+        $commits = DB::table('commits')->take(25)->get();
 
-        // Fetch nodejs/node commits
-        $commits = $client->api('repo')->commits()->all('nodejs', 'node', array('sha' => 'master'));
+        return view('index', ['commits' => $commits]);
 
-        // print_r($commits); die(); // Debugging
+    }
+
+
+    public function listCommitsByAuthor($name) {
+
+        // Fetch latest commits
+        $commits = DB::table('commits')->take(25)->get();
 
         return view('index', ['commits' => $commits]);
 
