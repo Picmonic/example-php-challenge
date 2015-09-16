@@ -34,15 +34,17 @@
 
                 <thead>
                     <th>Commit ID</th>
+                    <th>Email</th>
                     <th>Date</th>
-                    <th>Author</th>
                 </thead>
 
                 <?php foreach ($commits as $commit): ?>
                     <tr <?php if (is_numeric(substr($commit->sha, -1))): ?>class="info"<?php endif; ?>>
-                        <td><?= $commit->sha; ?></td>
+                        <td>
+                            <a href="<?= $commit->url; ?>"><?= $commit->sha; ?></a>
+                        </td>
+                        <td><?= $commit->author_email; ?></td>
                         <td><?= $commit->author_date; ?></td>
-                        <td><?= $commit->author_name; ?></td>
                     </tr>
                 <?php endforeach; ?>
 

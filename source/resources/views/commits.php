@@ -28,18 +28,22 @@
         <table class="table">
 
             <thead>
-                <th>Commit ID</th>
-                <th>Date</th>
+                <th>Commit</th>
                 <th>Author</th>
+                <th>Email</th>
+                <th>Date</th>
             </thead>
 
             <tbody>
 
                 <?php foreach ($commits as $commit): ?>
                     <tr <?php if (is_numeric(substr($commit->sha, -1))): ?>class="info"<?php endif; ?>>
-                        <td><?= $commit->sha; ?></td>
-                        <td><?= $commit->author_date; ?></td>
+                        <td>
+                            <a href="<?= $commit->url; ?>"><?= $commit->sha; ?></a>
+                        </td>
                         <td><?= $commit->author_name; ?></td>
+                        <td><?= $commit->author_email; ?></td>
+                        <td><?= $commit->author_date; ?></td>
                     </tr>
                 <?php endforeach; ?>
 
