@@ -1,0 +1,26 @@
+<h1>Recent Commits By Author</h1>
+<div class="panel panel-default" ng-repeat="(author, commits) in commits">
+	<div class="panel-heading">
+		{{author}}
+	</div>
+	<div class="panel-body">
+		<div class="table-responsive">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>sha</th>
+						<th>Date</th>
+						<th>Message</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="commit in commits" ng-class="{endsInNumber:(commit.sha | endsInNumber)}">
+						<td>{{commit.sha}}</td>
+						<td>{{commit.when}}</td>
+						<td>{{commit.message}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
