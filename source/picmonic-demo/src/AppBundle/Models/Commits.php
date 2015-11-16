@@ -1,17 +1,21 @@
 <?php // src/AppBundle/Models/Commits.php
 namespace AppBundle\Models;
 
-use Icims\CoreBundle\Entity as ent;
+use AppBundle\Entity as ent;
 use Symfony\Component\DependencyInjection\Container;
 use Github;
 
-class Commits {
- 	protected $_c; // container
- 	protected $_em;
+/**
+ * Model for API retrival & database opertions on GitHub Commit data
+ */
 
-	public function __contruct(Container $c){
-		$this->_c = $c;
-      	$this->_em = $c->get('doctrine.orm.entity_manager');
+class Commits {
+ 	private $c; // container
+ 	private $em;
+
+	public function __construct(Container $c){
+		$this->c = $c;
+      	$this->em = $c->get('doctrine.orm.entity_manager');
 	}
 
 	/**
@@ -23,10 +27,36 @@ class Commits {
 	 * @return array $commits array of commits
 	 */
 	public function retrieveLatestCommits() {
+		
 		$client = new \Github\Client();
-		$clients = $client->api('repo')->commits()->all('nodejs','node', array('sha','master'));
+		$commits = $client->api('repo')->commits()->all('nodejs','node', array('sha','master'));
+		
+		for ($i = 0; $i < 25; ++$i) {
+			$commit = new ent\Commit;
+			$thisCommit = $commits[$i];
+			$commit->setSha($thisCommit['sha']);
+			$commit->setAuthorName($thisCommit['commit']['author']['name']);
+			$commit->setAuthorEmail($thisCommit['commit']['author']['email']);
+			$commit->setAuthorID($thisCommit['author']['id']);
+			$commit->setCommitterName($thisCommit['commit']['committer']['name']);
+			$commit->setCommitterEmail($thisCommit['commit']['committer']['email']);
+			$commit->setCommitterID($thisCommit['committer']['id']);
+			$commit->setTreeSha($thisCommit['commit']['tree']['sha']);
+			$commit->setTreeUrl($thisCommit['commit']['tree']['url']);
+			$commit->setMessage($thisCommit['commit']['message']);
+			$commit->setUrl($thisCommit['url']);
+			$commit->setHtmlUrl($thisCommit['html_url']);
+			$commit->setComments($thisCommit['commit']['comment_count']);
+			$commit->setCommitDate(new \DateTime($thisCommit['commit']['committer']['date']));
 
-		return $clients;
+
+			
+			$this->em->persist($commit);
+		}
+		$this->em->flush();
+        $this->em->clear(); 
+
+		return $commits;
 	}
 	/**
 	 * [updateCommits description]

@@ -26,6 +26,8 @@ AppBundle\Entity\Commit:
             length: 100 
         committer_id:
             type: smallint
+        commit_date:
+            type: datetime
         tree_sha:
             type: string
             length: 40

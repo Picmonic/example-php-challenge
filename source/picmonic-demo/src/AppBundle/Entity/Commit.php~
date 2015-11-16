@@ -395,33 +395,4 @@ class Commit {
     {
         return $this->comments;
     }
-    /**
-     * @var \DateTime
-     */
-    private $commit_date;
-
-
-    /**
-     * Set commitDate
-     *
-     * @param \DateTime $commitDate
-     *
-     * @return Commit
-     */
-    public function setCommitDate($commitDate)
-    {
-        $this->commit_date = $commitDate;
-
-        return $this;
-    }
-
-    /**
-     * Get commitDate
-     *
-     * @return \DateTime
-     */
-    public function getCommitDate()
-    {
-        return $this->commit_date;
-    }
 }
