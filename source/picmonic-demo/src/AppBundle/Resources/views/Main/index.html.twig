@@ -17,7 +17,7 @@
   				<div class="table-list-cell">
   					<p class="commit-title ">{{ commit.message|length > 100 ? commit.message|slice(0,100) ~ '...' : commit.message }}</p>
   					<div class="commit-meta commit-author-section">
-  						{{ commit.authorLogin }} committed on {{ commit.commitDate|date }}
+  						<span class="commit-author">{{ commit.authorLogin }}</span> committed on {{ commit.commitDate|date }}
   					</div>
   				</div>
   			</li>

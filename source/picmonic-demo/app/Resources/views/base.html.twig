@@ -10,12 +10,22 @@
         {% endblock %}
         {# /res/ hack: Even though bootstrap is being fine, include of main.css is failing.  To prevent time wastage, temporarily including styles here.#}
         <style>
+            .list-group-item {
+                padding: 4px 2px;
+            }
+
             .table-list-cell {
                 position: relative;
                 display: table-cell;
                 padding: 8px 10px;
                 vertical-align: top;
             }
+
+            .commit-title {
+                margin-bottom: 0;
+                font-weight: bold;
+            }
+
             .commits-list-item .commit-meta {
                 margin-top: 1px;
                 font-weight: normal;
@@ -30,6 +40,11 @@
 
             .light-blue {
                 background-color: #E6F1F6;
+            }
+
+            .commit-author {
+                color: #767676;
+                font-weight: bold;
             }
         </style>
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
