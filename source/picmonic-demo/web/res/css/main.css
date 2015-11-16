@@ -1,0 +1,7 @@
+.table-list-cell {
+    position: relative;
+    display: table-cell;
+    padding: 8px 10px;
+    vertical-align: top;
+    border-top: 1px solid #eee;
+}

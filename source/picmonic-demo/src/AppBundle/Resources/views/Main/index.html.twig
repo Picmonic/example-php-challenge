@@ -5,13 +5,25 @@
 {% block body %}
 
 <div class="row">
-	<div class="col-md-3">
+	<div class="col-md-1">
 		col-md-3
 	</div>
-	<div class="col-md-6">
+	<div class="col-md-10">
 		{{ dump(commits) }}
+		<ul class="list-group">
+			{% for commit in commits %}
+		    <li class="list-group-item">
+		    	<div class="table-list-cell">
+					<img alt="{{ commit.committerName }}" height="36" src="{{ commit.committerAvatar }}&amp;s=72" width="36">
+  				</div>
+  				<div class="table-list-cell">
+  					<em>{{ commit.message|length > 100 ? commit.message|slice(0,100) ~ '...' : commit.message }}</em>
+  				</div>
+  			</li>
+		{% endfor %}
+		</ul>
 	</div>
-	<div class="col-md-3">
+	<div class="col-md-1">
 		
 	</div>
 </div>
