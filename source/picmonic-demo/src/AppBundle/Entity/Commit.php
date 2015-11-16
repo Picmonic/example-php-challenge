@@ -453,4 +453,91 @@ class Commit {
     {
         return $this->committer_avatar;
     }
+    /**
+     * @var string
+     */
+    private $committer_login;
+
+
+    /**
+     * Set committerLogin
+     *
+     * @param string $committerLogin
+     *
+     * @return Commit
+     */
+    public function setCommitterLogin($committerLogin)
+    {
+        $this->committer_login = $committerLogin;
+
+        return $this;
+    }
+
+    /**
+     * Get committerLogin
+     *
+     * @return string
+     */
+    public function getCommitterLogin()
+    {
+        return $this->committer_login;
+    }
+    /**
+     * @var string
+     */
+    private $author_avatar;
+
+    /**
+     * @var string
+     */
+    private $author_login;
+
+
+    /**
+     * Set authorAvatar
+     *
+     * @param string $authorAvatar
+     *
+     * @return Commit
+     */
+    public function setAuthorAvatar($authorAvatar)
+    {
+        $this->author_avatar = $authorAvatar;
+
+        return $this;
+    }
+
+    /**
+     * Get authorAvatar
+     *
+     * @return string
+     */
+    public function getAuthorAvatar()
+    {
+        return $this->author_avatar;
+    }
+
+    /**
+     * Set authorLogin
+     *
+     * @param string $authorLogin
+     *
+     * @return Commit
+     */
+    public function setAuthorLogin($authorLogin)
+    {
+        $this->author_login = $authorLogin;
+
+        return $this;
+    }
+
+    /**
+     * Get authorLogin
+     *
+     * @return string
+     */
+    public function getAuthorLogin()
+    {
+        return $this->author_login;
+    }
 }

@@ -44,6 +44,8 @@ class Commits {
 				$commit->setAuthorName($thisCommit['commit']['author']['name']);
 				$commit->setAuthorEmail($thisCommit['commit']['author']['email']);
 				$commit->setAuthorID($thisCommit['author']['id']);
+				$commit->setAuthorAvatar($thisCommit['committer']['avatar_url']);
+				$commit->setAuthorLogin($thisCommit['committer']['login']);
 				$commit->setCommitterName($thisCommit['commit']['committer']['name']);
 				$commit->setCommitterEmail($thisCommit['commit']['committer']['email']);
 				$commit->setCommitterID($thisCommit['committer']['id']);
@@ -54,7 +56,7 @@ class Commits {
 				$commit->setHtmlUrl($thisCommit['html_url']);
 				$commit->setComments($thisCommit['commit']['comment_count']);
 				$commit->setCommitDate(new \DateTime($thisCommit['commit']['committer']['date']));
-				$commit->setCommitterAvatar($thisCommit['committer']['avatar_url']);
+
 
 				$this->em->persist($commit);
 			} 

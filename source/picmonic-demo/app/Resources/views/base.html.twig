@@ -11,12 +11,27 @@
         {# /res/ hack: Even though bootstrap is being fine, include of main.css is failing.  To prevent time wastage, temporarily including styles here.#}
         <style>
             .table-list-cell {
-            position: relative;
-            display: table-cell;
-            padding: 8px 10px;
-            vertical-align: top;
-            border-top: 1px solid #eee;
-        }
+                position: relative;
+                display: table-cell;
+                padding: 8px 10px;
+                vertical-align: top;
+                border-top: 1px solid #eee;
+            }
+            .commits-list-item .commit-meta {
+                margin-top: 1px;
+                font-weight: normal;
+                color: #767676;
+            }
+
+            .user-mention, .team-mention {
+                font-weight: bold;
+                color: #333;
+                white-space: nowrap;
+            }
+
+            .light-blue {
+                background-color: #E6F1F6;
+            }
         </style>
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>

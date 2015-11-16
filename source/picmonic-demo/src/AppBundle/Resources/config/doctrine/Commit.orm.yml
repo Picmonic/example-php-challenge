@@ -18,6 +18,12 @@ AppBundle\Entity\Commit:
             length: 100
         author_id:
             type: smallint
+        author_avatar:
+            type: string
+            length: 100
+        author_login:
+            type: string
+            length: 100
         committer_name:
             type: string
             length: 100 
@@ -26,9 +32,7 @@ AppBundle\Entity\Commit:
             length: 100 
         committer_id:
             type: smallint
-        committer_avatar:
-            type: string
-            length: 100
+
         commit_date:
             type: datetime
         tree_sha:
