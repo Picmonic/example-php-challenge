@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PZal's Picmonic Demo{% endblock %}
+
+{% block body %}
+
+<div class="row">
+	<div class="col-md-1">
+
+	</div>
+	<div class="col-md-10">
+		<ul class="list-group">
+			{% for commit in commits %}
+		    <li class="list-group-item {% if commit.sha|last matches '/^[\\d\\.]+$/' %}light-blue{% endif %}" >
+		    	<div class="table-list-cell"><img alt="{{ commit.committerName }}" height="36" src="{{ commit.authorAvatar }}&amp;s=72" width="36">
+  				</div>
+  				<div class="table-list-cell">
+  					<p class="commit-title ">{{ commit.message|length > 100 ? commit.message|slice(0,100) ~ '...' : commit.message }}</p>
+  					<div class="commit-meta commit-author-section">
+  						<span class="commit-author">{{ commit.authorLogin }}</span> committed on {{ commit.commitDate|date }}
+  					</div>
+  				</div>
+  			</li>
+		{% endfor %}
+		</ul>
+	</div>
+</div>
+
+{% endblock %}
+
