@@ -424,4 +424,33 @@ class Commit {
     {
         return $this->commit_date;
     }
+    /**
+     * @var string
+     */
+    private $committer_avatar;
+
+
+    /**
+     * Set committerAvatar
+     *
+     * @param string $committerAvatar
+     *
+     * @return Commit
+     */
+    public function setCommitterAvatar($committerAvatar)
+    {
+        $this->committer_avatar = $committerAvatar;
+
+        return $this;
+    }
+
+    /**
+     * Get committerAvatar
+     *
+     * @return string
+     */
+    public function getCommitterAvatar()
+    {
+        return $this->committer_avatar;
+    }
 }

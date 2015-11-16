@@ -26,6 +26,9 @@ AppBundle\Entity\Commit:
             length: 100 
         committer_id:
             type: smallint
+        committer_avatar:
+            type: string
+            length: 100
         commit_date:
             type: datetime
         tree_sha:
@@ -35,7 +38,7 @@ AppBundle\Entity\Commit:
             type: string
             length: 150        
         message:
-            type: blob
+            type: text
         url: 
             type: string
             length: 150

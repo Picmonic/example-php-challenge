@@ -54,6 +54,7 @@ class Commits {
 				$commit->setHtmlUrl($thisCommit['html_url']);
 				$commit->setComments($thisCommit['commit']['comment_count']);
 				$commit->setCommitDate(new \DateTime($thisCommit['commit']['committer']['date']));
+				$commit->setCommitterAvatar($thisCommit['committer']['avatar_url']);
 
 				$this->em->persist($commit);
 			} 
