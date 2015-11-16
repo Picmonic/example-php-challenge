@@ -1,0 +1,44 @@
+# src/AppBundle/Resources/config/doctrine/Commit.orm.yml
+AppBundle\Entity\Commit:
+    type: entity
+    table: commit
+    id: 
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        sha:
+            type: string
+            length: 40
+        author_name:
+            type: string
+            length: 100          
+        author_email:
+            type: string
+            length: 100
+        author_id:
+            type: smallint
+        committer_name:
+            type: string
+            length: 100 
+        committer_email:
+            type: string
+            length: 100 
+        committer_id:
+            type: smallint
+        tree_sha:
+            type: string
+            length: 40
+        tree_url:
+            type: string
+            length: 150        
+        message:
+            type: blob
+        url: 
+            type: string
+            length: 150
+        html_url:
+            type: string
+            length: 150
+        comments:
+            type: smallint
