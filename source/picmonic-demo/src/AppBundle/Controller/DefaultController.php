@@ -13,9 +13,9 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', array(
-            'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
-        ));
+        $viewParams = array();
+        $viewParams['testArray'] = array('one' => 'foo', 2 => 'bar');
+
+        return $this->render('AppBundle:Main:index.html.twig',$viewParams);
     }
 }
