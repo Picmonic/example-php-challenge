@@ -6,14 +6,13 @@
 
 <div class="row">
 	<div class="col-md-1">
-		col-md-3
+
 	</div>
 	<div class="col-md-10">
-		{{ dump(commits) }}
 		<ul class="list-group">
 			{% for commit in commits %}
-		    <li class="list-group-item" {% if commit.sha|last == 4 %} class="light-blue"{% endif %}>
-		    	<div class="table-list-cell">{{ commit.sha|last }}<img alt="{{ commit.committerName }}" height="36" src="{{ commit.authorAvatar }}&amp;s=72" width="36">
+		    <li class="list-group-item {% if commit.sha|last matches '/^[\\d\\.]+$/' %}light-blue{% endif %}" >
+		    	<div class="table-list-cell"><img alt="{{ commit.committerName }}" height="36" src="{{ commit.authorAvatar }}&amp;s=72" width="36">
   				</div>
   				<div class="table-list-cell">
   					<p class="commit-title ">{{ commit.message|length > 100 ? commit.message|slice(0,100) ~ '...' : commit.message }}</p>

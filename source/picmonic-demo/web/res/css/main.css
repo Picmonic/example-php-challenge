@@ -5,3 +5,15 @@
     vertical-align: top;
     border-top: 1px solid #eee;
 }
+
+.commits-list-item .commit-meta {
+    margin-top: 1px;
+    font-weight: normal;
+    color: #767676;
+}
+
+.user-mention, .team-mention {
+    font-weight: bold;
+    color: #333;
+    white-space: nowrap;
+}
