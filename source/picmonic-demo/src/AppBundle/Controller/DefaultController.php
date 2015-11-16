@@ -14,8 +14,10 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
         $viewParams = array();
-        
-        $viewParams['commits'] = $this->get('app.model.commits')->retrieveLatestCommits();
+        // Call retrieveLatestCommits to update database
+        $this->get('app.model.commits')->retrieveLatestCommits();
+        // Retrieve last 25 results from database
+        $viewParams['commits'] = $this->get('app.model.commits')->getLatestCommits();
         
         return $this->render('AppBundle:Main:index.html.twig',$viewParams);
     }

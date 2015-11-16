@@ -20,11 +20,13 @@ class Commits {
 
 	/**
 	 * Retrieves 25 latest commits via API
-	 * Optimization: Cursory research does not reveal 
+	 * Compares each sha to existing records
+	 * Inserts unique entries into commit table
+	 * 
+	 * Optimization Note: Cursory research does not reveal 
 	 * how to set ammount of commits retrieved.  Therefore,
 	 * this method will order by latest, and then cull 
 	 * anything past 25 in the array
-	 * @return array $commits array of commits
 	 */
 	public function retrieveLatestCommits() {
 		
@@ -58,19 +60,22 @@ class Commits {
 		}
 		$this->em->flush();
         $this->em->clear(); 
+	}
+
+	/** Retrieves the most recent 25 commits 
+	* from the committ table 
+	* @return array $commits array of commits
+	*/
+	public function getLatestCommits() {
+		$repository = $this->em->getRepository('AppBundle:Commit');
+		$query = $repository->createQueryBuilder('c')
+	        ->orderBy('c.commit_date', 'DESC')
+	        ->setMaxResults(25)
+	        ->getQuery();
+
+		$commits = $query->getResult();
 
 		return $commits;
-	}
-	/**
-	 * [updateCommits description]
-	 * @return [type] [description]
-	 */
-	public function updateCommits() {
-
-	}
-
-	public function getLatestCommits() {
-
 	}
 }
 ?>
