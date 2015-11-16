@@ -1,9 +1,16 @@
+.list-group-item {
+                padding: 4px 2px;
+            }
 .table-list-cell {
     position: relative;
     display: table-cell;
     padding: 8px 10px;
     vertical-align: top;
-    border-top: 1px solid #eee;
+}
+
+.commit-title {
+    margin-bottom: 0;
+    font-weight: bold;
 }
 
 .commits-list-item .commit-meta {
@@ -16,4 +23,13 @@
     font-weight: bold;
     color: #333;
     white-space: nowrap;
+}
+
+.light-blue {
+    background-color: #E6F1F6;
+}
+
+.commit-author {
+    color: #767676;
+    font-weight: bold;
 }

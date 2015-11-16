@@ -5,6 +5,10 @@ Requirments:
 * Apache
 
 Installation instructions
+
+* Webserver:
+1) Point webserver to source/picmonic-demo/web/ with alias of [localhost/]picmonic_demo
+
 * Database creation:
 1) Update the DB credentials in source/app/parameters.yml
 - database_name does not need to exist, symfony (doctrine) will create this
