@@ -1,0 +1,17 @@
+.commitRow {
+  border-left:1px solid gray;
+  padding:5px;
+  margin-bottom: 5px;
+}
+
+.commitRow div{
+  padding-bottom:5px;
+}
+
+.underline{
+  text-decoration: underline;
+}
+
+.isint{
+  background-color: #d9edf7;
+}

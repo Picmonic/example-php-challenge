@@ -1,0 +1,9 @@
+<?php $__env->startSection('content'); ?>
+
+	<div class="container">
+		<div class="row">
+			  <button type="button" class="btn btn-default col-xs-12 col-sm-4" id="getlasttwentyfive">Get Last 25 commits</button>
+	    </div>
+	</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

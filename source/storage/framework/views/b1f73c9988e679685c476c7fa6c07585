@@ -1,0 +1,52 @@
+<?php $__env->startSection('content'); ?>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+				<?php if(count($authors) > 0): ?>
+					<?php $i=0; ?>
+					<?php foreach($authors as $author): ?>
+						<div class="panel panel-default">
+							<div class="panel-heading" role="tab" id="heading<?php echo e($i); ?>">
+								<h4 class="panel-title">
+								<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<?php echo e($i); ?>" aria-expanded="true" aria-controls="collapse<?php echo e($i); ?>">
+									<?php echo e($author); ?>
+
+								</a>
+								</h4>
+							</div>
+							<div id="collapse<?php echo e($i); ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<?php echo e($i); ?>">
+								<div class="panel-body">							
+									<?php foreach($commits as $commit): ?>
+										<?php if($commit['commit']['author']['name'] == $author): ?>
+
+											<div class="commitRow <?php echo is_numeric(substr($commit['sha'], -1)) ? 'isint' : 'isnotint'?>">
+												<div class="row">
+													<div class="col-xs-12 col-sm-2 underline">Sha</div>
+													<div class="col-xs-12 col-sm-10"><?php echo e($commit['sha']); ?></div>
+												</div>
+ 												<div class="row">
+													<div class="col-xs-12 col-sm-2 underline">Timestamp</div>
+													<div class="col-xs-12 col-sm-10"><?php echo e($commit['commit']['author']['date']); ?></div>
+												</div>
+												<div class="row">
+													<div class="col-xs-12 col-sm-2 underline">Message</div>
+													<div class="col-xs-12 col-sm-10"><?php echo e($commit['commit']['message']); ?></div>
+												</div> 
+											</div>
+										<?php endif; ?>
+									<?php endforeach; ?>
+								</div>
+							</div>
+						</div>
+						<?php $i++; ?>
+					<?php endforeach; ?>
+				<?php else: ?>
+					<div class="alert alert-warning" role="alert">No authors found :( (Get them in admin)</div>
+				<?php endif; ?>
+			</div>
+		</div>
+	</div>
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
