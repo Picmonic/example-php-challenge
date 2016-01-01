@@ -12,7 +12,16 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+//    return view('welcome');
+    /***
+     *
+     * For this quick demo let's just return a php file tht will hold all of
+     * our angular content.
+     *
+     * This should return resources/views/index.php
+     *
+     */
+    View::make('index');
 });
 
 /*
@@ -27,5 +36,10 @@ Route::get('/', function () {
 */
 
 Route::group(['middleware' => ['web']], function () {
-    //
+    // API routes
+    Route::group(array('prefix' => 'api'), function() {
+       Route::resource('commits'), 'CommitsController');
+    });
 });
+
+

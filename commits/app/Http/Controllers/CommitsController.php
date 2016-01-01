@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
 use Illuminate\Http\Response;
 use Log;
 
@@ -52,5 +50,10 @@ class CommitsController extends Controller
 
         // json up the goodies and send 'em to angular
         return Response::json(Commit::get());
+    }
+
+
+    public function store() {
+
     }
 }
