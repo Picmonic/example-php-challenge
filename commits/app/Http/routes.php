@@ -38,7 +38,7 @@ Route::get('/', function () {
 Route::group(['middleware' => ['web']], function () {
     // API routes
     Route::group(array('prefix' => 'api'), function() {
-       Route::resource('commits'), 'CommitsController');
+       Route::resource('commits', 'CommitsController');
     });
 });
 
