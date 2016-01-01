@@ -42,4 +42,14 @@ Route::group(['middleware' => ['web']], function () {
     });
 });
 
+/***
+ *
+ * Catch all. Though usually NOT the way to do things, we're just using index to do
+ * everything for this small demo. Let's keep it restful and keep seperation of church
+ * and state... uh wait.... seperation of rest service and frontend very well split up ;-)
+ *
+ */
+App::missing(function($exception) {
+    return View::make('index');
+});
 
