@@ -14,6 +14,12 @@ class CreateCommitsTable extends Migration
     {
         Schema::create('commits', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->string('author');
+            $table->string('hash');
+            $table->string('date');
+            $table->text('msg');
+
             $table->timestamps();
         });
     }
