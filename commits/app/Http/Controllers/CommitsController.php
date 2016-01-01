@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use Illuminate\Http\Response;
 use Log;
 
 class CommitsController extends Controller
@@ -25,4 +26,31 @@ class CommitsController extends Controller
      * for now let's plan on setting up our Laravel routes under a simple 'api' endpoint.
      *
      */
+
+    var $moo, $tmoo;
+
+    /***
+     *
+     * Let's just use index for our main /api/HEAD request. In the future we'd want to
+     * handle other verbs here as well e.g. (destroy, update etc...)
+     *
+     */
+    public function index() {
+
+        // grab desired commits array from github
+
+        // sift out stuff we don't want and put in nice simple multi-d array
+
+        // check/clear db entries first perhaps??
+
+        // save to db
+
+        // cheat and sort by date (thank you mysql sorting) and return to angular
+
+        // beer
+
+
+        // json up the goodies and send 'em to angular
+        return Response::json(Commit::get());
+    }
 }
