@@ -43,29 +43,32 @@ class CommitsController extends Controller
         $commits = $client->api('repo')->commits()->all('nodejs', 'node', array('sha' => 'master'));
 
         // sift out stuff we don't want and put in nice simple multi-d array
-        //$ord = 0;  // may be able to ditch manual ordering if we store to mysql first and pull via where clause.
+        // save
 
-        foreach($commits as $commit) {
-            $sha = $commit['sha'];
+        #$numCommitsToParse = 25;
+        $numCurrentCommitBeingParsed = 0;
 
-            $tmoo[$sha]['author']   = $commit['commit']['author']['name'];
-            $tmoo[$sha]['date']     = $commit['commit']['author']['date'];
-            $tmoo[$sha]['msg']      = $commit['commit']['message'];
-            $tmoo[$sha]['sha']      = $commit['sha']; // bit redundant, but will be handy.
-            //$tmoo[$sha]['order'] = $ord;
-            //$ord++;
+        foreach ($commits as $commit) {
+            if ($numCurrentCommitBeingParsed < 25) {
+                $sha = $commit['sha'];
 
-            $cm = new Commit;
+                $tmoo[$sha]['author'] = $commit['commit']['author']['name'];
+                $tmoo[$sha]['date'] = $commit['commit']['author']['date'];
+                $tmoo[$sha]['msg'] = $commit['commit']['message'];
+                $tmoo[$sha]['sha'] = $commit['sha']; // bit redundant, but will be handy.
 
-            $cm->author     = $commit['commit']['author']['name'];
-            $cm->hash       = $commit['sha'];
-            $cm->msg        = $commit['commit']['message'];
-            $cm->date       = $commit['commit']['author']['date'];
+                $cm = new Commit;
 
-            $cm->save();
+                $cm->author = $commit['commit']['author']['name'];
+                $cm->hash = $commit['sha'];
+                $cm->msg = $commit['commit']['message'];
+                $cm->date = $commit['commit']['author']['date'];
 
+                $cm->save();
+
+                $numCurrentCommitBeingParsed++;
+            }
         }
-
 
 
         // beer
