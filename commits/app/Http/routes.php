@@ -21,7 +21,7 @@ Route::get('/', function () {
      * This should return resources/views/index.php
      *
      */
-    View::make('index');
+    return View::make('index');
 });
 
 /*

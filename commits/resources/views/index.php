@@ -23,28 +23,47 @@
 
 </head>
 <!-- declare our angular app and controller -->
-<body class="container" ng-app="commitApp" ng-controller="mainController">
-    <div class="col-md-8 col-md-offset-2">
+<body class="container" ng-app="commitApp" ng-controller="mainController"> <div class="col-md-8 col-md-offset-2">
+    <p>Meow</p>
 
-        <!-- PAGE TITLE =============================================== -->
-        <div class="page-header">
-            <h2>Laravel and Angular monitor commits for nodejs/node</h2>
-            <h4>nodejs commit monitoring</h4>
-        </div>
-
-        <!-- LOADING ICON =============================================== -->
-        <!-- show loading icon if the loading variable is set to true -->
-        <p class="text-center" ng-show="loading"><span class="fa fa-meh-o fa-5x fa-spin"></span></p>
-
-        <!-- THE COMMITS =============================================== -->
-        <!-- hide these commits if the loading variable is true -->
-<!--        <div class="commit" ng-hide="loading" ng-repeat="commit in commits">-->
-<!--            <h3>Commit author: {{ commit.author }}</h3>-->
-<!--            <p> <small>SHA: {{ commit.sha }}</small><br>-->
-<!--                <small>Date: {{ commit.date }}</small><br>-->
-<!--                {{ commit.msg }}-->
-<!--            </p>-->
-<!--        </div>-->
+    <!-- PAGE TITLE =============================================== -->
+    <div class="page-header">
+        <h2>Laravel and Angular monitor commits for nodejs/node</h2>
+        <h4>nodejs commit monitoring</h4>
     </div>
+
+    <!-- NEW COMMENT FORM =============================================== -->
+    <!--    <form ng-submit="submitCommit()">-->
+    <!---->
+    <!--        <div class="form-group">-->
+    <!--            <input type="text" class="form-control input-sm" name="author" ng-model="commentData.author" placeholder="Name">-->
+    <!--        </div>-->
+    <!---->
+    <!--        <div class="form-group">-->
+    <!--            <input type="text" class="form-control input-lg" name="comment" ng-model="commentData.text" placeholder="Say what you have to say">-->
+    <!--        </div>-->
+    <!---->
+    <!--        <div class="form-group text-right">-->
+    <!--            <button type="submit" class="btn btn-primary btn-lg">Submit</button>-->
+    <!--        </div>-->
+    <!--    </form>-->
+
+    <!-- LOADING ICON =============================================== -->
+    <!-- show loading icon if the loading variable is set to true -->
+    <p class="text-center" ng-show="loading"><span class="fa fa-meh-o fa-5x fa-spin"></span></p>
+
+    <!-- THE COMMITS =============================================== -->
+    <!-- hide these commits if the loading variable is true -->
+    <div class="commit" ng-hide="loading" ng-repeat="commit in commits">
+        <h3>Commit author: {{ commit.author }} </h3>
+        <p> <small>SHA: {{ commit.sha }}</small><br>
+            <small>Date: {{ commit.date }}</small><br>
+            {{ commit.msg }}
+        </p>
+
+        <!--        <p><a href="#" ng-click="deleteCommit(commit.id)" class="text-muted">Delete</a></p>-->
+    </div>
+
+</div>
 </body>
 </html>

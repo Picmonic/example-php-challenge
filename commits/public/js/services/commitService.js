@@ -2,7 +2,7 @@ angular.module('commitService', [])
 
 .factory('Commit', function($http) {
     return {
-        // get all the commmits
+        // get all the commits
         get : function() {
             return $http.get('/api/commits');
         }
