@@ -17,6 +17,7 @@ class CreateCommitsTable extends Migration
 
             $table->string('author');
             $table->string('hash');
+            // should probably be unqique key like: $table->string('hash')->unique();
             $table->string('date');
             $table->text('msg');
 

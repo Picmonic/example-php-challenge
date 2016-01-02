@@ -58,15 +58,21 @@ class CommitsController extends Controller
                 // grab new Commit instance
                 $cm = new Commit;
 
-                $cm->author = $commit['commit']['author']['name'];
-                $cm->hash = $commit['sha'];
-                $cm->msg = $commit['commit']['message'];
-                $cm->date = $commit['commit']['author']['date'];
+                // check to see if commit hash entry already exists
+                $cmchk = Commit::where('hash', '=', $commit['sha'])->first();
 
-                // save to db
-                $cm->save();
+                // if it does not exist, save->db
+                if ($cmchk == null) {
+                    $cm->author = $commit['commit']['author']['name'];
+                    $cm->hash = $commit['sha'];
+                    $cm->msg = $commit['commit']['message'];
+                    $cm->date = $commit['commit']['author']['date'];
 
-                $numCurrentCommitBeingParsed++;
+                    // save to db
+                    $cm->save();
+
+                    $numCurrentCommitBeingParsed++;
+                }
             }
         }
 
@@ -80,7 +86,11 @@ class CommitsController extends Controller
          * ahhh the joys of having time to refactor :-)
          *
          */
-        $savedCommits = Commit::->take(25)->get();
+        $savedCommits = Commit::orderBy('date', 'desc')->take(25)->get();
+
+//        foreach ($savedCommits as $savedCommit) {
+//
+//        }
 
 
         // json up the goodies and send 'em to angular
