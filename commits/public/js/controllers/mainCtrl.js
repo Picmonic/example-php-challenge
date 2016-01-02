@@ -27,7 +27,7 @@ angular.module('mainCtrl', [])
 
             //if ( parseInt(lastChar) != 'NaN'  ) {
             if ( parseInt(lastChar) > 0  ) {
-                return { color: "blue" }
+                return { "background-color" : "#E6F1F6" }
             }
         }
 

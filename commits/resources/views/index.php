@@ -8,6 +8,7 @@
         body        { padding-top:30px; }
         form        { padding-bottom:20px; }
         .commit    { padding-bottom:20px; }
+        .mew    { bgcolor: "#E6F1F6" }
     </style>
 
     <!-- JS -->
