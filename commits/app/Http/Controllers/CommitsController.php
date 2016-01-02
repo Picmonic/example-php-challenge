@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Commit;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -38,20 +39,34 @@ class CommitsController extends Controller
 
         // grab desired commits array from github. Let's try utilizing "knplabs/github-api": "~1.4" first in composer.json
         $client = new \Github\Client();
-        #$repositories = $client->api('user')->repositories;
 
         $commits = $client->api('repo')->commits()->all('nodejs', 'node', array('sha' => 'master'));
-        
-
-
 
         // sift out stuff we don't want and put in nice simple multi-d array
+        //$ord = 0;  // may be able to ditch manual ordering if we store to mysql first and pull via where clause.
 
-        // check/clear db entries first perhaps??
+        foreach($commits as $commit) {
+            $sha = $commit['sha'];
 
-        // save to db
+            $tmoo[$sha]['author']   = $commit['commit']['author']['name'];
+            $tmoo[$sha]['date']     = $commit['commit']['author']['date'];
+            $tmoo[$sha]['msg']      = $commit['commit']['message'];
+            $tmoo[$sha]['sha']      = $commit['sha']; // bit redundant, but will be handy.
+            //$tmoo[$sha]['order'] = $ord;
+            //$ord++;
 
-        // cheat and sort by date (thank you mysql sorting) and return to angular
+            $cm = new Commit;
+
+            $cm->author     = $commit['commit']['author']['name'];
+            $cm->hash       = $commit['sha'];
+            $cm->msg        = $commit['commit']['message'];
+            $cm->date       = $commit['commit']['author']['date'];
+
+            $cm->save();
+
+        }
+
+
 
         // beer
 
@@ -63,7 +78,9 @@ class CommitsController extends Controller
          * Darn! Looks like Illuminate\Http\Response::json() is belly up.
          * Let's find something else to json encode with. Come on php, you can do it!
          */
-        return JsonResponse::create($commits);
+//        return JsonResponse::create($commits);
+        return JsonResponse::create($tmoo);
+//        return JsonResponse::create($coms);
     }
 
 
