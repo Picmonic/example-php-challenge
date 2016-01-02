@@ -45,11 +45,22 @@ Route::group(['middleware' => ['web']], function () {
 /***
  *
  * Catch all. Though usually NOT the way to do things, we're just using index to do
- * everything for this small demo. Let's keep it restful and keep seperation of church
- * and state... uh wait.... seperation of rest service and frontend very well split up ;-)
+ * everything for this small demo. Let's keep it restful and keep separation of church
+ * and state... uh wait.... separation of rest service and frontend very well split up ;-)
  *
  */
-App::missing(function($exception) {
+// Let's see if this will work in place of good 'ol App::missing... Seems like it should.
+// Only one way to find out!!
+Route::any('api/{all}', function($exception) {
     return View::make('index');
-});
+})->where(['all' => '.*']);
+
+
+/***
+ * Well that stinks. In Laravel 5 and cannot use App::missing anymore. Try something
+ * new above this comment block >:-|
+ */
+//App::missing(function($exception) {
+//    return View::make('index');
+//});
 
