@@ -42,21 +42,20 @@ class CommitsController extends Controller
 
         $commits = $client->api('repo')->commits()->all('nodejs', 'node', array('sha' => 'master'));
 
-        // sift out stuff we don't want and put in nice simple multi-d array
-        // save
-
-        #$numCommitsToParse = 25;
+        $numCommitsToParse = 25;
         $numCurrentCommitBeingParsed = 0;
 
+        // save 25 most recent commits to db
         foreach ($commits as $commit) {
-            if ($numCurrentCommitBeingParsed < 25) {
+            if ($numCurrentCommitBeingParsed < $numCommitsToParse) {
                 $sha = $commit['sha'];
 
-                $tmoo[$sha]['author'] = $commit['commit']['author']['name'];
-                $tmoo[$sha]['date'] = $commit['commit']['author']['date'];
-                $tmoo[$sha]['msg'] = $commit['commit']['message'];
-                $tmoo[$sha]['sha'] = $commit['sha']; // bit redundant, but will be handy.
+//                $tmoo[$sha]['author'] = $commit['commit']['author']['name'];
+//                $tmoo[$sha]['date'] = $commit['commit']['author']['date'];
+//                $tmoo[$sha]['msg'] = $commit['commit']['message'];
+//                $tmoo[$sha]['sha'] = $commit['sha']; // bit redundant, but will be handy.
 
+                // grab new Commit instance
                 $cm = new Commit;
 
                 $cm->author = $commit['commit']['author']['name'];
@@ -64,6 +63,7 @@ class CommitsController extends Controller
                 $cm->msg = $commit['commit']['message'];
                 $cm->date = $commit['commit']['author']['date'];
 
+                // save to db
                 $cm->save();
 
                 $numCurrentCommitBeingParsed++;
@@ -71,7 +71,16 @@ class CommitsController extends Controller
         }
 
 
-        // beer
+        /***
+         *
+         * Yoink 25 most recent commits FROM DB (as specified in coding challenge
+         * readme) and parse each for specific conditions ( e.g. hash_ends_in_number)
+         *
+         * Normally this functionality would probably live in a method somewhere else --
+         * ahhh the joys of having time to refactor :-)
+         *
+         */
+        $savedCommits = Commit::->take(25)->get();
 
 
         // json up the goodies and send 'em to angular
@@ -82,8 +91,8 @@ class CommitsController extends Controller
          * Let's find something else to json encode with. Come on php, you can do it!
          */
 //        return JsonResponse::create($commits);
-        return JsonResponse::create($tmoo);
-//        return JsonResponse::create($coms);
+//        return JsonResponse::create($tmoo);
+        return JsonResponse::create($savedCommits);
     }
 
 
