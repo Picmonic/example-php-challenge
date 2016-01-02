@@ -48,12 +48,6 @@ class CommitsController extends Controller
         // save 25 most recent commits to db
         foreach ($commits as $commit) {
             if ($numCurrentCommitBeingParsed < $numCommitsToParse) {
-                $sha = $commit['sha'];
-
-//                $tmoo[$sha]['author'] = $commit['commit']['author']['name'];
-//                $tmoo[$sha]['date'] = $commit['commit']['author']['date'];
-//                $tmoo[$sha]['msg'] = $commit['commit']['message'];
-//                $tmoo[$sha]['sha'] = $commit['sha']; // bit redundant, but will be handy.
 
                 // grab new Commit instance
                 $cm = new Commit;
@@ -98,10 +92,13 @@ class CommitsController extends Controller
          * the commit SHA (commits.hash) ends in a number, and if so, color that row
          * to light blue (#E6F1F6)
          *
+         * !!!! Scratch that !!!! Let's move this functionality to the index.php angular view
+         * where it should live.
+         *
          */
-        foreach ($savedCommits as $savedCommit) {
-
-        }
+//        foreach ($savedCommits as $savedCommit) {
+//            // if commits.hash ends with num then color row light blue...
+//        }
 
 
         // json up the goodies and send 'em to angular

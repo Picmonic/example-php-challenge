@@ -9,6 +9,26 @@ angular.module('mainCtrl', [])
         Commit.get()
             .success(function(data) {
                 $scope.commits = data;
+
                 $scope.loading = false;
             });
+
+        /***
+         *
+         * @param sha
+         *
+         * If the last character in the SHA string is a number, set the row color
+         * to light blue #E6F1F6
+         *
+         */
+        $scope.set_hash_color = function (sha) {
+            var lastChar = sha.substr( sha.length-1 );
+            //$lastChar = commit.hash.substr(-1, 0);
+
+            //if ( parseInt(lastChar) != 'NaN'  ) {
+            if ( parseInt(lastChar) > 0  ) {
+                return { color: "blue" }
+            }
+        }
+
     })

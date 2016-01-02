@@ -38,13 +38,16 @@
 
     <!-- THE COMMITS =============================================== -->
     <!-- hide these commits if the loading variable is true -->
-    <div class="commit" ng-hide="loading" ng-repeat="commit in commits">
-        <h3>Commit author: {{ commit.author }} </h3>
-        <p> <small>SHA: {{ commit.hash }}</small><br>
-            <small>Date: {{ commit.date }}</small><br>
-            {{ commit.msg }}
-        </p>
-    </div>
+
+        <div class="commit" ng-hide="loading" ng-repeat="commit in commits">
+            <table>
+            <tr>
+                <td><h3>Commit author: {{ commit.author }} </h3></td>
+            </tr>
+            <tr ng-style="set_hash_color(commit.hash)"><td><small>SHA: {{ commit.hash }}</small></td></tr>
+            <tr><td><small>Date: {{ commit.date }}</small></td><td>{{ commit.msg }}</td></tr>
+            </table>
+        </div>
 
 </div>
 </body>
