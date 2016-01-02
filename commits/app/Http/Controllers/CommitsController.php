@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
 use Log;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class CommitsController extends Controller
 {
@@ -36,6 +37,11 @@ class CommitsController extends Controller
     public function index() {
 
         // grab desired commits array from github. Let's try utilizing "knplabs/github-api": "~1.4" first in composer.json
+        $client = new \Github\Client();
+        #$repositories = $client->api('user')->repositories;
+
+        $commits = $client->api('repo')->commits()->all('nodejs', 'node', array('sha' => 'master'));
+        
 
 
 
@@ -51,7 +57,13 @@ class CommitsController extends Controller
 
 
         // json up the goodies and send 'em to angular
-        return Response::json(Commit::get());
+        //return Response::json(Commit::get());
+
+        /***
+         * Darn! Looks like Illuminate\Http\Response::json() is belly up.
+         * Let's find something else to json encode with. Come on php, you can do it!
+         */
+        return JsonResponse::create($commits);
     }
 
 
