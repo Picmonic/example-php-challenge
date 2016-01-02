@@ -40,7 +40,7 @@
     <!-- hide these commits if the loading variable is true -->
     <div class="commit" ng-hide="loading" ng-repeat="commit in commits">
         <h3>Commit author: {{ commit.author }} </h3>
-        <p> <small>SHA: {{ commit.sha }}</small><br>
+        <p> <small>SHA: {{ commit.hash }}</small><br>
             <small>Date: {{ commit.date }}</small><br>
             {{ commit.msg }}
         </p>

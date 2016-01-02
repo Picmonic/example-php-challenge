@@ -80,17 +80,28 @@ class CommitsController extends Controller
         /***
          *
          * Yoink 25 most recent commits FROM DB (as specified in coding challenge
-         * readme) and parse each for specific conditions ( e.g. hash_ends_in_number)
+         * readme)
          *
          * Normally this functionality would probably live in a method somewhere else --
          * ahhh the joys of having time to refactor :-)
          *
          */
-        $savedCommits = Commit::orderBy('date', 'desc')->take(25)->get();
+        #$savedCommits = Commit::orderBy('date', 'desc')->take(25)->get();
 
-//        foreach ($savedCommits as $savedCommit) {
-//
-//        }
+        // moved 'orderBy' logic in above comment to Commit model scope
+        $savedCommits = Commit::dateDescending()->take(25)->get();
+
+
+        /***
+         *
+         * Now that we have the 25 most recent commits, we need to check to see if
+         * the commit SHA (commits.hash) ends in a number, and if so, color that row
+         * to light blue (#E6F1F6)
+         *
+         */
+        foreach ($savedCommits as $savedCommit) {
+
+        }
 
 
         // json up the goodies and send 'em to angular
