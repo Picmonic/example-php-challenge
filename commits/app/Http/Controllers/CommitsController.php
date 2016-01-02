@@ -35,7 +35,9 @@ class CommitsController extends Controller
      */
     public function index() {
 
-        // grab desired commits array from github
+        // grab desired commits array from github. Let's try utilizing "knplabs/github-api": "~1.4" first in composer.json
+
+
 
         // sift out stuff we don't want and put in nice simple multi-d array
 
