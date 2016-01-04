@@ -17,7 +17,8 @@ class ChallengeController extends Controller
     {
 
         //we only ever store 25 records
-        $result = node_commits::all();
+        //but we can't rely on GitHub to do all the work so a deterministic pattern is probably best
+        $result = node_commits::orderBy('commit_date', 'DESC')->get();
 
         //make sure blade doesn't choke if there's no data
         if(count($result) > 0) {
@@ -52,11 +53,7 @@ class ChallengeController extends Controller
                     $dateArray = explode('T', $result[$i]['commit']['committer']['date']);
                     $date = $dateArray[0];
                     //set the class
-                    if (ctype_digit(substr($sha, -1))) {
-                        $class = 'special';
-                    } else {
-                        $class = 'standard';
-                    }
+                    $class = (ctype_digit(substr($sha, -1))) ? 'special' : 'standard';
                     //put it away in the db
                     node_commits::updateOrCreate(
                         ['commit_hash' => $sha],
