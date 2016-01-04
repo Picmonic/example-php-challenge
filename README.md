@@ -10,12 +10,12 @@ Setup environment & project database
 	3	cd into the repo root directory, then cd into the "commits" folder
 	4	Make sure Laravel is installed in current project
 	◦	php composer.phar install 
-	5	Adjust your database settings in app/config/database.php to match your local database setup or the provided credentials as listed in Step 1A.
+	5	Adjust your database settings in app/database.php to match your local database setup or the provided credentials as listed in Step 1A.
 	6	Create the project database via:
 	◦	(choose your method depends on which db system you are using. Just make sure to create a table named "commits")
 	◦	create the necessary tables:
 	⁃	php artisan make:migration create_commits_table --create=commits
-	7	Edit db migration listed above to contain the following column definitions in the public function up section:
+	7	Edit db migration (in database/[date]_create_commits_table.php) to contain the following column definitions in the public function up section, if not already present:
 	◦	    public function up()
     {
         Schema::create('commits', function (Blueprint $table) {
