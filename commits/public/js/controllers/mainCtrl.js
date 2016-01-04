@@ -31,4 +31,9 @@ angular.module('mainCtrl', [])
             }
         }
 
+        // this is awful, but it needs to get out the door. In the future replace with $state.reload or $route.reload
+        $scope.reloadPage = function () {
+            window.location.reload();
+        }
+
     })
