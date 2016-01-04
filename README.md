@@ -1,44 +1,47 @@
-## PHP Programming Task
+Prerequisites
+	•	Have working database and connection. If you are using mysql you can create the table structure needed and user/permissions by executing the queries listed in Step A1.
+	•	Clone this repo (master branch)
 
-In order to be considered for the PHP position, you must complete the following task. 
+Setup environment & project database
+	1	Setup composer:
+	◦	php -r "readfile('https://getcomposer.org/installer');" | php
+	2	Setup laravel
+	◦	composer global require "laravel/installer=~1.1"
+	3	cd into the repo root directory, then cd into the "commits" folder
+	4	Make sure Laravel is installed in current project
+	◦	php composer.phar install 
+	5	Adjust your database settings in app/config/database.php to match your local database setup or the provided credentials as listed in Step 1A.
+	6	Create the project database via:
+	◦	(choose your method depends on which db system you are using. Just make sure to create a table named "commits")
+	◦	create the necessary tables:
+	⁃	php artisan make:migration create_commits_table --create=commits
+	7	Edit db migration listed above to contain the following column definitions in the public function up section:
+	◦	    public function up()
+    {
+        Schema::create('commits', function (Blueprint $table) {
+            $table->increments('id');
 
-*Note: This task should take no longer than 1-3 hours at the most.*
+            $table->string('author');
+            $table->string('hash');
+            // should probably be unqique key like: $table->string('hash')->unique();
+            $table->string('date');
+            $table->text('msg');
 
-### Prerequisites
+            $table->timestamps();
+        });
+    }
 
-- Experience with [PHP](http://www.php.net) frameworks (Laravel, Symfony, Fuel, Zend, Yii, etc.)
-- Understanding of CSS frameworks and grid systems (Bootstrap, Pure, etc.)
-- Database knowledge (MySQL, MongoDB, Postgres, etc.)
+	8	Run migrations:
+	◦	php artisan migrate
+	9	start local webserver to review this repo
+	◦	php artisan serve
+	10	If you experience any errors please check to makes sure your db setup is intact and perhaps:
+	◦	composer update
+	11	Have a beer, enjoy!
+	12	If you have questions or comments feel free to reach out to me at: benjamin.largent@gmail.com
 
-## Task
 
-1. Fork this repository
-2. Create a *source* folder to contain your code. 
-3. In the *source* directory, please create a PHP web application using a framework (Laravel, Symfony, Fuel, Zend, Yii, etc.)
-4. Your application should accomplish the following:
-  - Connect to the [Github API](http://developer.github.com/)
-  - Find the [nodejs/node](https://github.com/nodejs/node) repository
-  - Find the 25 most recent commits
-  - Create a model and store the 25 most recent commits in the database. Make sure to avoid any duplicates.
-  - Create a basic template and utilize a CSS framework (Bootstrap, Pure, etc.)
-  - Create a route and view which displays the recent commits by author from the database. 
-  - If the commit hash ends in a number, color that row light blue (#E6F1F6).
-  
-### Once Complete
-1. Create a SETUP.md in the base directory with setup instructions.
-2. Send us a pull request, we will review your code and get back to you
-
-## Key Points We Are Looking For
-  - Demonstration of core MVC patterns
-  - Quality commit history
-  - Ability to use libraries
-  - Ability to create basic model and retrieve information from the databse
-  
-## Bonus Points
-While not required any of the following will add some major bonus points to your submission:
-- Setup an asset pipeline with Gulp, Grunt, etc.
-- Use Angular
-- Use Bower
-- Use Composer
-- Utilize a vagrant box
-- Create a set of provsioning scripts with Puppet, Chef, Ansible, etc.
+Step 1A: setting up mysql project user and permissions
+	1	CREATE USER 'pictest'@'localhost' IDENTIFIED BY 'pictest';
+	2	GRANT SELECT,INSERT,UPDATE,DELETE,ALTER,CREATE,DROP ON `commits`.* TO 'pictest'@'localhost';
+	3	FLUSH PRIVILEGES;
