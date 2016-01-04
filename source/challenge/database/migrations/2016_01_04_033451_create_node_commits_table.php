@@ -15,7 +15,7 @@ class CreateNodeCommitsTable extends Migration
         Schema::create('node_commits', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('commit_hash');
+            $table->string('commit_hash')->unique();
             $table->string('commit_author');
             $table->timestamp('commit_date');
             $table->string('commit_class')->default('standard');

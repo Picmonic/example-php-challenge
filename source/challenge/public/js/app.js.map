@@ -1,0 +1,1 @@
+{"version":3,"sources":["app.js"],"names":[],"mappings":"AAAA;AACA;AACA;AACA;AACA","file":"app.js","sourcesContent":["$(document).on('click', '#newData', function(){\n    $.post('refresh', function() {\n        window.location.replace('/');\n    });\n});"],"sourceRoot":"/source/"}

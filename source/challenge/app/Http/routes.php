@@ -11,9 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [
+    'as' => 'challenge',
+    'uses' => 'ChallengeController@getIndex'
+]);
+
+Route::post('/refresh', [
+    'as' => 'newData',
+    'uses' => 'ChallengeController@getApiData'
+]);
 
 /*
 |--------------------------------------------------------------------------
