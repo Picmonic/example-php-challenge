@@ -10,7 +10,7 @@ Setup environment & project database
 	3	cd into the repo root directory, then cd into the "commits" folder
 	4	Make sure Laravel is installed in current project
 	◦	php composer.phar install 
-	5	Adjust your database settings in app/database.php to match your local database setup or the provided credentials as listed in Step 1A.
+	5	Adjust your database settings in app/database.php to match your local database setup or the provided credentials as listed in Step 1A. Also setup environment variables "cp env.example .env" and then update .env
 	6	Create the project database via:
 	◦	(choose your method depends on which db system you are using. Just make sure to create a table named "commits")
 	◦	create the necessary tables:
