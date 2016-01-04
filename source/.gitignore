@@ -1,0 +1,8 @@
+*.idea
+/.vagrant
+/challenge/_ide_helper.php
+_checklist.md
+
+#temporary VCS removals
+SETUP.md
+

@@ -1,0 +1,32 @@
+# -*- requires smdahlen/vagrant-hostmanager -*-
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+
+    config.vm.box = "scotch/box"
+    config.ssh.forward_agent = true
+
+    config.vm.synced_folder "challenge", "/var/www", 
+       :nfs => { :mount_options => ["dmode=777","fmode=666"] }
+
+    config.hostmanager.enabled = true
+    config.hostmanager.manage_host = true
+    config.vm.network "forwarded_port", guest: 80, host: 8080, auto_correct: true
+
+    config.vm.provider :virtualbox do |vb|
+      vb.customize [
+        "modifyvm", :id,
+        "--memory", "2048",
+        "--ioapic", "on",
+        "--rtcuseutc", "on",
+        "--natdnshostresolver1", "on"
+      ]
+    end
+
+    config.vm.define :cc1 do |node|
+      node.vm.network :private_network, ip: '83.223.123.82'
+      node.vm.hostname = 'picmonic.dev'
+    end
+
+end
