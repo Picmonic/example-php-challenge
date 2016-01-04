@@ -1,0 +1,121 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1347\cocoasubrtf570
+{\fonttbl\f0\fnil\fcharset0 HelveticaNeue;\f1\fnil\fcharset0 LucidaGrande;}
+{\colortbl;\red255\green255\blue255;\red38\green38\blue38;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid101\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{circle\}}{\leveltext\leveltemplateid102\'01\uc0\u9702 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid103\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li2160\lin2160 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid201\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid3}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}}
+\margl1440\margr1440\vieww17000\viewh14120\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0\b\fs48 \cf2 \expnd0\expndtw0\kerning0
+Prerequisites\
+\pard\tx220\tx720\pardeftab720\li720\fi-720
+\ls1\ilvl0
+\b0\fs32 \cf2 \kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
+Have working database and connection. If you are using mysql you can create the table structure needed and user/permissions by executing the queries listed in Step A1.\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\'95	}Clone this repo (master branch)\
+\pard\tx720\pardeftab720
+\cf2 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720
+
+\b\fs48 \cf2 \expnd0\expndtw0\kerning0
+Setup environment & project database
+\fs56 \expnd0\expndtw0\kerning0
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720
+\ls2\ilvl0
+\b0\fs32 \cf2 \kerning1\expnd0\expndtw0 {\listtext	1	}\expnd0\expndtw0\kerning0
+Setup composer:\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440
+\ls2\ilvl1\cf2 \kerning1\expnd0\expndtw0 {\listtext	
+\f1 \uc0\u9702 
+\f0 	}\expnd0\expndtw0\kerning0
+php -r "readfile('https://getcomposer.org/installer');" | php\
+\pard\tx220\tx720\tx1440\pardeftab720\li720\fi-720
+\ls2\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	2	}Setup laravel\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440
+\ls2\ilvl1\cf2 {\listtext	
+\f1 \uc0\u9702 
+\f0 	}composer global require "laravel/installer=~1.1"\
+\pard\tx220\tx720\tx1440\pardeftab720\li720\fi-720
+\ls2\ilvl0\cf2 {\listtext	3	}cd into the repo root directory, then cd into the "commits" folder\
+{\listtext	4	}Make sure Laravel is installed in current project\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440
+\ls2\ilvl1\cf2 {\listtext	
+\f1 \uc0\u9702 
+\f0 	}php composer.phar install \
+\pard\tx220\tx720\tx1440\pardeftab720\li720\fi-720
+\ls2\ilvl0\cf2 {\listtext	5	}Adjust your database settings in app/config/database.php to match your local database setup or the provided credentials as listed in Step 1A.\
+{\listtext	6	}Create the project database via:\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440
+\ls2\ilvl1\cf2 {\listtext	
+\f1 \uc0\u9702 
+\f0 	}(choose your method depends on which db system you are using. Just make sure to create a table named "commits")\
+{\listtext	
+\f1 \uc0\u9702 
+\f0 	}create the necessary tables:\
+\pard\tx1660\tx2160\pardeftab720\li2160\fi-2160
+\ls2\ilvl2\cf2 {\listtext	\uc0\u8259 	}\expnd0\expndtw0\kerning0
+php artisan make:migration create_commits_table --create=commits\
+\pard\tx220\tx720\tx1440\tx2160\pardeftab720\li720\fi-720
+\ls2\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	7	}Edit db migration listed above to contain the following column definitions in the public function up section:\
+\pard\tx940\tx1440\tx2160\pardeftab720\li1440\fi-1440
+\ls2\ilvl1\cf2 {\listtext	
+\f1 \uc0\u9702 
+\f0 	}    public function up()\
+    \{\
+        Schema::create('commits', function (Blueprint $table) \{\
+            $table->increments('id');\
+\
+            $table->string('author');\
+            $table->string('hash');\
+            // should probably be unqique key like: $table->string('hash')->unique();\
+            $table->string('date');\
+            $table->text('msg');\
+\
+            $table->timestamps();\
+        \});\
+    \}\
+\ls2\ilvl1\expnd0\expndtw0\kerning0
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720
+\ls2\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	8	}\expnd0\expndtw0\kerning0
+Run migrations:\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440
+\ls2\ilvl1\cf2 \kerning1\expnd0\expndtw0 {\listtext	
+\f1 \uc0\u9702 
+\f0 	}php artisan migrate\
+\pard\tx220\tx720\tx1440\pardeftab720\li720\fi-720
+\ls2\ilvl0\cf2 {\listtext	9	}start local webserver to review this repo\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440
+\ls2\ilvl1\cf2 {\listtext	
+\f1 \uc0\u9702 
+\f0 	}php artisan serve\
+\pard\tx220\tx720\tx1440\pardeftab720\li720\fi-720
+\ls2\ilvl0\cf2 {\listtext	10	}If you experience any errors please check to makes sure your db setup is intact and perhaps:\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440
+\ls2\ilvl1\cf2 {\listtext	
+\f1 \uc0\u9702 
+\f0 	}composer update\
+\pard\tx220\tx720\tx1440\pardeftab720\li720\fi-720
+\ls2\ilvl0\cf2 {\listtext	11	}Have a beer, enjoy!\
+{\listtext	12	}If you have questions or comments feel free to reach out to me at: benjamin.largent@gmail.com\
+\pard\tx720\tx1440\pardeftab720
+\cf2 \
+\pard\tx720\pardeftab720
+\cf2 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720
+
+\b\fs48 \cf2 \expnd0\expndtw0\kerning0
+Step 1A: setting up mysql project user and permissions\
+\pard\tx220\tx720\pardeftab720\li720\fi-720
+\ls3\ilvl0
+\b0\fs32 \cf2 \kerning1\expnd0\expndtw0 {\listtext	1	}\expnd0\expndtw0\kerning0
+CREATE USER 'pictest'@'localhost' IDENTIFIED BY 'pictest';\
+\ls3\ilvl0\kerning1\expnd0\expndtw0 {\listtext	2	}\expnd0\expndtw0\kerning0
+GRANT SELECT,INSERT,UPDATE,DELETE,ALTER,CREATE,DROP ON `commits`.* TO 'pictest'@'localhost';\
+\ls3\ilvl0\kerning1\expnd0\expndtw0 {\listtext	3	}\expnd0\expndtw0\kerning0
+FLUSH PRIVILEGES;}
