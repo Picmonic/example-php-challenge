@@ -33,7 +33,7 @@ Setup environment & project database
 
 	8	Run migrations:
 	◦	php artisan migrate
-	9	start local webserver to review this repo
+	9	start local webserver to review this repo at "localhost:8000/"
 	◦	php artisan serve
 	10	If you experience any errors please check to makes sure your db setup is intact and perhaps:
 	◦	composer update
