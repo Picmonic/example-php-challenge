@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function() {   
+    View::make('index');
 });
 
 /*
@@ -29,3 +29,20 @@ Route::get('/', function () {
 Route::group(['middleware' => ['web']], function () {
     //
 });
+
+
+// API ROUTES ==================================  
+Route::group(array('prefix' => 'api'), function() {
+
+	Route::get('commits/getCommits', 'CommitController@getCommits');
+   Route::resource('commits', 'CommitController', 
+        array('only' => array('index')));
+  
+});
+
+// CATCH ALL ROUTE =============================  
+// all routes that are not home or api will be redirected to the Angular 
+Route::any('{path?}', function()
+{
+    return view("index");
+})->where("path", ".+");
