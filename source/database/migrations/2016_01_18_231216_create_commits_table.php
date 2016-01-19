@@ -18,6 +18,7 @@ class CreateCommitsTable extends Migration
             $table->string('message');
             $table->string('sha');
             $table->string('url');
+            $table->primary('sha');
             $table->timestamps();
         });
     }
