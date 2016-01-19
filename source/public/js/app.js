@@ -1,0 +1,1 @@
+var commitApp = angular.module('commitApp', ['mainController', 'commitService']);
