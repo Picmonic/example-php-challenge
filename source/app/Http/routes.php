@@ -11,9 +11,6 @@
 |
 */
 
-Route::get('/', function() {   
-    View::make('index');
-});
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +24,11 @@ Route::get('/', function() {
 */
 
 Route::group(['middleware' => ['web']], function () {
-    //
+	
+	Route::any('', function () {
+	    return view('index');
+	});    
+
 });
 
 
@@ -39,10 +40,3 @@ Route::group(array('prefix' => 'api'), function() {
         array('only' => array('index')));
   
 });
-
-// CATCH ALL ROUTE =============================  
-// all routes that are not home or api will be redirected to the Angular 
-Route::any('{path?}', function()
-{
-    return view("index");
-})->where("path", ".+");

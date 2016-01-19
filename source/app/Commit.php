@@ -6,6 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Commit extends Model
 {
-	 protected $primaryKey = 'sha';
     protected $fillable = ['user','message','sha','url'];
+    protected $appends = ['hashcheck'];
+    
+    public function getHashcheckAttribute()
+    {
+        $last = substr($this->sha, -1);
+        if (is_numeric($last)) {
+	        return "number";
+        } else {
+	        return "letter";
+        }
+    }
+    
+    
 }
