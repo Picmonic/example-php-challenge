@@ -95,6 +95,38 @@ class Commits extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+  
+  public function flush() {
+    $curl = curl_init();
+    curl_setopt($curl, CURLOPT_URL, 'https://api.github.com/repos/nodejs/node/commits');
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($curl, CURLOPT_HEADER, true);
+    curl_setopt($curl, CURLOPT_VERBOSE, true);
+    curl_setopt($curl, CURLOPT_USERAGENT, 'Example PHP Challenge');
+    $result = curl_exec($curl);
+    $httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+    if ($httpcode != 200) {
+      return false;
+    } else {
+      $headersize = curl_getinfo($curl, CURLINFO_HEADER_SIZE);
+      $result = substr($result, $headersize);
+      $this->deleteAll();
+      $commits = json_decode($result);
+      $commits = array_slice($commits, 0, 10);
+      foreach ($commits as $commit) {
+        $model = new Commits;
+        $model->hash = $commit->sha;
+        $model->url = $commit->html_url;
+        $model->message = $commit->commit->message;
+        $model->author_id = $commit->author->id;
+        $model->committer_id = $commit->committer->id;
+        $model->modified = date('Y-m-d H:i:s');
+        print_r($model->save());
+      }
+      return true;
+    }
+    
+  }
 
 	/**
 	 * Returns the static model of the specified AR class.
