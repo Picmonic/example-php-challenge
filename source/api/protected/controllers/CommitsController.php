@@ -120,7 +120,9 @@ class CommitsController extends Controller
     } else {
       $rows = array();
       foreach($models as $model) {
-        $rows[] = $model->attributes;
+        $row = $model->attributes;
+        $row['author'] = $model->author;
+        $rows[] = $row;
       }
       $this->_sendResponse(200, CJSON::encode($rows));
     }

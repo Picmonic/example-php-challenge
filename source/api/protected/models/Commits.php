@@ -48,6 +48,8 @@ class Commits extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+      'author' => array(self::BELONGS_TO, 'Authors', 'author_id'),
+      'committer' => array(self::BELONGS_TO, 'Authors', 'committer_id'),
 		);
 	}
 
@@ -124,12 +126,29 @@ class Commits extends CActiveRecord
       $commits = array_slice($commits, 0, 10);
       foreach ($commits as $commit) {
         $model = new Commits;
+        if (!$author = Authors::model()->findByPK($commit->author->id)) {
+          $author = new Authors;
+          $author->id = $commit->author->id;
+          $author->login = $commit->author->login;
+          $author->avatar_url = $commit->author->avatar_url;
+          $author->url = $commit->author->html_url;
+          $author->save();
+        }
+        if (!$committer = Authors::model()->findByPK($commit->committer->id)) {
+          $committer = new Authors;
+          $committer->id = $commit->committer->id;
+          $committer->login = $commit->committer->login;
+          $committer->avatar_url = $commit->committer->avatar_url;
+          $committer->url = $commit->committer->html_url;
+          $committer->save();
+        }
         $model->hash = $commit->sha;
         $model->url = $commit->html_url;
         $model->message = $commit->commit->message;
-        $model->author_id = $commit->author->id;
-        $model->committer_id = $commit->committer->id;
+        $model->author_id = $author->id;
+        $model->committer_id = $committer->id;
         $model->modified = date('Y-m-d H:i:s');
+        $model->save();
       }
       return true;
     }
