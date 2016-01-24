@@ -4,8 +4,17 @@ class CommitsController extends Controller
 {
 
   /**
-    Code borrowed from http://www.gen-x-design.com/archives/create-a-rest-api-with-php/
-  */
+   * Sends a response with an HTTP status code header
+   *
+   * Formats a message with an HTTP status code for use in an API, and terminates the
+   * current Yii app instance.  
+   *
+   * @link http://www.gen-x-design.com/archives/create-a-rest-api-with-php/ original source
+   *
+   * @param int $status HTTP status of the response
+   * @param string $body Body to send with the response
+   * @param string $content_type MIME type, defaults to text/html
+   */
   private function _sendResponse($status = 200, $body = '', $content_type = 'text/html')
   {
       // set the status
@@ -70,11 +79,18 @@ class CommitsController extends Controller
       Yii::app()->end();
   }
 
+  /**
+   * Gets a string message for a given HTTP status code
+   *
+   * Helper function to supply generic HTTP status code messages
+   *
+   * @link http://www.gen-x-design.com/archives/create-a-rest-api-with-php/ original source
+   *
+   * @param int $status HTTP status of the response
+   * @return string Status code message
+   */
   private function _getStatusCodeMessage($status)
   {
-      // these could be stored in a .ini file and loaded
-      // via parse_ini_file()... however, this will suffice
-      // for an example
       $codes = Array(
           200 => 'OK',
           400 => 'Bad Request',
@@ -109,31 +125,4 @@ class CommitsController extends Controller
       $this->_sendResponse(200, CJSON::encode($rows));
     }
   }
-
-	// Uncomment the following methods and override them if needed
-	/*
-	public function filters()
-	{
-		// return the filter configuration for this controller, e.g.:
-		return array(
-			'inlineFilterName',
-			array(
-				'class'=>'path.to.FilterClass',
-				'propertyName'=>'propertyValue',
-			),
-		);
-	}
-
-	public function actions()
-	{
-		// return external action classes, e.g.:
-		return array(
-			'action1'=>'path.to.ActionClass',
-			'action2'=>array(
-				'class'=>'path.to.AnotherActionClass',
-				'propertyName'=>'propertyValue',
-			),
-		);
-	}
-	*/
 }

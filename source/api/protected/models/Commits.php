@@ -96,6 +96,15 @@ class Commits extends CActiveRecord
 		));
 	}
   
+  /**
+   * Replace entries in database with new data from GitHub API
+   *
+   * This method will query the GitHub API for a list of recent commits.  If the query is
+   * successful, the existing commits in the database will be removed and replaced with the
+   * updated data.
+   *
+   * @return boolean Success or failure of the flush
+   */
   public function flush() {
     $curl = curl_init();
     curl_setopt($curl, CURLOPT_URL, 'https://api.github.com/repos/nodejs/node/commits');
@@ -121,7 +130,6 @@ class Commits extends CActiveRecord
         $model->author_id = $commit->author->id;
         $model->committer_id = $commit->committer->id;
         $model->modified = date('Y-m-d H:i:s');
-        print_r($model->save());
       }
       return true;
     }
