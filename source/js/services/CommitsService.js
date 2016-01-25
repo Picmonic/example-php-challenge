@@ -1,8 +1,12 @@
 app.factory('CommitsService', ['$http',
 function($http) {
 
-  return {
+  var getCommits = function() {
+    return 'Commit';
+  }
 
+  return {
+    getCommits: getCommits
   };
 
 }]);
