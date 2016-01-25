@@ -1,16 +1,18 @@
 <div class="container">
-  <h3>Inventory Listing</h3>
+  <h3>Recent Commits</h3>
   <table id="ajaxtable" class="table table-hover table-striped">
   	<thead>
     	<tr>
-    	  <th>Hash</th>
         <th>Author</th>
+        <th>Message</th>
+        <th>Hash</th>
       </tr>
     </thead>
     <tbody>
       <tr ng-repeat="commit in commits">
+        <td><img height="36" ng-src="{{ commit.author.avatar_url }}"/><a href="{{ commit.author.url }}">{{ commit.author.login }}</a></td>
+        <td>{{ commit.message }}</td>
         <td>{{ commit.hash }}</td>
-        <td>{{ commit.author.login }}</td>
       </tr>
     </tbody>
   </table>

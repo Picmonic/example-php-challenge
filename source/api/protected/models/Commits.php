@@ -123,7 +123,7 @@ class Commits extends CActiveRecord
       $result = substr($result, $headersize);
       $this->deleteAll();
       $commits = json_decode($result);
-      $commits = array_slice($commits, 0, 10);
+      $commits = array_slice($commits, 0, 25);
       foreach ($commits as $commit) {
         $model = new Commits;
         if (!$author = Authors::model()->findByPK($commit->author->id)) {
