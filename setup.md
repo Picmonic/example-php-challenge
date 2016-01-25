@@ -1,8 +1,9 @@
 SETUP
 
 1 - Install /yii and /source into a web accessible directory.
-2 - Create a mysql database and note the name.  Ensure you have a user with access to the new database.
-3 - Run the following SQL commands on the created database :
+2 - Make sure that the /source/config/protected directory is write-enabled for the webserver.
+3 - Create a mysql database and note the name.  Ensure you have a user with access to the new database.
+4 - Run the following SQL commands on the created database :
 
 CREATE TABLE `commits` (
   `hash` char(40) NOT NULL,
@@ -24,7 +25,7 @@ CREATE TABLE `authors` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1
 
-4 - Edit source/api/protected/config/database.php with the database host, name, user and credentials
+5 - Edit source/api/protected/config/database.php with the database host, name, user and credentials
 
-5 - Edit source/js/services/CommitsService.js to ensure you are using the correct webroot to your server
+6 - Edit source/js/services/CommitsService.js to ensure you are using the correct webroot to your server
 
