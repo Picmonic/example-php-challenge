@@ -1,6 +1,6 @@
 SETUP
 
-1 - Download and set up Yii framework per the instructions on http://www.yiiframework.com/doc/guide/1.1/en/quickstart.installation
+1 - Install /yii and /source into a web accessible directory.
 2 - Create a mysql database and note the name.  Ensure you have a user with access to the new database.
 3 - Run the following SQL commands on the created database :
 
