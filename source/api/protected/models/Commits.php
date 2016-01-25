@@ -142,7 +142,7 @@ class Commits extends CActiveRecord
           $committer->url = $commit->committer->html_url;
           $committer->save();
         }
-        $model->hash = $commit->sha;
+        $model->hash = substr($commit->sha, 0, 6);
         $model->url = $commit->html_url;
         $model->message = $commit->commit->message;
         $model->author_id = $author->id;

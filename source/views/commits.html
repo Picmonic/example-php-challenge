@@ -9,10 +9,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="commit in commits">
+      <tr ng-repeat="commit in commits" ng-class="{info: commit.highlight}">
         <td><img height="36" ng-src="{{ commit.author.avatar_url }}"/><a href="{{ commit.author.url }}">{{ commit.author.login }}</a></td>
         <td>{{ commit.message }}</td>
-        <td>{{ commit.hash }}</td>
+        <td>{{ commit.hash }} </td>
       </tr>
     </tbody>
   </table>
