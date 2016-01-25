@@ -26,3 +26,5 @@ CREATE TABLE `authors` (
 
 4 - Edit source/api/protected/config/database.php with the database host, name, user and credentials
 
+5 - Edit source/js/services/CommitsService.js to ensure you are using the correct webroot to your server
+
