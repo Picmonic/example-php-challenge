@@ -3,9 +3,9 @@
 // This is the database connection configuration.
 return array(
 	// uncomment the following lines to use a MySQL database
-	'connectionString' => 'mysql:host=localhost;dbname=picmonic',
+	'connectionString' => 'mysql:host=DATABASE_HOST;dbname=DATABASE_NAME',
 	'emulatePrepare' => true,
-	'username' => 'picmonic',
-	'password' => 'au5gCZyAQrcxV2FU',
+	'username' => 'DATABASE_USERNAME',
+	'password' => 'PASSWORD_FOR_USER',
 	'charset' => 'utf8',
 );
