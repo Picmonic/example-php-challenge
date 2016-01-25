@@ -1,7 +1,7 @@
 SETUP
 
 1 - Download and set up Yii framework per the instructions on http://www.yiiframework.com/doc/guide/1.1/en/quickstart.installation
-2 - Create a mysql database and note the name
+2 - Create a mysql database and note the name.  Ensure you have a user with access to the new database.
 3 - Run the following SQL commands on the created database :
 
 CREATE TABLE `commits` (
@@ -23,4 +23,6 @@ CREATE TABLE `authors` (
   `url` varchar(255) NOT NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1
+
+4 - Edit source/api/protected/config/database.php with the database host, name, user and credentials
 
