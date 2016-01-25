@@ -1,0 +1,278 @@
+2016/01/22 21:32:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "gii".' in /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('gii')
+#1 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#2 /var/www/agdragon/picmonic/example-php-challenge/source/api/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/picmonic/example-php-challenge/source/api/index.php?r=gii
+---
+2016/01/22 22:07:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "liste".' in /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(270): CController->missingAction('liste')
+#1 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CWebApplication.php(282): CController->run('liste')
+#2 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('commits/liste')
+#3 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#4 /var/www/agdragon/picmonic/example-php-challenge/source/api/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/picmonic/example-php-challenge/source/api/index.php/commits/liste
+---
+2016/01/22 22:07:37 [error] [exception.CException] exception 'CException' with message 'CommitsController and its behaviors do not have a method or closure named "getCommandBuilder".' in /var/www/agdragon/picmonic/example-php-challenge/yii/framework/base/CComponent.php:266
+Stack trace:
+#0 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/db/ar/CActiveRecord.php(1474): CComponent->__call('getCommandBuild...', Array)
+#1 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/db/ar/CActiveRecord.php(1474): CommitsController->getCommandBuilder()
+#2 /var/www/agdragon/picmonic/example-php-challenge/source/api/protected/controllers/CommitsController.php(11): CActiveRecord->findAll()
+#3 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/actions/CInlineAction.php(49): CommitsController->actionList()
+#4 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#6 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CWebApplication.php(282): CController->run('list')
+#8 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('commits/list')
+#9 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#10 /var/www/agdragon/picmonic/example-php-challenge/source/api/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/picmonic/example-php-challenge/source/api/index.php/commits/list
+---
+2016/01/22 22:07:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "liste".' in /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(270): CController->missingAction('liste')
+#1 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CWebApplication.php(282): CController->run('liste')
+#2 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('commits/liste')
+#3 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#4 /var/www/agdragon/picmonic/example-php-challenge/source/api/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/picmonic/example-php-challenge/source/api/index.php/commits/liste
+---
+2016/01/22 22:07:53 [error] [exception.CException] exception 'CException' with message 'CommitsController and its behaviors do not have a method or closure named "getCommandBuilder".' in /var/www/agdragon/picmonic/example-php-challenge/yii/framework/base/CComponent.php:266
+Stack trace:
+#0 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/db/ar/CActiveRecord.php(1474): CComponent->__call('getCommandBuild...', Array)
+#1 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/db/ar/CActiveRecord.php(1474): CommitsController->getCommandBuilder()
+#2 /var/www/agdragon/picmonic/example-php-challenge/source/api/protected/controllers/CommitsController.php(11): CActiveRecord->findAll()
+#3 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/actions/CInlineAction.php(49): CommitsController->actionList()
+#4 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#6 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CWebApplication.php(282): CController->run('list')
+#8 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('commits/list')
+#9 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#10 /var/www/agdragon/picmonic/example-php-challenge/source/api/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/picmonic/example-php-challenge/source/api/index.php/commits/list
+---
+2016/01/22 22:09:26 [error] [exception.CException] exception 'CException' with message 'CommitsController and its behaviors do not have a method or closure named "_sendresponse".' in /var/www/agdragon/picmonic/example-php-challenge/yii/framework/base/CComponent.php:266
+Stack trace:
+#0 /var/www/agdragon/picmonic/example-php-challenge/source/api/protected/controllers/CommitsController.php(13): CComponent->__call('_sendresponse', Array)
+#1 /var/www/agdragon/picmonic/example-php-challenge/source/api/protected/controllers/CommitsController.php(13): CommitsController->_sendresponse(404, 'No commits were...')
+#2 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/actions/CInlineAction.php(49): CommitsController->actionList()
+#3 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#5 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CWebApplication.php(282): CController->run('list')
+#7 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('commits/list')
+#8 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#9 /var/www/agdragon/picmonic/example-php-challenge/source/api/index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/picmonic/example-php-challenge/source/api/index.php/commits/list
+---
+2016/01/22 22:10:32 [error] [exception.CException] exception 'CException' with message 'CommitsController and its behaviors do not have a method or closure named "_sendResponse".' in /var/www/agdragon/picmonic/example-php-challenge/yii/framework/base/CComponent.php:266
+Stack trace:
+#0 /var/www/agdragon/picmonic/example-php-challenge/source/api/protected/controllers/CommitsController.php(13): CComponent->__call('_sendResponse', Array)
+#1 /var/www/agdragon/picmonic/example-php-challenge/source/api/protected/controllers/CommitsController.php(13): CommitsController->_sendResponse(404, 'No commits were...')
+#2 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/actions/CInlineAction.php(49): CommitsController->actionList()
+#3 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#5 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CWebApplication.php(282): CController->run('list')
+#7 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('commits/list')
+#8 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#9 /var/www/agdragon/picmonic/example-php-challenge/source/api/index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/picmonic/example-php-challenge/source/api/index.php/commits/list
+---
+2016/01/22 22:10:38 [error] [exception.CException] exception 'CException' with message 'CommitsController and its behaviors do not have a method or closure named "_sendResponse".' in /var/www/agdragon/picmonic/example-php-challenge/yii/framework/base/CComponent.php:266
+Stack trace:
+#0 /var/www/agdragon/picmonic/example-php-challenge/source/api/protected/controllers/CommitsController.php(13): CComponent->__call('_sendResponse', Array)
+#1 /var/www/agdragon/picmonic/example-php-challenge/source/api/protected/controllers/CommitsController.php(13): CommitsController->_sendResponse(404, 'No commits were...')
+#2 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/actions/CInlineAction.php(49): CommitsController->actionList()
+#3 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#5 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CWebApplication.php(282): CController->run('list')
+#7 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('commits/list')
+#8 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#9 /var/www/agdragon/picmonic/example-php-challenge/source/api/index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/picmonic/example-php-challenge/source/api/index.php/commits/list
+---
+2016/01/22 22:45:10 [error] [php] Undefined variable: httpdcode (/var/www/agdragon/picmonic/example-php-challenge/source/api/protected/models/Commits.php:107)
+Stack trace:
+#0 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(286): CommitsController->runAction()
+#2 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(265): CommitsController->runActionWithFilters()
+#3 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CWebApplication.php(282): CommitsController->run()
+#4 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#6 /var/www/agdragon/picmonic/example-php-challenge/source/api/index.php(13): CWebApplication->run()
+REQUEST_URI=/picmonic/example-php-challenge/source/api/index.php/commits/flush
+in /var/www/agdragon/picmonic/example-php-challenge/source/api/protected/models/Commits.php (107)
+in /var/www/agdragon/picmonic/example-php-challenge/source/api/protected/controllers/CommitsController.php (93)
+in /var/www/agdragon/picmonic/example-php-challenge/source/api/index.php (13)
+2016/01/22 22:49:43 [error] [php] array_slice() expects parameter 1 to be array, null given (/var/www/agdragon/picmonic/example-php-challenge/source/api/protected/models/Commits.php:112)
+Stack trace:
+#0 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/actions/CInlineAction.php(49): CommitsController->actionFlush()
+#1 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#2 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(286): CommitsController->runAction()
+#3 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(265): CommitsController->runActionWithFilters()
+#4 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CWebApplication.php(282): CommitsController->run()
+#5 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#6 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#7 /var/www/agdragon/picmonic/example-php-challenge/source/api/index.php(13): CWebApplication->run()
+REQUEST_URI=/picmonic/example-php-challenge/source/api/index.php/commits/flush
+in /var/www/agdragon/picmonic/example-php-challenge/source/api/protected/models/Commits.php (112)
+in /var/www/agdragon/picmonic/example-php-challenge/source/api/protected/controllers/CommitsController.php (93)
+in /var/www/agdragon/picmonic/example-php-challenge/source/api/index.php (13)
+2016/01/22 22:55:25 [error] [php] Object of class stdClass could not be converted to string (/var/www/agdragon/picmonic/example-php-challenge/source/api/protected/controllers/CommitsController.php:94)
+Stack trace:
+#0 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(286): CommitsController->runAction()
+#1 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(265): CommitsController->runActionWithFilters()
+#2 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CWebApplication.php(282): CommitsController->run()
+#3 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#5 /var/www/agdragon/picmonic/example-php-challenge/source/api/index.php(13): CWebApplication->run()
+REQUEST_URI=/picmonic/example-php-challenge/source/api/index.php/commits/flush
+in /var/www/agdragon/picmonic/example-php-challenge/source/api/protected/controllers/CommitsController.php (94)
+in /var/www/agdragon/picmonic/example-php-challenge/source/api/index.php (13)
+2016/01/22 22:55:54 [error] [php] Cannot modify header information - headers already sent by (output started at /var/www/agdragon/picmonic/example-php-challenge/source/api/protected/controllers/CommitsController.php:94) (/var/www/agdragon/picmonic/example-php-challenge/source/api/protected/controllers/CommitsController.php:13)
+Stack trace:
+#0 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/actions/CInlineAction.php(49): CommitsController->actionFlush()
+#1 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#2 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(286): CommitsController->runAction()
+#3 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(265): CommitsController->runActionWithFilters()
+#4 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CWebApplication.php(282): CommitsController->run()
+#5 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#6 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#7 /var/www/agdragon/picmonic/example-php-challenge/source/api/index.php(13): CWebApplication->run()
+REQUEST_URI=/picmonic/example-php-challenge/source/api/index.php/commits/flush
+in /var/www/agdragon/picmonic/example-php-challenge/source/api/protected/controllers/CommitsController.php (13)
+in /var/www/agdragon/picmonic/example-php-challenge/source/api/protected/controllers/CommitsController.php (95)
+in /var/www/agdragon/picmonic/example-php-challenge/source/api/index.php (13)
+2016/01/22 22:58:47 [error] [exception.CException] exception 'CException' with message 'Property "Commits.Hash" is not defined.' in /var/www/agdragon/picmonic/example-php-challenge/yii/framework/base/CComponent.php:173
+Stack trace:
+#0 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/db/ar/CActiveRecord.php(161): CComponent->__set('Hash', '17d5a3ab99ca4e3...')
+#1 /var/www/agdragon/picmonic/example-php-challenge/source/api/protected/models/Commits.php(118): CActiveRecord->__set('Hash', '17d5a3ab99ca4e3...')
+#2 /var/www/agdragon/picmonic/example-php-challenge/source/api/protected/controllers/CommitsController.php(93): Commits->flush()
+#3 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/actions/CInlineAction.php(49): CommitsController->actionFlush()
+#4 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#6 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CWebApplication.php(282): CController->run('flush')
+#8 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('commits/flush')
+#9 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#10 /var/www/agdragon/picmonic/example-php-challenge/source/api/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/picmonic/example-php-challenge/source/api/index.php/commits/flush
+---
+2016/01/22 23:05:55 [error] [php] Cannot modify header information - headers already sent by (output started at /var/www/agdragon/picmonic/example-php-challenge/source/api/protected/models/Commits.php:123) (/var/www/agdragon/picmonic/example-php-challenge/source/api/protected/controllers/CommitsController.php:13)
+Stack trace:
+#0 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/actions/CInlineAction.php(49): CommitsController->actionFlush()
+#1 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#2 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(286): CommitsController->runAction()
+#3 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(265): CommitsController->runActionWithFilters()
+#4 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CWebApplication.php(282): CommitsController->run()
+#5 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#6 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#7 /var/www/agdragon/picmonic/example-php-challenge/source/api/index.php(13): CWebApplication->run()
+REQUEST_URI=/picmonic/example-php-challenge/source/api/index.php/commits/flush
+in /var/www/agdragon/picmonic/example-php-challenge/source/api/protected/controllers/CommitsController.php (13)
+in /var/www/agdragon/picmonic/example-php-challenge/source/api/protected/controllers/CommitsController.php (94)
+in /var/www/agdragon/picmonic/example-php-challenge/source/api/index.php (13)
+2016/01/23 21:13:02 [error] [php] Undefined property: stdClass::$commiter (/var/www/agdragon/picmonic/example-php-challenge/source/api/protected/models/Commits.php:137)
+Stack trace:
+#0 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(286): CommitsController->runAction()
+#2 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(265): CommitsController->runActionWithFilters()
+#3 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CWebApplication.php(282): CommitsController->run()
+#4 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#6 /var/www/agdragon/picmonic/example-php-challenge/source/api/index.php(13): CWebApplication->run()
+REQUEST_URI=/picmonic/example-php-challenge/source/api/index.php/commits/flush
+in /var/www/agdragon/picmonic/example-php-challenge/source/api/protected/models/Commits.php (137)
+in /var/www/agdragon/picmonic/example-php-challenge/source/api/protected/controllers/CommitsController.php (109)
+in /var/www/agdragon/picmonic/example-php-challenge/source/api/index.php (13)
+2016/01/23 21:26:23 [error] [php] include(Author.php): failed to open stream: No such file or directory (/var/www/agdragon/picmonic/example-php-challenge/yii/framework/YiiBase.php:432)
+Stack trace:
+#0 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/db/ar/CActiveRecord.php(395): spl_autoload_call()
+#1 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/db/ar/CActiveFinder.php(182): model()
+#2 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/db/ar/CActiveFinder.php(230): CActiveFinder->getModel()
+#3 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/db/ar/CActiveFinder.php(299): CActiveFinder->buildJoinTree()
+#4 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/db/ar/CActiveFinder.php(48): CActiveFinder->buildJoinTree()
+#5 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/db/ar/CActiveRecord.php(912): CActiveFinder->__construct()
+#6 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/db/ar/CActiveRecord.php(1360): Commits->getActiveFinder()
+#7 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/db/ar/CActiveRecord.php(1475): Commits->query()
+#8 /var/www/agdragon/picmonic/example-php-challenge/source/api/protected/controllers/CommitsController.php(117): Commits->findAll()
+#9 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/actions/CInlineAction.php(49): CommitsController->actionList()
+#10 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#11 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(286): CommitsController->runAction()
+#12 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(265): CommitsController->runActionWithFilters()
+#13 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CWebApplication.php(282): CommitsController->run()
+#14 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#15 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#16 /var/www/agdragon/picmonic/example-php-challenge/source/api/index.php(13): CWebApplication->run()
+REQUEST_URI=/picmonic/example-php-challenge/source/api/index.php/commits/list
+in /var/www/agdragon/picmonic/example-php-challenge/source/api/protected/controllers/CommitsController.php (117)
+in /var/www/agdragon/picmonic/example-php-challenge/source/api/index.php (13)
+2016/01/23 21:29:07 [error] [php] include(Author.php): failed to open stream: No such file or directory (/var/www/agdragon/picmonic/example-php-challenge/yii/framework/YiiBase.php:432)
+Stack trace:
+#0 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/db/ar/CActiveRecord.php(395): spl_autoload_call()
+#1 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/db/ar/CActiveFinder.php(182): model()
+#2 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/db/ar/CActiveFinder.php(230): CActiveFinder->getModel()
+#3 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/db/ar/CActiveFinder.php(48): CActiveFinder->buildJoinTree()
+#4 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/db/ar/CActiveRecord.php(912): CActiveFinder->__construct()
+#5 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/db/ar/CActiveRecord.php(280): Commits->getActiveFinder()
+#6 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/db/ar/CActiveRecord.php(143): Commits->getRelated()
+#7 /var/www/agdragon/picmonic/example-php-challenge/source/api/protected/controllers/CommitsController.php(124): Commits->__get()
+#8 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/actions/CInlineAction.php(49): CommitsController->actionList()
+#9 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#10 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(286): CommitsController->runAction()
+#11 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(265): CommitsController->runActionWithFilters()
+#12 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CWebApplication.php(282): CommitsController->run()
+#13 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#14 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#15 /var/www/agdragon/picmonic/example-php-challenge/source/api/index.php(13): CWebApplication->run()
+REQUEST_URI=/picmonic/example-php-challenge/source/api/index.php/commits/list
+in /var/www/agdragon/picmonic/example-php-challenge/source/api/protected/controllers/CommitsController.php (124)
+in /var/www/agdragon/picmonic/example-php-challenge/source/api/index.php (13)
+2016/01/23 21:29:11 [error] [php] include(Author.php): failed to open stream: No such file or directory (/var/www/agdragon/picmonic/example-php-challenge/yii/framework/YiiBase.php:432)
+Stack trace:
+#0 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/db/ar/CActiveRecord.php(395): spl_autoload_call()
+#1 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/db/ar/CActiveFinder.php(182): model()
+#2 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/db/ar/CActiveFinder.php(230): CActiveFinder->getModel()
+#3 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/db/ar/CActiveFinder.php(48): CActiveFinder->buildJoinTree()
+#4 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/db/ar/CActiveRecord.php(912): CActiveFinder->__construct()
+#5 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/db/ar/CActiveRecord.php(280): Commits->getActiveFinder()
+#6 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/db/ar/CActiveRecord.php(143): Commits->getRelated()
+#7 /var/www/agdragon/picmonic/example-php-challenge/source/api/protected/controllers/CommitsController.php(124): Commits->__get()
+#8 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/actions/CInlineAction.php(49): CommitsController->actionList()
+#9 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#10 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(286): CommitsController->runAction()
+#11 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(265): CommitsController->runActionWithFilters()
+#12 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CWebApplication.php(282): CommitsController->run()
+#13 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#14 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#15 /var/www/agdragon/picmonic/example-php-challenge/source/api/index.php(13): CWebApplication->run()
+REQUEST_URI=/picmonic/example-php-challenge/source/api/index.php/commits/list
+in /var/www/agdragon/picmonic/example-php-challenge/source/api/protected/controllers/CommitsController.php (124)
+in /var/www/agdragon/picmonic/example-php-challenge/source/api/index.php (13)
+2016/01/23 21:31:44 [error] [php] Cannot modify header information - headers already sent by (output started at /var/www/agdragon/picmonic/example-php-challenge/source/api/protected/controllers/CommitsController.php:124) (/var/www/agdragon/picmonic/example-php-challenge/source/api/protected/controllers/CommitsController.php:22)
+Stack trace:
+#0 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/actions/CInlineAction.php(49): CommitsController->actionList()
+#1 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#2 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(286): CommitsController->runAction()
+#3 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CController.php(265): CommitsController->runActionWithFilters()
+#4 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CWebApplication.php(282): CommitsController->run()
+#5 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#6 /var/www/agdragon/picmonic/example-php-challenge/yii/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#7 /var/www/agdragon/picmonic/example-php-challenge/source/api/index.php(13): CWebApplication->run()
+REQUEST_URI=/picmonic/example-php-challenge/source/api/index.php/commits/list
+in /var/www/agdragon/picmonic/example-php-challenge/source/api/protected/controllers/CommitsController.php (22)
+in /var/www/agdragon/picmonic/example-php-challenge/source/api/protected/controllers/CommitsController.php (126)
+in /var/www/agdragon/picmonic/example-php-challenge/source/api/index.php (13)

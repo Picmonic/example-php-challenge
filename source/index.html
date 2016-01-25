@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+    <script src="js/ui-bootstrap-tpls-0.14.3.js"></script>
+    <style>
+      body {
+        min-height: 2000px;
+        padding-top: 70px;
+    </style>
+  </head>
+  <body ng-app="ExamplePhpChallenge">
+    <nav class="navbar navbar-fixed-top navbar-default navbar-inner">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="btn btn-navbar" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>          
+            <span class="icon-bar"></span>
+          </a>
+          <a class="navbar-brand" href="#/">Example PHP Challenge</a>
+        </div>
+        <div class="navbar-collapse collapse" collapse="navCollapsed">
+          <ul class="nav navbar-nav">
+            <li><a href="#/commits">View Commits</a></li>
+            <li><a href="#/flush">Flush Commits</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div ng-view></div>
+    <!-- Modules -->
+    <script src="js/app.js"></script>
+    <!-- Controllers -->
+    <script src="js/controllers/HomeController.js"></script>
+    <script src="js/controllers/CommitsController.js"></script>
+    <script src="js/controllers/FlushController.js"></script>
+    <!-- Services -->
+    <script src="js/services/CommitsService.js"></script>
+    <!-- Directives -->
+    <script src="js/directives/Commit.js"></script>
+  </body>
+</html>
