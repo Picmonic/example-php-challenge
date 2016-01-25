@@ -32,6 +32,11 @@ function($scope, CommitsService) {
       }
     }
     $scope.commits = data;
+  }, function(error){
+    $scope.message = {
+      type : 'danger',
+      message : 'Could not load commits.  Try the flush commits option and try again.'
+    }
   });
 
 }]);
