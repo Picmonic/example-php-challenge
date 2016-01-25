@@ -12,9 +12,22 @@ function($http) {
       }
     );
   }
+  
+  var flushCommits = function() {
+    var req = {
+      method: 'GET',
+      url: 'http://www.agdragon.net/picmonic/example-php-challenge/source/api/index.php/commits/flush'
+    }
+    return $http(req).then(
+      function(response){
+        return response;
+      }
+    );
+  }
 
   return {
-    getCommits: getCommits
+    getCommits: getCommits,
+    flushCommits: flushCommits
   };
 
 }]);

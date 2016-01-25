@@ -1,5 +1,5 @@
 var app = angular.module('ExamplePhpChallenge', 
-['ngRoute'], 
+['ngRoute', 'ui.bootstrap'], 
 function() {
 });
 app.config(function($routeProvider) {
@@ -11,6 +11,10 @@ app.config(function($routeProvider) {
     .when('/commits', {
       controller: 'CommitsController',
       templateUrl: 'views/commits.html'
+    })
+    .when('/flush', {
+      controller: 'FlushController',
+      templateUrl: 'views/flush.html'
     })
     .otherwise({
       redirectTo: '/'
