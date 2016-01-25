@@ -1,3 +1,17 @@
-<div>
-  {{ commits }}
+<div class="container">
+  <h3>Inventory Listing</h3>
+  <table id="ajaxtable" class="table table-hover table-striped">
+  	<thead>
+    	<tr>
+    	  <th>Hash</th>
+        <th>Author</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="commit in commits">
+        <td>{{ commit.hash }}</td>
+        <td>{{ commit.author.login }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
