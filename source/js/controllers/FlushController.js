@@ -11,6 +11,11 @@ function($scope, CommitsService) {
       type: 'success',
       message: 'Database flushed!'
     };
+  }, function(error){
+    $scope.flushMessage = {
+      type: 'danger',
+      message: 'Could not flush the database!'
+    };
   });
   
 }]);
