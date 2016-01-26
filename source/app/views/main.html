@@ -1,0 +1,17 @@
+<app-nav-menu></app-nav-menu>
+
+<div id="main">
+
+
+
+
+    <div class="row" ng-repeat="repo in repos">
+        <div>
+            <div>{{repo.name}}</div>
+            <div ng-repeat="item in repo.data" ng-class="checkSha(item.sha) ? 'makeBlue': '' " >{{item.sha}}</div>
+        </div>
+    </div>
+
+
+
+</div>

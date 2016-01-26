@@ -1,0 +1,55 @@
+$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+// bower:scss
+@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+// endbower
+
+
+
+#main, #tidbits {
+  .row {
+    margin: inherit;
+    padding: 0 10px;
+    &:first-of-type {
+      border-top: black 2px solid;
+    }
+    border-bottom: black 2px solid;
+
+    > div > div:first-of-type {
+      font-weight: bold;
+    }
+
+  }
+
+}
+
+
+#app-nav-menu {
+  height: 50px;
+  font-size: 20px;
+  text-align: center;
+  cursor: pointer;
+  background-color: #cccccc;
+  div {
+    height: 100%;
+    padding-top:10px;
+    display: inline-block;
+    width: 50%;
+    &:hover {
+      background-color: #999999;
+    }
+  }
+}
+
+#tidbits{
+  padding: 0 10px;
+  max-width: 1024px;
+  > p {
+    text-align: justify;
+    padding: 0 100px;
+
+  }
+}
+
+.makeBlue {
+  background-color: #E6F1F6;
+}
