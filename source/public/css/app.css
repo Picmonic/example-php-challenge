@@ -4600,4 +4600,17 @@ a.bg-danger:focus, a.bg-danger:hover {
 
 /** App Styles **/
 
+.home-container {
+  margin-top: 15px; }
+  .home-container .jumbotron {
+    padding: 1em 1em 0 1em; }
+  .home-container #repo-form {
+    display: inline-block;
+    width: 100%; }
+    .home-container #repo-form label {
+      font-weight: bold; }
+
+.m-t {
+  margin-top: 1.95em; }
+
 /*# sourceMappingURL=app.css.map */

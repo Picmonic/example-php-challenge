@@ -11,7 +11,13 @@ var elixir = require('laravel-elixir');
  |
  */
 
+ var sass_paths = [
+ 	'./resources/assets/sass/*.scss',
+ 	'./resources/assets/components/**/*.scss'
+ ];
+
 elixir(function(mix) {
-    mix.sass(['main.scss','../components/**/*.scss'], 'public/css/app.css');
+    mix.sass(sass_paths, 'public/css/app.css');
     mix.browserify(['main.jsx'], 'public/js/app.js');
+    elixir.Task.find('sass').watch(sass_paths);
 });

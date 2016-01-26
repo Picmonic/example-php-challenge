@@ -11,7 +11,9 @@
 |
 */
 
-Route::controller('/', 'StaticController');
+Route::controller('/api', 'APIController');
+Route::get('{anything}', ['uses' => 'StaticController@getIndex'])
+	->where(['anything' => '.*']);
 
 /*
 |--------------------------------------------------------------------------

@@ -1,0 +1,20 @@
+.home-container {
+	margin-top: 15px;
+
+	.jumbotron {
+		padding: 1em 1em 0 1em;
+	}
+
+	#repo-form {
+		display: inline-block;
+		width: 100%;
+		
+		label {
+			font-weight: bold;
+		}
+	}
+}
+
+.m-t {
+	margin-top: 1.95em;
+}

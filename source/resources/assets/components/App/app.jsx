@@ -8,7 +8,7 @@ import NavLink from '../NavBar/nav-link.jsx';
 class App extends React.Component {
 	render () {
 		return (
-			<div className="app-container">
+			<div className="app-container container">
 				<NavBar title="Example PHP Challenge">
 					<NavLink url="/">Home</NavLink>
 				</NavBar>
