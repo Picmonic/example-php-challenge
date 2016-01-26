@@ -10,7 +10,7 @@ First  you will need to install node.js , ruby, compass, grunt, and bower
 
 ### Install node
 
-Go to the node website and get the version for your machine [here](https://nodejs.org/en/download/). make sure to add the npm dir to your pat var
+Go to the node website and get the version for your machine [here](https://nodejs.org/en/download/). make sure to add the npm dir to your path var.
 
 
 
@@ -38,5 +38,7 @@ type *npm install -g bower* in a cmd window.
 
 Open a cmd window and navigate to the project folder for this project and run
 
-*npm install* then *bower install*
+*npm install* 
+then 
+*bower install*
 
