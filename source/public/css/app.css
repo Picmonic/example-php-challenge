@@ -4599,6 +4599,8 @@ a.bg-danger:focus, a.bg-danger:hover {
     display: none !important; } }
 
 /** App Styles **/
+.main.container {
+  margin-top: 15px; }
 
 .home-container {
   margin-top: 15px; }
@@ -4612,5 +4614,8 @@ a.bg-danger:focus, a.bg-danger:hover {
 
 .m-t {
   margin-top: 1.95em; }
+
+.list-group-item.commit.colored {
+  background-color: #E6F1F6; }
 
 /*# sourceMappingURL=app.css.map */

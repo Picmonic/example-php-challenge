@@ -39232,7 +39232,7 @@ var App = function (_React$Component) {
 
 exports.default = App;
 
-},{"../NavBar/nav-bar.jsx":235,"../NavBar/nav-link.jsx":236,"react":227}],232:[function(require,module,exports){
+},{"../NavBar/nav-bar.jsx":236,"../NavBar/nav-link.jsx":237,"react":227}],232:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -39279,7 +39279,6 @@ var Error = function (_React$Component) {
 exports.default = Error;
 
 },{"react":227}],233:[function(require,module,exports){
-(function (global){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -39300,29 +39299,97 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var Commit = function (_React$Component) {
+	_inherits(Commit, _React$Component);
+
+	function Commit() {
+		_classCallCheck(this, Commit);
+
+		return _possibleConstructorReturn(this, Object.getPrototypeOf(Commit).apply(this, arguments));
+	}
+
+	_createClass(Commit, [{
+		key: 'render',
+		value: function render() {
+			var className = 'list-group-item commit' + (isNaN(this.props.sha.substr(-1)) ? '' : ' colored');
+			return _react2.default.createElement(
+				'div',
+				{ className: className },
+				this.props.sha,
+				' : ',
+				_react2.default.createElement(
+					'strong',
+					null,
+					this.props.author.login
+				)
+			);
+		}
+	}]);
+
+	return Commit;
+}(_react2.default.Component);
+
+exports.default = Commit;
+
+},{"react":227}],234:[function(require,module,exports){
+(function (global){
+'use strict';
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = require('react-dom');
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _commit = require('./commit.jsx');
+
+var _commit2 = _interopRequireDefault(_commit);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 global.jQuery = require('jquery');
 global.Tether = require('tether');
 require('bootstrap');
+var $ = jQuery;
 
 var Commits = function (_React$Component) {
 	_inherits(Commits, _React$Component);
 
-	function Commits() {
+	function Commits(props) {
 		_classCallCheck(this, Commits);
 
-		return _possibleConstructorReturn(this, Object.getPrototypeOf(Commits).apply(this, arguments));
+		var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Commits).call(this, props));
+
+		_this.state = {
+			repository: props.params.repository.replace(':', '/'),
+			perPage: props.params.perPage,
+			commits: []
+		};
+		return _this;
 	}
 
 	_createClass(Commits, [{
 		key: 'render',
 		value: function render() {
-			var _props$params = this.props.params;
-			var repository = _props$params.repository;
-			var perPage = _props$params.perPage;
-
 			return _react2.default.createElement(
 				'div',
-				{ className: 'container' },
+				{ className: 'main container commits-container' },
 				_react2.default.createElement(
 					'div',
 					{ className: 'col-xs-12' },
@@ -39330,7 +39397,14 @@ var Commits = function (_React$Component) {
 						'h1',
 						null,
 						'Commit Overview for ',
-						repository
+						this.state.repository
+					),
+					_react2.default.createElement(
+						'div',
+						{ id: 'commits', className: 'list-group' },
+						this.state.commits.map(function (commit) {
+							return _react2.default.createElement(_commit2.default, _extends({ key: commit.sha }, commit));
+						})
 					)
 				)
 			);
@@ -39338,7 +39412,37 @@ var Commits = function (_React$Component) {
 	}, {
 		key: 'componentDidMount',
 		value: function componentDidMount() {
-			// Hit the API
+			var _this2 = this;
+
+			var parts = this.state.repository.split('/');
+			var user = parts[0];
+			var repo = parts[1];
+			// Hit the localized PHP API
+			jQuery.post({
+				url: '/api/commits',
+				data: {
+					user: user,
+					repository: repo,
+					perPage: this.perPage,
+					page: 1
+				},
+				success: function (res) {
+					_this2.setState({
+						commits: res
+					});
+				}.bind(this),
+				dataType: 'json'
+			});
+
+			/* If we didn't need to save to the database we could just:
+   jQuery.get({
+   	url: 'https://api.github.com/repos/' + repo + '/commits',
+   	success: (res) => {
+   		console.log(res);
+   	},
+   	dataType: 'json'
+   });
+   */
 		}
 	}]);
 
@@ -39348,7 +39452,7 @@ var Commits = function (_React$Component) {
 exports.default = Commits;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"bootstrap":1,"jquery":62,"react":227,"tether":229}],234:[function(require,module,exports){
+},{"./commit.jsx":233,"bootstrap":1,"jquery":62,"react":227,"react-dom":64,"tether":229}],235:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -39478,7 +39582,7 @@ var Home = function (_React$Component) {
 
 exports.default = Home;
 
-},{"../App/error.jsx":232,"react":227}],235:[function(require,module,exports){
+},{"../App/error.jsx":232,"react":227}],236:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -39533,7 +39637,7 @@ var NavBar = function (_React$Component) {
 
 exports.default = NavBar;
 
-},{"react":227}],236:[function(require,module,exports){
+},{"react":227}],237:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -39583,7 +39687,7 @@ var NavLink = function (_React$Component) {
 
 exports.default = NavLink;
 
-},{"react":227}],237:[function(require,module,exports){
+},{"react":227}],238:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -39638,7 +39742,7 @@ var NoMatch = function (_React$Component) {
 
 exports.default = NoMatch;
 
-},{"react":227}],238:[function(require,module,exports){
+},{"react":227}],239:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -39689,7 +39793,7 @@ var Test = function (_React$Component) {
 
 exports.default = Test;
 
-},{"react":227}],239:[function(require,module,exports){
+},{"react":227}],240:[function(require,module,exports){
 'use strict';
 
 var _react = require('react');
@@ -39736,6 +39840,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 	)
 ), document.getElementById('app'));
 
-},{"../components/App/app.jsx":231,"../components/Commits/commits.jsx":233,"../components/Home/home.jsx":234,"../components/NoMatch/no-match.jsx":237,"../components/Test/test.jsx":238,"react":227,"react-dom":64,"react-router":92}]},{},[239]);
+},{"../components/App/app.jsx":231,"../components/Commits/commits.jsx":234,"../components/Home/home.jsx":235,"../components/NoMatch/no-match.jsx":238,"../components/Test/test.jsx":239,"react":227,"react-dom":64,"react-router":92}]},{},[240]);
 
 //# sourceMappingURL=app.js.map

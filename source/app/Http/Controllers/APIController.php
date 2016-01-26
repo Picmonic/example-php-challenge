@@ -14,7 +14,7 @@ class APIController extends Controller
 	/**
 	 * Display the commits of a given repository
 	 */
-	public function getCommits(Request $request) {
+	public function anyCommits(Request $request) {
 		// Repository input
 		$user = $request->get('user', 'nodejs');
 		$repository = $request->get('repository', 'node');
