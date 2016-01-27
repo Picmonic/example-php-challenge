@@ -1,0 +1,5 @@
+/source/vendor
+/source/node_modules
+/source/.env
+/source/storage/github/*
+*~
