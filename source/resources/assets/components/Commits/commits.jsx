@@ -15,7 +15,7 @@ class Commits extends React.Component {
 	constructor(props) {
 		super(props);
 		var repo = props.params.repository.split(':');
-		this.state = { 
+		this.state = {
 			user: repo[0],
 			repository: repo[1],
 			page: props.params.page,
@@ -56,7 +56,10 @@ class Commits extends React.Component {
 				<div className="row">
 					<div className="col-xs-12">
 						<h1>Commit Overview for {this.state.user} / {this.state.repository}</h1>
-						<h4>Page {this.state.page} of {this.state.pageCount}</h4>
+						<div className="subheader">
+							<h4 className="inline-block m-r-f">Page {this.state.page} of {this.state.pageCount}</h4>
+							<span className="label label-info label-xs">{this.state.perPage} per page</span>
+						</div>
 						{errorMessage}
 						<div id="commits" className="list-group">
 							{this.state.commits.map((commit) => {

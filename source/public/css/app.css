@@ -4603,6 +4603,15 @@ a.bg-danger:focus, a.bg-danger:hover {
   margin-top: 1rem;
   margin-bottom: 1rem; }
 
+.m-r {
+  margin-right: 10px; }
+
+.m-r-f {
+  margin-right: 40px; }
+
+.inline-block {
+  display: inline-block; }
+
 .list-group-item.commit.colored {
   background-color: #E6F1F6; }
 

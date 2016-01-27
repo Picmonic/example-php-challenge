@@ -39469,12 +39469,22 @@ var Commits = function (_React$Component) {
 							this.state.repository
 						),
 						_react2.default.createElement(
-							'h4',
-							null,
-							'Page ',
-							this.state.page,
-							' of ',
-							this.state.pageCount
+							'div',
+							{ className: 'subheader' },
+							_react2.default.createElement(
+								'h4',
+								{ className: 'inline-block m-r-f' },
+								'Page ',
+								this.state.page,
+								' of ',
+								this.state.pageCount
+							),
+							_react2.default.createElement(
+								'span',
+								{ className: 'label label-info label-xs' },
+								this.state.perPage,
+								' per page'
+							)
 						),
 						errorMessage,
 						_react2.default.createElement(
@@ -39949,7 +39959,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 		_reactRouter.Route,
 		{ path: '/', component: _app2.default },
 		_react2.default.createElement(_reactRouter.IndexRoute, { component: _home2.default }),
-		_react2.default.createElement(_reactRouter.Route, { path: 'commits/:repository/:page/:perpage', component: _commits2.default }),
+		_react2.default.createElement(_reactRouter.Route, { path: 'commits/:repository/:page/:perPage', component: _commits2.default }),
 		_react2.default.createElement(_reactRouter.Route, { path: 'test', component: _test2.default }),
 		_react2.default.createElement(_reactRouter.Route, { path: '*', component: _noMatch2.default })
 	)
