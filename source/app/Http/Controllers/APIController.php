@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use GitHub;
 use Cache;
+use App\Repository;
 
 class APIController extends Controller
 {
@@ -25,13 +26,18 @@ class APIController extends Controller
 		if($perPage > 100) $perPage = 100;
 
 		// Cache key
-		$key = sprintf('repository-commits-%s-%s', $user, $repository);
+		$key = sprintf('repository-commits-%s-%s-%s-%s', $user, $repository, $page, $perPage);
 
 		// Fetch from or generate cache and return
-		$commits = Cache::remember($key, 300, function () use($page, $perPage) {
-			$commits = GitHub::repo()->commits()->all('nodejs', 'node', []);
-			return collect($commits)->forPage($page, $perPage);
+		$commits = Cache::remember($key, 300, function() use ($user, $repository, $page, $perPage) {
+			$repo = Repository::firstOrCreate([
+				'user' => $user,
+				'repository' => $repository
+			]);
+			return $repo->fetchCommits($perPage);
 		});
+
+		// Return result
 		return $commits;
 	}
 }

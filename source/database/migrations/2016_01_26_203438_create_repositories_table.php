@@ -12,11 +12,13 @@ class CreateRepositoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('repositories', (Blueprint $table) => {
+        Schema::create('repositories', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('path')->unique();
+            $table->string('user');
+            $table->string('repository');
             $table->timestamp('fetched_at');
             $table->timestamps();
+            $table->unique(['repository','user']);
         });
     }
 

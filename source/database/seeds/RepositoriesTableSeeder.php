@@ -13,11 +13,12 @@ class RepositoriesTableSeeder extends Seeder
      */
     public function run()
     {
-    	DB::table('repositories')->truncate();
+    	DB::table('repositories')->delete();
     	
     	// Create the NodeJS repository
-    	DB::table('repositories')->create([
-			'path' => 'nodejs/node'
+    	DB::table('repositories')->insert([
+			'user' => 'nodejs',
+            'repository' => 'node'
 		]);
     }
 }

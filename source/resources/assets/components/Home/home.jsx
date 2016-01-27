@@ -18,12 +18,12 @@ class Home extends React.Component {
 								<fieldset className="form-group col-xs-6">
 									<label for="name">Repository Name</label>
 									<input type="text" className="form-control" 
-										name="name" id="repo-name" value="nodejs/node" />
+										name="name" id="repo-name" defaultValue="nodejs/node" />
 								</fieldset>
 								<fieldset className="form-group col-xs-3">
 									<label for="perPage"># of Commits to Display</label>
 									<input type="number" className="form-control" 
-										name="perPage" id="repo-perpage" value="20" />
+										name="perPage" id="repo-perpage" defaultValue="20" />
 								</fieldset>
 								<div className="col-xs-3">
 									<button type="submit" className="btn btn-primary btn-block m-t">
@@ -47,7 +47,7 @@ class Home extends React.Component {
 				name = name.replace('/', ':');
 				if(perPage < 20) perPage = 20;
 				if(perPage > 100) perPage = 100;
-				var url = '/commits/' + name + '/' + perPage;
+				var url = '/commits/' + name + '/1/' + perPage;
 				window.location.href = url;
 			} else {
 				form.prependChild(<Error>Invalid repository or commit count provided!</Error>);

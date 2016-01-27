@@ -39215,7 +39215,12 @@ var App = function (_React$Component) {
 					_react2.default.createElement(
 						_navLink2.default,
 						{ url: '/' },
-						'Home'
+						'Search'
+					),
+					_react2.default.createElement(
+						_navLink2.default,
+						{ url: '/repos' },
+						'Repositories'
 					)
 				),
 				_react2.default.createElement(
@@ -39267,7 +39272,7 @@ var Error = function (_React$Component) {
 		value: function render() {
 			return _react2.default.createElement(
 				'div',
-				{ 'class': 'alert alert-error' },
+				{ className: 'alert alert-danger' },
 				this.props.children
 			);
 		}
@@ -39313,14 +39318,36 @@ var Commit = function (_React$Component) {
 		value: function render() {
 			var className = 'list-group-item commit' + (isNaN(this.props.sha.substr(-1)) ? '' : ' colored');
 			return _react2.default.createElement(
-				'div',
-				{ className: className },
-				this.props.sha,
-				' : ',
+				'a',
+				{ href: this.props.url, target: '_blank', className: className },
 				_react2.default.createElement(
-					'strong',
-					null,
-					this.props.author.login
+					'div',
+					{ className: 'row' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'col-xs-5' },
+						_react2.default.createElement(
+							'span',
+							{ className: 'label label-default label-xs' },
+							this.props.sha
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'col-xs-7' },
+						'Committed by ',
+						_react2.default.createElement(
+							'strong',
+							null,
+							this.props.committer
+						),
+						', Authored by ',
+						_react2.default.createElement(
+							'strong',
+							null,
+							this.props.author
+						)
+					)
 				)
 			);
 		}
@@ -39355,6 +39382,10 @@ var _commit = require('./commit.jsx');
 
 var _commit2 = _interopRequireDefault(_commit);
 
+var _error = require('../App/error.jsx');
+
+var _error2 = _interopRequireDefault(_error);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -39376,9 +39407,13 @@ var Commits = function (_React$Component) {
 
 		var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Commits).call(this, props));
 
+		var repo = props.params.repository.split(':');
 		_this.state = {
-			repository: props.params.repository.replace(':', '/'),
+			user: repo[0],
+			repository: repo[1],
+			page: props.params.page,
 			perPage: props.params.perPage,
+			pageCount: 1,
 			commits: []
 		};
 		return _this;
@@ -39387,24 +39422,91 @@ var Commits = function (_React$Component) {
 	_createClass(Commits, [{
 		key: 'render',
 		value: function render() {
+			var prevBtnClass = 'btn btn-block btn-warning';
+			var nextBtnClass = 'btn btn-block btn-primary';
+
+			var prevUrl = '/commits/' + this.state.user + ':' + this.state.repository + '/';
+			var nextUrl = '/commits/' + this.state.user + ':' + this.state.repository + '/';
+			if (this.state.page <= 1) {
+				prevBtnClass += ' hidden';
+				prevUrl += 1;
+			} else {
+				prevUrl += this.state.page - 1;
+			}
+			if (this.state.pageCount <= this.state.page) {
+				nextBtnClass += ' hidden';
+				nextUrl += 1;
+			} else {
+				nextUrl += this.state.page + 1;
+			}
+			prevUrl += '/' + this.state.perPage;
+			nextUrl += '/' + this.state.perPage;
+
+			var errorMessage = '';
+			if (this.state.error) {
+				errorMessage = _react2.default.createElement(
+					_error2.default,
+					null,
+					this.state.error
+				);
+			}
+
 			return _react2.default.createElement(
 				'div',
 				{ className: 'main container commits-container' },
 				_react2.default.createElement(
 					'div',
-					{ className: 'col-xs-12' },
+					{ className: 'row' },
 					_react2.default.createElement(
-						'h1',
-						null,
-						'Commit Overview for ',
-						this.state.repository
+						'div',
+						{ className: 'col-xs-12' },
+						_react2.default.createElement(
+							'h1',
+							null,
+							'Commit Overview for ',
+							this.state.user,
+							' / ',
+							this.state.repository
+						),
+						_react2.default.createElement(
+							'h4',
+							null,
+							'Page ',
+							this.state.page,
+							' of ',
+							this.state.pageCount
+						),
+						errorMessage,
+						_react2.default.createElement(
+							'div',
+							{ id: 'commits', className: 'list-group' },
+							this.state.commits.map(function (commit) {
+								return _react2.default.createElement(_commit2.default, _extends({ key: commit.sha }, commit));
+							})
+						),
+						_react2.default.createElement('hr', null)
+					)
+				),
+				_react2.default.createElement(
+					'div',
+					{ className: 'row' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'col-xs-6' },
+						_react2.default.createElement(
+							'a',
+							{ href: prevUrl, id: 'previous', className: prevBtnClass },
+							'Previous Page'
+						)
 					),
 					_react2.default.createElement(
 						'div',
-						{ id: 'commits', className: 'list-group' },
-						this.state.commits.map(function (commit) {
-							return _react2.default.createElement(_commit2.default, _extends({ key: commit.sha }, commit));
-						})
+						{ className: 'col-xs-6' },
+						_react2.default.createElement(
+							'a',
+							{ href: nextUrl, id: 'next', className: nextBtnClass },
+							'Next Page'
+						)
 					)
 				)
 			);
@@ -39418,19 +39520,32 @@ var Commits = function (_React$Component) {
 			var user = parts[0];
 			var repo = parts[1];
 			// Hit the localized PHP API
+			var postData = {
+				user: this.state.user,
+				repository: this.state.repository,
+				perPage: this.state.perPage,
+				page: this.state.page
+			};
 			jQuery.post({
 				url: '/api/commits',
-				data: {
-					user: user,
-					repository: repo,
-					perPage: this.perPage,
-					page: 1
-				},
+				data: postData,
 				success: function (res) {
 					_this2.setState({
-						commits: res
+						commits: res.data,
+						page: res.current_page,
+						perPage: res.per_page,
+						pageCount: res.last_page
 					});
 				}.bind(this),
+				error: function error(err) {
+					console.log(err);
+					_this2.setState({
+						commits: [],
+						error: 'Unable to query repository. Perhaps it is private?',
+						page: 1,
+						pageCount: 1
+					});
+				},
 				dataType: 'json'
 			});
 
@@ -39452,7 +39567,7 @@ var Commits = function (_React$Component) {
 exports.default = Commits;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./commit.jsx":233,"bootstrap":1,"jquery":62,"react":227,"react-dom":64,"tether":229}],235:[function(require,module,exports){
+},{"../App/error.jsx":232,"./commit.jsx":233,"bootstrap":1,"jquery":62,"react":227,"react-dom":64,"tether":229}],235:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -39524,7 +39639,7 @@ var Home = function (_React$Component) {
 										'Repository Name'
 									),
 									_react2.default.createElement('input', { type: 'text', className: 'form-control',
-										name: 'name', id: 'repo-name', value: 'nodejs/node' })
+										name: 'name', id: 'repo-name', defaultValue: 'nodejs/node' })
 								),
 								_react2.default.createElement(
 									'fieldset',
@@ -39535,7 +39650,7 @@ var Home = function (_React$Component) {
 										'# of Commits to Display'
 									),
 									_react2.default.createElement('input', { type: 'number', className: 'form-control',
-										name: 'perPage', id: 'repo-perpage', value: '20' })
+										name: 'perPage', id: 'repo-perpage', defaultValue: '20' })
 								),
 								_react2.default.createElement(
 									'div',
@@ -39563,7 +39678,7 @@ var Home = function (_React$Component) {
 					name = name.replace('/', ':');
 					if (perPage < 20) perPage = 20;
 					if (perPage > 100) perPage = 100;
-					var url = '/commits/' + name + '/' + perPage;
+					var url = '/commits/' + name + '/1/' + perPage;
 					window.location.href = url;
 				} else {
 					form.prependChild(_react2.default.createElement(
@@ -39834,7 +39949,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 		_reactRouter.Route,
 		{ path: '/', component: _app2.default },
 		_react2.default.createElement(_reactRouter.IndexRoute, { component: _home2.default }),
-		_react2.default.createElement(_reactRouter.Route, { path: 'commits/:repository/:perpage', component: _commits2.default }),
+		_react2.default.createElement(_reactRouter.Route, { path: 'commits/:repository/:page/:perpage', component: _commits2.default }),
 		_react2.default.createElement(_reactRouter.Route, { path: 'test', component: _test2.default }),
 		_react2.default.createElement(_reactRouter.Route, { path: '*', component: _noMatch2.default })
 	)

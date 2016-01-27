@@ -10,7 +10,8 @@ class App extends React.Component {
 		return (
 			<div className="app-container container">
 				<NavBar title="Example PHP Challenge">
-					<NavLink url="/">Home</NavLink>
+					<NavLink url="/">Search</NavLink>
+					<NavLink url="/repos">Repositories</NavLink>
 				</NavBar>
 				<div className="app-inner">
 					{this.props.children}

@@ -15,7 +15,7 @@ render((
 	<Router history={browserHistory}>
 		<Route path="/" component={App}>
 			<IndexRoute component={Home} />
-			<Route path="commits/:repository/:perpage" component={Commits}/>
+			<Route path="commits/:repository/:page/:perpage" component={Commits}/>
 			<Route path="test" component={Test}/>
 			<Route path="*" component={NoMatch}/>
 		</Route>

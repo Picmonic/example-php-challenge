@@ -5,7 +5,7 @@ import React from 'react';
 class Error extends React.Component {
 	render() {
 		return (
-			<div class="alert alert-error">
+			<div className="alert alert-danger">
 				{this.props.children}
 			</div>
 		);

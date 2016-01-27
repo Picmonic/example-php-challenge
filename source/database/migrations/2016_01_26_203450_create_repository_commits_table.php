@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCommitsTable extends Migration
+class CreateRepositoryCommitsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,15 +12,19 @@ class CreateCommitsTable extends Migration
      */
     public function up()
     {
-        Schema::create('repository_commits', (Blueprint $table) => {
+        Schema::create('repository_commits', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('hash');
+            $table->string('sha');
+            $table->string('url');
+            $table->string('committer');
+            $table->string('author');
             $table->integer('repository_id')->unsigned();
-            $table->unique(['hash','repository_id']);
+            $table->unique(['sha','repository_id']);
             $table->timestamps();
 
             // Foreign key index
-            $table->foreign('repository_id')->references('id')->on('repositories')->onDelete('cascade');
+            $table->foreign('repository_id')->references('id')->on('repositories')
+                ->onDelete('cascade');
         });
     }
 
@@ -31,6 +35,6 @@ class CreateCommitsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('repository_commits');
     }
 }
