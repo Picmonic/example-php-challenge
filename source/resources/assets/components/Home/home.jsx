@@ -23,7 +23,7 @@ class Home extends React.Component {
 								<fieldset className="form-group col-xs-3">
 									<label for="perPage"># of Commits to Display</label>
 									<input type="number" className="form-control" 
-										name="perPage" id="repo-perpage" defaultValue="20" />
+										name="perPage" id="repo-perpage" defaultValue="25" />
 								</fieldset>
 								<div className="col-xs-3">
 									<button type="submit" className="btn btn-primary btn-block m-t">

@@ -39660,7 +39660,7 @@ var Home = function (_React$Component) {
 										'# of Commits to Display'
 									),
 									_react2.default.createElement('input', { type: 'number', className: 'form-control',
-										name: 'perPage', id: 'repo-perpage', defaultValue: '20' })
+										name: 'perPage', id: 'repo-perpage', defaultValue: '25' })
 								),
 								_react2.default.createElement(
 									'div',
