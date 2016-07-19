@@ -1,0 +1,57 @@
+.section {
+	margin-top: 2em;
+}
+
+.endsNumber {
+	background-color: #E6F1F6; 
+}
+
+.commit {
+	border: 1px solid #e1dfdf;
+	padding: 15px 10px 15px 10px;
+
+}
+.commit img {
+	height: 50px;
+	margin-right: 1em;
+}
+.commit p {
+	font-size: 1.75rem;
+	display: inline-block;
+
+}
+
+.commit span {
+		margin: 0;
+		position: relative;
+		float: right;
+		top: 10px;
+		font-weight: 600;
+}
+
+
+
+@media only screen and (max-width: 720px) {
+	.commit span {
+    	display: none;
+    }
+    .commit p {
+	  width: initial;
+    }
+
+}
+@media only screen and (max-width: 480px) {
+
+    .commit p {
+    	font-size: 1em;
+	  width: 150px;
+	  white-space: nowrap;
+	  overflow: hidden;
+	  text-overflow: ellipsis;
+	  position: relative;
+	  top: 15px;
+    }
+    .commit img {
+    	height: 40px;
+    }
+}
