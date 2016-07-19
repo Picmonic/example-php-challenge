@@ -13,8 +13,8 @@
                     <!-- if I had more time, would do client side checking to see if sha ends in number -->
                         <div class="commit {{is_numeric(substr( $commit->sha, -1 )) ? 'endsNumber' : ''}}">
                         <img src="{{ $commit->avatar }}">
-                            <span>{{ $commit->sha }}</span>
-                            <p>{{$commit->author }}</p>
+                            <p>{{ $commit->sha }}</p>
+                            <span>{{$commit->author }}</span>
 
                         </div>
                     </a>
@@ -24,4 +24,3 @@
             </div>
         </div>
 @stop
-
