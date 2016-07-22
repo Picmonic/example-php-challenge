@@ -18,6 +18,9 @@
                                         ID
                                     </th>
                                     <th>
+                                        Commit Date
+                                    </th>
+                                    <th>
                                         sha
                                     </th>
                                     <th>
@@ -37,6 +40,9 @@
                                 @endif
                                         <td>
                                             {{ $commit->id }}
+                                        </td>
+                                        <td>
+                                            {{ $commit->date }}
                                         </td>
                                         <td>
                                             {{--show only first 7 of hash--}}

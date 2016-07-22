@@ -39,12 +39,12 @@ class MainController extends Controller
                 $author->name = $commit['commit']['author']['name'];
                 $author->save();
             }
-            if (count($stored_commits->where('sha', $commit['commit']['tree']['sha'])) === 0)
+            if (count($stored_commits->where('sha', $commit['sha'])) === 0)
             {
                 $newcommit = new Commit;
-                $newcommit->sha = $commit['commit']['tree']['sha'];
+                $newcommit->sha = $commit['sha'];
                 $newcommit->author_id = Author::where('login', $commit['author']['login'])->first()->id;
-                $newcommit->date = $commit['commit']['author']['date'];
+                $newcommit->date = $commit['commit']['committer']['date'];
                 $newcommit->message = nl2br($commit['commit']['message']);
                 $newcommit->save();
             }
@@ -54,7 +54,7 @@ class MainController extends Controller
 
     public function commits()
     {
-        $commits = Commit::orderBy('id', 'desc')->take(25)->get();
+        $commits = Commit::orderBy('date', 'desc')->take(25)->get();
         return view('commits', compact('commits'));
     }
 
