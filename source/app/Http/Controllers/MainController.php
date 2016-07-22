@@ -66,7 +66,7 @@ class MainController extends Controller
 
     public function commitsByAuthor($id)
     {
-        $commits = Commit::where('author_id', $id)->orderBy('id', 'desc')->take(25)->get();
+        $commits = Commit::where('author_id', $id)->orderBy('date', 'desc')->take(25)->get();
         return view('commits', compact('commits'));
     }
 }
