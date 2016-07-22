@@ -52,7 +52,15 @@ class MainController extends Controller
         return redirect('/commits');
     }
 
+    public function commits()
     {
-        
+        $commits = Commit::orderBy('id', 'desc')->take(25)->get();
+        return view('commits', compact('commits'));
+    }
+
+    public function commitsByAuthor($id)
+    {
+        $commits = Commit::where('author_id', $id)->orderBy('id', 'desc')->take(25)->get();
+        return view('commits', compact('commits'));
     }
 }
