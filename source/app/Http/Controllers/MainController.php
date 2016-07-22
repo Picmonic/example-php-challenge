@@ -58,6 +58,12 @@ class MainController extends Controller
         return view('commits', compact('commits'));
     }
 
+    public function authors()
+    {
+        $authors = Author::all();
+        return view('authors', compact('authors'));
+    }
+
     public function commitsByAuthor($id)
     {
         $commits = Commit::where('author_id', $id)->orderBy('id', 'desc')->take(25)->get();

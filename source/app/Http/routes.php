@@ -15,4 +15,5 @@ Route::get('/', 'MainController@index');
 Route::get('/pull', 'MainController@pull');
 Route::get('/commits', 'MainController@commits');
 Route::get('/commits/view/{id}', 'MainController@commitsByAuthor');
+Route::get('/authors', 'MainController@authors');
 
