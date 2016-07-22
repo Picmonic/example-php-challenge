@@ -8,7 +8,7 @@
                     <div class="panel-heading">Commits</div>
 
                     <div class="panel-body">
-                        <a href="/pull">Click to pull new data</a>
+                        <p><a href="/pull">Click to pull new data</a></p>
 
                         @if ($commits->count() > 0)
                             <table class="table table-hover">
@@ -30,12 +30,18 @@
                                 </thead>
                                 <tbody>
                                 @foreach ($commits as $commit)
+                                @if (is_numeric(substr($commit->sha, -1)))
+                                    <tr class="challenge-colored">
+                                @else
                                     <tr>
+                                @endif
                                         <td>
                                             {{ $commit->id }}
                                         </td>
                                         <td>
-                                            {{ substr($commit->sha, 0, 7) }}
+                                            {{--show only first 7 of hash--}}
+                                            {{-- substr($commit->sha, 0, 7) --}}
+                                            {{ $commit->sha }}
                                         </td>
                                         <td>
                                             <a href="/commits/view/{{$commit->author_id}}">{{ $commit->author->name }}</a>
@@ -50,7 +56,7 @@
                                 </tbody>
                             </table>
                         @else
-                            No authors stored
+                            <p>No commits stored</p>
                         @endif
                     </div>
                 </div>
