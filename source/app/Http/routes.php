@@ -12,4 +12,5 @@
 */
 
 Route::get('/', 'MainController@index');
+Route::get('/pull', 'MainController@pull');
 
