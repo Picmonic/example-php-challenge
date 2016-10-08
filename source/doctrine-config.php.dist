@@ -1,0 +1,14 @@
+<?php
+return [
+    'metadata' => [
+        'devMode' => true,
+        'paths' => [
+            __DIR__ . '/src/Models/'
+        ],
+        'configCallable' => ['\Doctrine\ORM\Tools\Setup', 'createAnnotationMetadataConfiguration']
+    ],
+    'connection' => [
+        'driver'   => 'pdo_sqlite',
+        'path'   => __DIR__ . '/data/database.sqlite',
+    ]
+];
