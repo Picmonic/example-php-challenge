@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>PHP Example Challenge</title>
+</head>
+<body>
+<h1>Top 25 Commits</h1>
+<?php if (isset($commits) && ! empty($commits)) : ?>
+
+    <?php foreach($commits as $commit) { ?>
+
+    <?php } ?>
+
+<?php else: ?>
+    <p>No commits were found</p>
+<?php endif; ?>
+</body>
+</html>
