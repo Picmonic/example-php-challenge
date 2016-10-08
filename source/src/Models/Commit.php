@@ -5,19 +5,30 @@ namespace JeremyGiberson\Models;
 
 /**
  * Class Commit
- * @Entity
+ * @Entity(repositoryClass="JeremyGiberson\Repositories\CommitRepository")
+ * @Table(name="commits")
  */
 class Commit
 {
-    /** @var  string */
+    /**
+     * @Id @Column(type="string", length=40)
+     * @var  string */
     private $sha;
-    /** @var  string */
+    /**
+     * @Column(type="string", length=120)
+     * @var  string */
     private $author;
-    /** @var  \DateTime */
+    /**
+     * @Column(type="datetime")
+     * @var  \DateTime */
     private $authored_date;
-    /** @var  string */
+    /**
+     * @Column(type="string", length=120)
+     * @var  string */
     private $committer;
-    /** @var  \DateTime */
+    /**
+     * @Column(type="datetime")
+     * @var  \DateTime */
     private $committed_date;
 
     public static function factory($sha, $author, \DateTime $author_date, $committer, \DateTime $committer_date) {

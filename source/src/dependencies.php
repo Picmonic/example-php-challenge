@@ -31,9 +31,30 @@ $container['github_commits_service'] = function (Container $c) {
     return new \JeremyGiberson\Services\GithubRepoCommitsService('nodejs', 'node', 'master', $api, $paginator);
 };
 
+// entity manager
+$container['em'] = function (Container $c) {
+    $configPath = file_exists(__DIR__ . '/../doctrine-config.php') ? __DIR__ . '/../doctrine-config.php' : __DIR__ . '/../doctrine-config.php.dist';
+    $config = require $configPath;
+    $metaConfig = call_user_func($config['metadata']['configCallable'], $config['metadata']['paths'], $config['metadata']['devMode']);
+    return \Doctrine\ORM\EntityManager::create($config['connection'], $metaConfig);
+};
+
+// repositories
+$container['commits_repository'] = function (Container $c) {
+    /** @var \Doctrine\ORM\EntityManager $em */
+    $em = $c->get('em');
+    return $em->getRepository(\JeremyGiberson\Models\Commit::class);
+};
+
 // controllers
 $container[\JeremyGiberson\Controllers\MvcTopCommits::class] = function (Container $c) {
     $renderer = $c->get('renderer');
-    $service = $c->get('github_commits_service');
+    $service = $c->get('commits_repository');
     return new \JeremyGiberson\Controllers\MvcTopCommits($renderer, $service);
+};
+
+$container[\JeremyGiberson\Controllers\ClearCache::class] = function (Container $c) {
+    $service = $c->get('github_commits_service');
+    $repo = $c->get('commits_repository');
+    return new \JeremyGiberson\Controllers\ClearCache($repo, $service);
 };
