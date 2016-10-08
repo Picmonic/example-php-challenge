@@ -1,4 +1,7 @@
 <?php
+$dotenv = new Dotenv\Dotenv(__DIR__ . '/..');
+$dotenv->load();
+
 return [
     'settings' => [
         'displayErrorDetails' => true, // set to false in production

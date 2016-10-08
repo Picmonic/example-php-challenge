@@ -232,6 +232,8 @@ php:
             - cli
             - intl
             - xml
+            - curl
+            - mcrypt
         pear: {  }
         pecl: {  }
     ini:

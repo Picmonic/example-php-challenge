@@ -7,10 +7,29 @@
 <body>
 <h1>Top 25 Commits</h1>
 <?php if (isset($commits) && ! empty($commits)) : ?>
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Author</td>
+                <td>Date Authored</td>
+                <td>Committer</td>
+                <td>Date Committed</td>
+                <td>Hash</td>
+            </tr>
+        </thead>
+        <tbody>
+        <?php foreach($commits as $commit) { ?>
+            <tr>
+                <td><?=$commit->getAuthor()?></td>
+                <td><?=$commit->getAuthoredDate()->format('Y-m-d H:i:s')?></td>
+                <td><?=$commit->getCommitter()?></td>
+                <td><?=$commit->getCommittedDate()->format('Y-m-d H:i:s')?></td>
+                <td><?=$commit->getSha()?></td>
+            </tr>
+        <?php } ?>
+        </tbody>
+    </table>
 
-    <?php foreach($commits as $commit) { ?>
-
-    <?php } ?>
 
 <?php else: ?>
     <p>No commits were found</p>

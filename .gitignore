@@ -2,5 +2,6 @@ puphpet/config-custom.yaml
 .idea/
 source/vendor/
 source/data/
+source/.env
 html/
 source/bower_components/
