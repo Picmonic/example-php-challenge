@@ -3,36 +3,60 @@
 <head>
     <meta charset="utf-8"/>
     <title>PHP Example Challenge</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style type="text/css">
+        tr.altrow td {
+            background-color: #E6F1F6;
+        }
+    </style>
 </head>
 <body>
-<h1>Top 25 Commits</h1>
-<?php if (isset($commits) && ! empty($commits)) : ?>
-    <table class="table">
-        <thead>
-            <tr>
-                <td>Author</td>
-                <td>Date Authored</td>
-                <td>Committer</td>
-                <td>Date Committed</td>
-                <td>Hash</td>
-            </tr>
-        </thead>
-        <tbody>
-        <?php foreach($commits as $commit) { ?>
-            <tr>
-                <td><?=$commit->getAuthor()?></td>
-                <td><?=$commit->getAuthoredDate()->format('Y-m-d H:i:s')?></td>
-                <td><?=$commit->getCommitter()?></td>
-                <td><?=$commit->getCommittedDate()->format('Y-m-d H:i:s')?></td>
-                <td><?=$commit->getSha()?></td>
-            </tr>
-        <?php } ?>
-        </tbody>
-    </table>
+    <div class="container">
+        <div class="text-center col-lg-4 col-lg-offset-4">
+            <h1>Top 25 Commits</h1>
+            <a href="/refresh">Refresh</a>
+        </div>
+
+        <?php use JeremyGiberson\Models\Commit;
+
+        if (isset($commits) && ! empty($commits)) :
+            // sort results by author name
+            usort($commits, function(Commit $a, Commit $b){
+                return strcmp($a->getAuthor(), $b->getAuthor());
+            });
+
+            ?>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Author</th>
+                        <th>Date Authored</th>
+                        <th>Committer</th>
+                        <th>Date Committed</th>
+                        <th>Hash</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php foreach($commits as $commit) { ?>
+                    <tr class="<?= is_numeric(substr($commit->getSha(), -1, 1)) ? 'altrow': ''?>">
+                        <td><?=$commit->getAuthor()?></td>
+                        <td><?=$commit->getAuthoredDate()->format('Y-m-d H:i:s')?></td>
+                        <td><?=$commit->getCommitter()?></td>
+                        <td><?=$commit->getCommittedDate()->format('Y-m-d H:i:s')?></td>
+                        <td><?=$commit->getSha()?></td>
+                    </tr>
+                <?php } ?>
+                </tbody>
+            </table>
 
 
-<?php else: ?>
-    <p>No commits were found</p>
-<?php endif; ?>
+        <?php else: ?>
+            <p>No commits were found</p>
+        <?php endif; ?>
+    </div>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script   src="http://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+
 </body>
 </html>

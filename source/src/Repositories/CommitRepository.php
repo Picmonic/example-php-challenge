@@ -28,6 +28,6 @@ class CommitRepository extends EntityRepository implements CommitRepositoryInter
      */
     public function getLatestCommits($max = 25)
     {
-        return $this->findBy([], ['committed_date' => 'ASC', 'author' => 'ASC']);
+        return $this->findBy([], ['committed_date' => 'DESC']);
     }
 }
