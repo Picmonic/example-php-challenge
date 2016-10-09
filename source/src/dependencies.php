@@ -23,7 +23,9 @@ $container['logger'] = function (Container $c) {
 // github commits service
 $container['github_commits_service'] = function (Container $c) {
     $client = new \Github\Client();
-    $client->authenticate(getenv('GITHUB_TOKEN'), null, \Github\Client::AUTH_URL_TOKEN);
+    if(getenv('GITHUB_TOKEN')){
+        $client->authenticate(getenv('GITHUB_TOKEN'), null, \Github\Client::AUTH_URL_TOKEN);
+    }
 
     $api = $client->api('repo')->commits();
     $paginator  = new \Github\ResultPager( $client );

@@ -1,4 +1,5 @@
 puphpet/config-custom.yaml
+.vagrant/
 .idea/
 source/vendor/
 source/data/

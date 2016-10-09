@@ -234,6 +234,7 @@ php:
             - xml
             - curl
             - mcrypt
+            - mbstring
         pear: {  }
         pecl: {  }
     ini:
