@@ -1,0 +1,8 @@
+puphpet/config-custom.yaml
+.vagrant/
+.idea/
+source/vendor/
+source/data/
+source/.env
+html/
+source/bower_components/
