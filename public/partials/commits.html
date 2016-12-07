@@ -1,0 +1,15 @@
+  <div ng-repeat="commit in commits">
+    <div class="media">
+      <div class="media-left">
+        <a href="#/commits/{{commit.login}}">
+          <img class="media-object" src="http://placekitten.com/g/32/32">
+        </a>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading">
+            <a href="#/commits/{{commit.login}}">Committed by {{commit.login}}</a>
+        </h4>
+        {{commit.message}}
+      </div>
+    </div>      
+  </div>
