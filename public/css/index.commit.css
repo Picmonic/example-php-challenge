@@ -1,0 +1,19 @@
+.commitImage {
+    border-radius: 50%;
+    border: 2px solid lightblue;
+}
+
+.minWidth500 {
+    min-width: 300px;
+}
+.boxDecorator {
+    border: 5px double lightgray;
+    box-shadow: 2px 3px 0 rgba(0,0,0,0.25);
+}
+.colorBlack {
+    color: #000000;
+    font-weight: 700;
+}
+.lightBlue {
+    background-color: #E6F1F6;
+}
