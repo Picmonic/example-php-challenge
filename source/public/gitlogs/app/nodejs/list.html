@@ -1,0 +1,78 @@
+<style>
+    tr.sha-numeric-end {
+        background-color: #E6F1F6;
+    }
+</style>
+
+<h1>NodeJS :: Recent Commits</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                <a href="#" ng-click="vm.orderByField='message'; vm.reverseSort = !vm.reverseSort">
+                    Commit Message
+                    <span ng-if="vm.orderByField==='message'">
+                        <span ng-show="!vm.reverseSort" class="glyphicon glyphicon-collapse-down"></span>
+                        <span ng-show="vm.reverseSort" class="glyphicon glyphicon-collapse-up"></span>
+                    </span>
+                </a>
+            </th>
+            <th>
+                <a href="#" ng-click="vm.orderByField='author.name'; vm.reverseSort = !vm.reverseSort">
+                    Author
+                    <span ng-if="vm.orderByField==='author.name'">
+                        <span ng-show="!vm.reverseSort" class="glyphicon glyphicon-collapse-down"></span>
+                        <span ng-show="vm.reverseSort" class="glyphicon glyphicon-collapse-up"></span>
+                    </span>
+                </a>
+            </th>
+            <th>
+                <a href="#" ng-click="vm.orderByField='authored_at'; vm.reverseSort = !vm.reverseSort">
+                    Authored On
+                    <span ng-if="vm.orderByField==='authored_at'">
+                        <span ng-show="!vm.reverseSort" class="glyphicon glyphicon-collapse-down"></span>
+                        <span ng-show="vm.reverseSort" class="glyphicon glyphicon-collapse-up"></span>
+                    </span>
+                </a>
+            </th>
+            <th>
+                <a href="#" ng-click="vm.orderByField='committer.name'; vm.reverseSort = !vm.reverseSort">
+                    Commmitter
+                    <span ng-if="vm.orderByField==='committer.name'">
+                        <span ng-show="!vm.reverseSort" class="glyphicon glyphicon-collapse-down"></span>
+                        <span ng-show="vm.reverseSort" class="glyphicon glyphicon-collapse-up"></span>
+                    </span>
+                </a>
+            </th>
+            <th>
+                <a href="#" ng-click="vm.orderByField='committed_at'; vm.reverseSort = !vm.reverseSort">
+                    Committed On
+                    <span ng-if="vm.orderByField==='committed_at'">
+                        <span ng-show="!vm.reverseSort" class="glyphicon glyphicon-collapse-down"></span>
+                        <span ng-show="vm.reverseSort" class="glyphicon glyphicon-collapse-up"></span>
+                    </span>
+                </a>
+            </th>
+            <th>
+                <a href="#" ng-click="vm.orderByField='sha'; vm.reverseSort = !vm.reverseSort">
+                    SHA
+                    <span ng-if="vm.orderByField==='sha'">
+                        <span ng-show="!vm.reverseSort" class="glyphicon glyphicon-collapse-down"></span>
+                        <span ng-show="vm.reverseSort" class="glyphicon glyphicon-collapse-up"></span>
+                    </span>
+                </a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="commit in vm.commits | orderBy:vm.orderByField:vm.reverseSort" ng-class="{'sha-numeric-end':vm.lastCharNumeric(commit.sha)}">
+            <td>{{commit.message.split('\n')[0]}}</td>
+            <td>{{commit.author.name}}</td>
+            <td>{{commit.authored_at | date:'medium'}}</td>
+            <td>{{commit.committer.name}}</td>
+            <td>{{commit.committed_at | date:'medium'}}</td>
+            <td>{{commit.sha}}</td>
+        </tr>
+    </tbody>
+</table>

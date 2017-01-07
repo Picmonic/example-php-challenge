@@ -1,0 +1,23 @@
+{
+  "name": "source",
+  "description": "",
+  "main": "",
+  "authors": [
+    "travisalger <travis@thetravisty.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/travisalger/example-php-challenge",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-bootstrap": "^2.4.0",
+    "angular-ui-router": "^0.3.2",
+    "angular-moment": "^1.0.1",
+    "bootstrap": "^3.3.7"
+  }
+}
