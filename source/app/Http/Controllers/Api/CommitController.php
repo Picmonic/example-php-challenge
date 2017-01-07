@@ -7,5 +7,7 @@ use App\Http\Controllers\Controller;
 
 class CommitController extends Controller
 {
-    //
+    public function index(){
+        return [];
+    }
 }

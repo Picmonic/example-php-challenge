@@ -5,3 +5,4 @@ vendor
 Homestead.json
 Homestead.yaml
 .env
+/public/bower_components/
