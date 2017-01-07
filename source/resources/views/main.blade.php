@@ -16,13 +16,14 @@
 
     <script src="/gitlogs/app/app.module.js"></script>
     <script src="/gitlogs/app/nodejs/nodejs-list.controller.js"></script>
+    <script src="/gitlogs/app/services/git-commits.service.js"></script>
 
     <base href="/">
 
 </head>
 <body ng-app="gitlogs">
     <div ui-view="header"></div>
-    <div class="main-wrapper container" ui-view="container"></div>
+    <div class="main-wrapper" ui-view="container"></div>
     <div ui-view="footer"></div>
 </body>
 

@@ -13,14 +13,14 @@ class Commit extends Model
         return $this->hasOne('App\Contributor', 'id', 'author_id');
     }
 
-    public function commiter() {
+    public function committer() {
         return $this->hasOne('App\Contributor', 'id', 'committer_id');
     }
 
-    public function storeLatestNodeJSCommits() {
+    public static function storeLatestNodeJSCommits($returnContributors=false) {
         $maxToStore = 25;
-        $storeCount = 0;
-        $commitList = $this->getLatestNodeJsCommits();
+        $storedCommits = [];
+        $commitList = Commit::getLatestNodeJsCommits();
         if($commitList !== null){
             foreach($commitList as $commit){
                 $author = Contributor::firstOrCreate([
@@ -41,18 +41,24 @@ class Commit extends Model
                     $newCommit->message = $commit->commit->message;
                     $newCommit->sha = $commit->sha;
                     $newCommit->save();
+
                     if($newCommit->id){
-                        $storeCount++;
-                        if($storeCount === 25){
+                        if($returnContributors){
+                           $newCommit->author;
+                            $newCommit->committer;
+                        }
+                        $storedCommits[] = $newCommit;
+                        if(count($storedCommits) === $maxToStore){
                             break;  // reached max to store
                         }
                     }
                 }
             }
         }
+        return $storedCommits;
     }
 
-    public function getLatestNodeJsCommits() {
+    public static function getLatestNodeJsCommits() {
         $client = new GuzzleHttp\Client();
         // get most recent SHA from database to limit the number of returned commits
         $latestCommit = Commit::orderBy('committed_at', 'desc')->first();

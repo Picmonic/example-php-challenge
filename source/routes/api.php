@@ -13,4 +13,5 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/api/commits', 'Api/CommitController@index')->middleware('auth:api');
+Route::get('/commits', 'Api\CommitController@index');
+Route::get('/commits/new', 'Api\CommitController@checkForNew');

@@ -25,11 +25,11 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
         })
         .state('gitlogs.nodejs', {
             url: '/',
-            controller:'NodeJsListController',
-            controllerAs:'vm',
             views: {
                 'container@': {
-                    templateUrl: 'gitlogs/app/nodejs/list.html'
+                    templateUrl: 'gitlogs/app/nodejs/list.html',
+                    controller:'NodeJsListController',
+                    controllerAs:'vm',
                 }
             }
         }
