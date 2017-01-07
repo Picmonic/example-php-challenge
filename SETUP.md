@@ -7,9 +7,11 @@
 - `cd example-php-challenge\source`
 - `composer install`
 - `bower install`
+- copy or rename the .env.example file to .env in the /source diretory
+- from the source directroy run `php artisan key:generate`
 
 ### Database
-- open the .env file and set credentials for preffered store method
+- set credentials in .env file for preffered store method
 *Default database type is MySQL to configure another type edit the default in /source/config/database.php
 
 ### Migration
