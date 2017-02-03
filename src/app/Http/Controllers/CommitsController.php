@@ -44,13 +44,21 @@ class CommitsController extends Controller
         $commits = Commit::all();
         
         $data = array();
+        $authorsData = array();
         foreach ($commits as $commit) {
             $data['commits'][$commit['author_email']][] = array(
                 'id' => $commit['id'],
                 'message' => $commit['message']
             );
-            $data['authors'][$commit['author_email']]['name'] = $commit['author_name'];
-            $data['authors'][$commit['author_email']]['avatar_url'] = $commit['avatar_url'];
+            $authorsData[$commit['author_email']]['name'] = $commit['author_name'];
+            $authorsData[$commit['author_email']]['avatar_url'] = $commit['avatar_url'];
+        }
+
+        // Convert author object to array
+        foreach ($authorsData as $email => $authorData) {
+            $temp = $authorData;
+            $temp['email'] = $email;
+            $data['authors'][] = $temp;
         }
 
         // Return recent commits from database

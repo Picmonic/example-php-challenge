@@ -21,7 +21,9 @@
 
   <div class="starter-template">
     <h1>Last 25 commits for nodejs/node</h1>
-    
+    <div *ngFor="let author of authors">
+      {{author.name}}
+    </div>
   </div>
 
 </div><!-- /.container -->
