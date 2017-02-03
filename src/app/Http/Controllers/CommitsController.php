@@ -26,7 +26,7 @@ class CommitsController extends Controller
             }
             
             
-            $message = strtok($result['commit']['message'], "\n")[0];
+            $message = strtok($result['commit']['message'], "\n");
             Commit::create(array(
                 'id' => $result['sha'],
                 'author_email' => $result['commit']['author']['email'],
