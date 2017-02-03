@@ -18,3 +18,9 @@
 ## Build Steps
 
 - `npm run build`
+
+## Message
+
+Thanks for taking the time to look over this. As we discussed in the interview I had not previously used Laravel, so I spent yesterday learning about the framework and today I completed the challenge. It was fun and I enjoyed learning about Laravel.
+
+If you were wondering why it took longer to complete, I had a few techinical issues with my computer which slowed down my progress significantly. Thank you for your time.
