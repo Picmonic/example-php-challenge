@@ -20,10 +20,18 @@ class CommitsController extends Controller
         // Save first 25 commits
         $count = 0;
         foreach ($apiResults as $result) {
+            $a_avatar_url = '';
+            if ($result['author'] != null) {
+                $a_avatar_url = $result['author']['avatar_url'];
+            }
+            
+            
             $message = strtok($result['commit']['message'], "\n")[0];
             Commit::create(array(
                 'id' => $result['sha'],
                 'author_email' => $result['commit']['author']['email'],
+                'author_name' => $result['commit']['author']['name'],
+                'author_avatar_url' => $a_avatar_url,
                 'message' => $message
             ));
             $count++;
@@ -32,8 +40,20 @@ class CommitsController extends Controller
             }
         }
         
+        // Retrive from database
         $commits = Commit::all();
+        
+        $data = array();
+        foreach ($commits as $commit) {
+            $data['commits'][$commit['author_email']][] = array(
+                'id' => $commit['id'],
+                'message' => $commit['message']
+            );
+            $data['authors'][$commit['author_email']]['name'] = $commit['author_name'];
+            $data['authors'][$commit['author_email']]['avatar_url'] = $commit['avatar_url'];
+        }
+
         // Return recent commits from database
-        return $commits;
+        return $data;
     }
 }
