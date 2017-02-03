@@ -104,7 +104,11 @@ var AppComponent = (function () {
         this.api.getStuff().subscribe(function (stuff) {
             console.log(stuff);
             _this.authors = stuff.authors;
+            _this.commits = stuff.commits;
         });
+    };
+    AppComponent.prototype.isBlue = function (sha) {
+        return !isNaN(sha.slice(-1));
     };
     AppComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Component */])({
@@ -331,7 +335,7 @@ var environment = {
 /***/ 574:
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-inverse\">\n  <div class=\"container\">\n    <div class=\"navbar-header\">\n      <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">\n        <span class=\"sr-only\">Toggle navigation</span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n      </button>\n      <a class=\"navbar-brand\" href=\"#\">Picmonic</a>\n    </div>\n    <div id=\"navbar\" class=\"collapse navbar-collapse\">\n      <ul class=\"nav navbar-nav\">\n        <li class=\"active\"><a href=\"#\">Home</a></li>\n      </ul>\n    </div><!--/.nav-collapse -->\n  </div>\n</nav>\n\n<div class=\"container\">\n\n  <div class=\"starter-template\">\n    <h1>Last 25 commits for nodejs/node</h1>\n    <div *ngFor=\"let author of authors\">\n      {{author.name}}\n    </div>\n  </div>\n\n</div><!-- /.container -->\n"
+module.exports = "<nav class=\"navbar navbar-inverse\">\n  <div class=\"container\">\n    <div class=\"navbar-header\">\n      <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">\n        <span class=\"sr-only\">Toggle navigation</span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n      </button>\n      <a class=\"navbar-brand\" href=\"#\">Picmonic</a>\n    </div>\n    <div id=\"navbar\" class=\"collapse navbar-collapse\">\n      <ul class=\"nav navbar-nav\">\n        <li class=\"active\"><a href=\"#\">Home</a></li>\n      </ul>\n    </div><!--/.nav-collapse -->\n  </div>\n</nav>\n\n<div class=\"container\">\n  <div class=\"starter-template\">\n    <h1>Last 25 commits for nodejs/node</h1>\n    <div *ngFor=\"let author of authors\" class=\"panel panel-default\">\n      <div class=\"panel-heading\">\n        <h3 class=\"panel-title\">{{author.name}}</h3>\n      </div>\n      <div class=\"panel-body\">\n        <ul *ngIf=\"author?.email\">\n          <li *ngFor=\"let commit of commits[author.email]\" >\n            <span [style.background]=\"isBlue(commit.sha) ? '#E6F1F6' : null\">{{commit.sha}} - {{commit.message}}</span>\n          </li>\n        </ul>\n      </div>\n    </div>\n  </div>\n</div><!-- /.container -->\n"
 
 /***/ }),
 

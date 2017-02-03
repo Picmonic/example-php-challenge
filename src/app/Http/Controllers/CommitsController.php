@@ -28,7 +28,7 @@ class CommitsController extends Controller
             
             $message = strtok($result['commit']['message'], "\n");
             Commit::create(array(
-                'id' => $result['sha'],
+                'sha' => $result['sha'],
                 'author_email' => $result['commit']['author']['email'],
                 'author_name' => $result['commit']['author']['name'],
                 'author_avatar_url' => $a_avatar_url,
@@ -47,7 +47,7 @@ class CommitsController extends Controller
         $authorsData = array();
         foreach ($commits as $commit) {
             $data['commits'][$commit['author_email']][] = array(
-                'id' => $commit['id'],
+                'sha' => $commit['sha'],
                 'message' => $commit['message']
             );
             $authorsData[$commit['author_email']]['name'] = $commit['author_name'];

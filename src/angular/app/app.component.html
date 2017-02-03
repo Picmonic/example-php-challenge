@@ -18,12 +18,19 @@
 </nav>
 
 <div class="container">
-
   <div class="starter-template">
     <h1>Last 25 commits for nodejs/node</h1>
-    <div *ngFor="let author of authors">
-      {{author.name}}
+    <div *ngFor="let author of authors" class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">{{author.name}}</h3>
+      </div>
+      <div class="panel-body">
+        <ul *ngIf="author?.email">
+          <li *ngFor="let commit of commits[author.email]" >
+            <span [style.background]="isBlue(commit.sha) ? '#E6F1F6' : null">{{commit.sha}} - {{commit.message}}</span>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
-
 </div><!-- /.container -->

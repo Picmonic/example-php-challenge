@@ -9,11 +9,15 @@ import { ApiService } from './core/api.service';
 })
 export class AppComponent implements OnInit {
   authors: Array<any>;
+  commits;
   constructor(private api: ApiService) { }
   ngOnInit() {
     this.api.getStuff().subscribe(stuff => {
-      console.log(stuff);
       this.authors = stuff.authors;
+      this.commits = stuff.commits;
     });
+  }
+  isBlue(sha) {
+    return !isNaN( sha.slice(-1) );
   }
 }
