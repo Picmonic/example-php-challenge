@@ -6,4 +6,4 @@
 
 ## How I setup this project
 
-1.
+1. `laravel new picmonic`
