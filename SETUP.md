@@ -13,3 +13,8 @@
 5. `rm package.json readme.md`
 5. `ng init --name=picmonic --style=scss --source-dir=angular --skip-npm --skip-git`
 6. `yarn`
+7. `rm -rf public/js public/css`
+
+## Build Steps
+
+- `npm run build`
