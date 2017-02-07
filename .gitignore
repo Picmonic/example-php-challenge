@@ -1,0 +1,6 @@
+/bootstrap/compiled.php
+composer.phar
+composer.lock  # Remove this one after you create a project
+.DS_Store
+Thumbs.db
+source/.vagrant
